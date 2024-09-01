@@ -139,6 +139,12 @@ body {
     text-align: center;
     font-size: 2.5rem;
 }
+
+.subtitle2{
+    padding-top: 60px;
+    text-align: center;
+    font-size: 2.5rem;
+}
 .nosotros{
     background-color: #F0F8FF;
 }
@@ -150,6 +156,7 @@ body {
 
 .tabla{
     padding-top: 30px;
+    padding-bottom: 100px;
     display: flex;
     gap: 20px; 
     justify-content: center; 
@@ -168,4 +175,65 @@ body {
 
 .descri{
   text-align: justify;  
+}
+
+.compañeritos{
+    background: #e5e5f7;
+    
+}
+
+.compa_container{
+    display: grid;
+    max-height: 500px;
+    grid-template-columns: 50px 1fr 50px ;
+    gap: 1em;
+    align-items:center;
+    
+}
+
+.perfil_body{
+    display: grid;
+    max-height: 500px;
+    grid-template-columns: 1fr max-content;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.perfil_body--show{
+    pointer-events: unset;
+    opacity: 1;
+    
+
+}
+
+.fotillo{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-position: 50% 30%;
+}
+
+.perfil_info{
+    background-color: royalblue;
+    color: #fff;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 5px;
+    gap: 10px;
+    max-height: 500px;
+
+}
+.perfil_text{
+    max-width: 700px;
+}
+
+.flechas{
+    width: 80%;
+    cursor: pointer;
 }
