@@ -66,7 +66,7 @@ body {
     align-items: center;
     justify-content: space-between; 
     background-color: #001A49;
-    padding: 0 170px; 
+    padding: 0 180px; 
 }
 
 .nav_title{
@@ -141,9 +141,8 @@ body {
 }
 
 .subtitle2{
-    padding-top: 60px;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 .nosotros{
     background-color: #F0F8FF;
@@ -177,23 +176,29 @@ body {
   text-align: justify;  
 }
 
-.compañeritos{
+.companeritos{
     background: #e5e5f7;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+     
 }
 
 .compa_container{
     display: grid;
-    max-height: 500px;
-    grid-template-columns: 50px 1fr 50px ;
+    max-height: 600px; 
+    grid-template-columns: 40px 1fr 40px; 
     gap: 1em;
-    align-items:center;
+    align-items: center;
+    justify-items: center; 
+    position: relative;
     
 }
 
 .perfil_body{
     display: grid;
-    max-height: 500px;
+    max-height: 400px;
     grid-template-columns: 1fr max-content;
     justify-content: space-between;
     align-items: center;
@@ -212,11 +217,12 @@ body {
 
 }
 
-.fotillo{
-    width: 250px;
-    height: 250px;
+.foto{
+    width: 270px;
+    height: 270px;
     border-radius: 50%;
-    object-position: 50% 30%;
+    background-position: center;
+    background-size: cover;
 }
 
 .perfil_info{
@@ -226,14 +232,14 @@ body {
     border-radius: 10px;
     padding: 5px;
     gap: 10px;
-    max-height: 500px;
+   
 
 }
 .perfil_text{
-    max-width: 700px;
+    max-width: 500px;
 }
 
 .flechas{
-    width: 80%;
+    width: 100%;
     cursor: pointer;
-}
+} 
