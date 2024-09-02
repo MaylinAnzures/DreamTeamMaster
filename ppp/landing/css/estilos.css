@@ -55,8 +55,8 @@ body {
     left: 0;
     width: 100%;
     height: 90%;
-    background-image: url('../images/fondo2.jpg');
-    background-size:cover;
+    background: linear-gradient(0deg, rgba(7, 20, 46, 0.65) 0%, rgba(7, 20, 46, 0.65) 100%), url('../images/fondo2.jpg') lightgray 0px -25.225px / 100% 142.671% no-repeat ;   background-size:cover;
+    
     z-index: -1;
 }
 .hero::before{
@@ -146,9 +146,17 @@ body {
     padding-bottom: 50px;
 }
 
+.hero3_title2{
+    font-size: 3rem;
+    color: #fff;
+    justify-content: left;
+    padding-bottom: 50px;
+}
 
 .hero_paragraph{
     margin-bottom: 20px;
+    font-size: 1.5rem;
+
 }
 
 .cta{
@@ -205,7 +213,7 @@ body {
 
 .elemento_tabla2{
     background-color: #001A49;
-    text-align: center;
+    text-align: justify;
     border-radius: 10px;
     width: 90%; 
     margin: 0 auto; 
@@ -226,7 +234,7 @@ body {
 }
 .imagen_tabla {
     width: 100%; 
-    height: auto; 
+    height: 200px; 
     border-radius: 10px; 
     margin-bottom: 20px;
 }
@@ -234,7 +242,12 @@ body {
 .descri{
   text-align: justify;  
 }
-
+.organi{
+    padding-top: 50px;
+    width: 85%;
+    justify-content: center;
+    margin: 0 auto;
+}
 .companeritos{
     background: #e5e5f7;
     display: flex;
