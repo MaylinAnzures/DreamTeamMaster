@@ -2,9 +2,11 @@
 :d
 XD
 # Comandos de ejecución
-`npm start` Ejecuta la version de prueba del proyecto\
-`npm run build` Ejecuta una version "final" (version de prodcción)\
+`npm install` Descarga lo necesario\
+`npm run dev` Ejecuta el proyectito\
+`o + enter` Visualizarlo en el browser
 
 # En el proyecto
-`public` Aquí van assets\
+`public` Aquí van assets
+
 
