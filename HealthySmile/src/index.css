@@ -93,6 +93,15 @@ h1 {
 
 h2 {
   font-family: var(--font-family-merriweather);
+  font-size: var(--XL, 72px);
+  font-weight: var(--font-weight-regular); 
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  font-family: var(--font-family-merriweather);
   font-size: var(--L, 64px);
   font-weight: var(--font-weight-bold);
   line-height: normal;
@@ -100,7 +109,8 @@ h2 {
   margin: 0;
 }
 
-h3 {
+
+h4 {
   font-family: var(--font-family-merriweather);
   font-size: var(--M, 48px);
   font-weight: var(--font-weight-bold); 
@@ -109,7 +119,7 @@ h3 {
   margin: 0;
 }
 
-h4 {
+h5 {
   font-family: var(--font-family-merriweather);
   font-size: var(--S, 36px);
   font-weight: var(--font-weight-bold);
@@ -118,11 +128,46 @@ h4 {
   margin: 0;
 }
 
+
+
+
 t1{
   font-family: var(--font-family-merriweather);
-  font-size: var(--L, 64px);
+  font-size: var(--M, 48px);
   font-style: normal;
-  font-weight: var(--Weight-Regular, 500);
+  font-weight: var(--font-weight-black, 500);
+  font-style: italic;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+
+t2{
+  font-family: var(--font-family-merriweather);
+  font-size: var(--M, 48px);
+  font-style: normal;
+  font-weight: var(--font-weight-black, 500);
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+
+t3{
+  font-family: var(--font-family-merriweather);
+  font-size: var(--XXS, 24px);
+  font-style: normal;
+  font-weight: var(--font-weight-bold, 900);
+  font-style: italic;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+
+t4{
+  font-family: var(--font-family-merriweather);
+  font-size: var(--XS, 16px);
+  font-style: normal;
+  font-weight: var(--font-weight-light, 400);
   line-height: normal;
   padding: 0;
   margin: 0;
