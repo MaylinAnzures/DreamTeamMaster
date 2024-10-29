@@ -1,28 +1,27 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-const CustomButton = styled(Button )({
-  backgroundColor: 'green',
+const CustomButton = styled(Button)({
+  backgroundColor: '#092B5A',
+  textTransform: 'none',
   color: 'white',
+  border: '2px ',
+  fontFamily: [
+    'Merriweather',
+    'sans-serif',
+  ].join(','),
   '&:hover': {
-    backgroundColor: '#000000',
+    backgroundColor: '#09738A',
   },
 });
 
-const MyButton = ({ onClick, children }) => (
-  <div>
-  <Stack direction="row" spacing={2}>
-      <CustomButton onClick={() => console.log("Custom button clicked!")}>
-        Custom Button
-      </CustomButton>
-      <CustomButton onClick={() => console.log("Custom button clicked!")}>
-        Custom Button
-      </CustomButton>
-      </Stack>
-  </div>
-
+const MyButton = ({ onClick, label }) => (
+  <CustomButton onClick={onClick}>
+    {label}
+  </CustomButton>
 );
+
+
 
 export default MyButton;

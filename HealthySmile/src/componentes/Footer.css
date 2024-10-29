@@ -1,0 +1,15 @@
+
+
+footer[id="app"]{
+    display: flex;
+    width: calc(100% - 2 * var(--XXS, 24px));
+    padding: var(--XXS, 24px);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--XS, 24px);
+    background: var(--color-footer, #333333);
+    color: var(--color-text_alt, #F0F8FF);
+    text-align: center;
+    justify-self: flex-end;
+}

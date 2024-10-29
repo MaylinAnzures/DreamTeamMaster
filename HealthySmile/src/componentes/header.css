@@ -3,30 +3,32 @@ header{
     width: calc(100% - (var(--XXS, 24px) * 2));
     min-height: var(--XM, 56px);
     padding: var(--XUS, 8px) var(--XXXS, 16px);
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     position: sticky;
     margin: 0;
     top: 0;
     background: #F0F8FF;
+
     z-index: 1;
+    
 }
 
 .link-container{
     display: flex;
     padding: 0px var(--XUS, 8px);
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 36px;
+    width: 100vw;
+    color: var(--color-text, #000000);
 }
 
 .logo {
     height: 150px;
+    padding: 0;
 }
 
-.brand{
-    color: var(--color-principal, #092B5A);
-}
+
 
 a{
     color: var(--color-text, #000000);
@@ -40,14 +42,12 @@ a:hover{
 }
 
 a:active{
-    color: var(--color-principal, #092B5A);
+    color: var(--color-text, #000000);
     transform: scale(0.9);
 }
 
-a:active{
-    color: var(--color-secondary, #092B5A);
-}
+
 
 .activeStyle{
-    color: #4BA8FF;
+    color: #000000;
 }

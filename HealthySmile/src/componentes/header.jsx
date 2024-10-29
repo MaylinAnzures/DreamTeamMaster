@@ -1,6 +1,7 @@
 import React from 'react';
-import './header.css';
+import './Header.css';
 import Logito from "../../public/Logito.png"
+import Badge  from './Badge';
 import { Link, NavLink } from "react-router-dom";
 
 export default function HeaderApp() {
@@ -14,7 +15,10 @@ export default function HeaderApp() {
                 <NavLink to="#">Consulta</NavLink>
                 <NavLink to="#">Educacion dental</NavLink>
                 <NavLink to="#">Tienda Virtual</NavLink>
-                <NavLink to="#">Ayuda y soporte</NavLink>          
+                <NavLink to="#">Gestion</NavLink>
+                <NavLink to="#">Ayuda y soporte</NavLink>
+                <NavLink to="#">
+                    <Badge/>                    </NavLink>          
                   </nav>
         </header>
     );
