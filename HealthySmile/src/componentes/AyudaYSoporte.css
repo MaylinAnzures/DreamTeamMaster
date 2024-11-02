@@ -1,0 +1,48 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 1%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.imagenTexto{
+    align-items: center;
+    display: -webkit-flex;
+	-webkit-flex-direction: column;
+    background: #F0F8FF;
+    padding: 0;
+    margin: 0;
+}
+
+.imagenTexto-img{
+    height: var(--XXL,600px);
+    width: var(--XXL,50%);
+    background-size: cover;
+    background-position: center;
+}
+
+.imagenTexto-texto{
+    height: var(--XXL,600px);
+    width: var(--XXL,50%);
+    text-align: left;
+}
+
+div[id="preguntasFrecuentes"] figure{
+    background-image: url('/public/sp2.jpg');
+}

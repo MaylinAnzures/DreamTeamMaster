@@ -16,7 +16,7 @@ export default function HeaderApp() {
                 <NavLink to="#">Educacion dental</NavLink>
                 <NavLink to="#">Tienda Virtual</NavLink>
                 <NavLink to="#">Gestion</NavLink>
-                <NavLink to="#">Ayuda y soporte</NavLink>
+                <NavLink to="/AyudaYSoporte">Ayuda y soporte</NavLink>
                 <NavLink to="#">
                     <Badge/>                    </NavLink>          
                   </nav>
