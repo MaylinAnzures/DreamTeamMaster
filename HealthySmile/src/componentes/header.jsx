@@ -7,12 +7,12 @@ import { Link, NavLink } from "react-router-dom";
 export default function HeaderApp() {
     return (
         <header>
-            <Link to="#">
+            <Link to="/">
                 <img src={Logito}alt="EducaSim Logo" className="logo"></img>
             </Link>
             <nav className={"link-container"}>
-            <NavLink to="#">Home</NavLink>
-                <NavLink to="#">Consulta</NavLink>
+            <NavLink to="/IniciarSesion">Home</NavLink>
+                <NavLink to="">Consulta</NavLink>
                 <NavLink to="#">Educacion dental</NavLink>
                 <NavLink to="#">Tienda Virtual</NavLink>
                 <NavLink to="#">Gestion</NavLink>

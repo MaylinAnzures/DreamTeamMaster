@@ -5,7 +5,7 @@ header{
     padding: var(--XUS, 8px) var(--XXXS, 16px);
     justify-content: center;
     align-items: center;
-    position: sticky;
+    position: relative;
     margin: 0;
     top: 0;
     background: #F0F8FF;

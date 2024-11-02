@@ -16,6 +16,7 @@ const CustomButton = styled(Button)({
   },
 });
 
+
 const MyButton = ({ onClick, label }) => (
   <CustomButton onClick={onClick}>
     {label}
