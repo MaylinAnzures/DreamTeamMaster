@@ -2,6 +2,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useState } from 'react';
 import { useUserContext } from './UserContext';
+import './FormPregunta.css';
+
+//maximo 5
 
 export default function FormPregunta() {
   const {idUsuario} = useUserContext();
@@ -55,7 +58,7 @@ export default function FormPregunta() {
       <CardContent>
         <h1>Contactenos</h1>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="nombre">Nombre : </label>
+          <label htmlFor="nombre">Nombre</label>
           <input
             type='text'
             name='nombre'
@@ -66,21 +69,21 @@ export default function FormPregunta() {
             onChange={(e) => setNombre(e.target.value)}
           />
           <br />
-          <label htmlFor="correo">Correo : </label>
+          <label htmlFor="correo">Email</label>
           <input
             type='email' 
             name='correo'
-            placeholder='Ingresa tu correo'
+            placeholder='Ingresa un email valido'
             autoComplete='off'
             required
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
           />
           <br />
-          <label htmlFor="mensaje">Mensaje : </label>
+          <label htmlFor="mensaje">Mensaje</label>
           <textarea
             name='mensaje'
-            placeholder='Escribe tu mensaje aquí'
+            placeholder='Describe tu inconveniente'
             required
             value={mensaje}
             onChange={(e) => setMensaje(e.target.value)}
@@ -88,9 +91,6 @@ export default function FormPregunta() {
           <br />
           <input type='submit' value='Enviar' />
         </form>
-        {responseMessage && <p>{responseMessage}</p>} {/* Mostrar mensaje de respuesta */}
-        <p>Usuario : {usuarioLogueado}</p>
-        <p>tipo Usuario: {tipoUsuario}</p>
       </CardContent>
     </Card>
   );

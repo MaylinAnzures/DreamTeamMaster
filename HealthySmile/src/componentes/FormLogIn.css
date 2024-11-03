@@ -1,66 +1,66 @@
 /* Estilos generales */
 
-.titulo1 {
-    font-size: 1.88vw; /* 24px en base a 1277px de ancho */
+.FormLogIn_titulo1 {
+    font-size: 1.88vw;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 0.5vw; /* 20px en base a 600px de altura */
+    margin-bottom: 0.5vw;
     color: #333;
 }
 
 /* Estilos del formulario */
-form {
+.FormLogIn_form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; /* Tamaño completo del contenedor */
+    width: 100%;
 }
 
 /* Estilos de los labels */
-label {
-    font-size: 1.1vw; /* 14px en base a 1277px de ancho */
-    margin-top: 1.5vw; /* 10px en base a 600px de altura */
+.FormLogIn_form label {
+    font-size: 1.1vw;
+    margin-top: 1.5vw;
     margin-left: 0.5vw;
     align-self: flex-start;
 }
 
 /* Estilos de los inputs */
-input[type="email"],
-input[type="password"] {
+input#FormLogIn_correoUser,
+input#FormLogIn_contrasenaUser {
     width: 90%;
-    padding: 1vw; /* 10px en base a 600px de altura */
-    margin-top: 0.4vw; /* 5px en base a 600px de altura */
-    margin-bottom: 1.5vw; /* 15px en base a 600px de altura */
+    padding: 1vw;
+    margin-top: 0.4vw;
+    margin-bottom: 1.5vw;
     border: none;
-    border-bottom: 0.16vw solid #000; /* 2px en base a 1277px de ancho */
+    border-bottom: 0.16vw solid #000;
     outline: none;
-    font-size: 1.1vw; /* 14px en base a 1277px de ancho */
+    font-size: 1.1vw;
 }
 
-input[type="email"]::placeholder,
-input[type="password"]::placeholder {
+input#FormLogIn_correoUser::placeholder,
+input#FormLogIn_contrasenaUser::placeholder {
     color: #999;
 }
 
 /* Estilos del botón de iniciar sesión */
-input[type="submit"] {
+.FormLogIn_submit {
     width: 100%;
     background-color: #4a90e2;
     color: white;
-    padding: 1vw; /* 12px en base a 600px de altura */
+    padding: 1vw;
     border: none;
-    border-radius: 1.57vw; /* 20px en base a 1277px de ancho */
-    font-size: 1.25vw; /* 16px en base a 1277px de ancho */
+    border-radius: 1.57vw;
+    font-size: 1.25vw;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 1vw; /* 10px en base a 600px de altura */
+    margin-top: 1vw;
 }
 
-input[type="submit"]:hover {
+.FormLogIn_submit:hover {
     background-color: #3a78c1;
 }
 
-.Card{
+.FormLogIn_Card {
     height: 40vw;
     width: 40vw;
 }

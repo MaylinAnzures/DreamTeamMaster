@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useUserContext } from './UserContext';
 import './FormLogIn.css';
 
-
 export default function FormLogIn() {
   const [correoInput, setCorreoInput] = useState('');
   const [contrasenaInput, setContrasenaInput] = useState('');
@@ -66,14 +65,15 @@ export default function FormLogIn() {
   };
 
   return (
-    <Card className='Card'>
+    <Card className='FormLogIn_Card'>
       <CardContent>
-        <h1 className='titulo1'>Acceso rapido</h1>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="correoUser">Email</label>
+        <h1 className='FormLogIn_titulo1'>Acceso rapido</h1>
+        <form onSubmit={handleSubmit} className="FormLogIn_form">
+          <label htmlFor="FormLogIn_correoUser">Email</label>
           <input
             type="email"
-            name="correoUser"
+            id="FormLogIn_correoUser"
+            name="FormLogIn_correoUser"
             placeholder="Ingrese un correo valido"
             autoComplete="off"
             required
@@ -81,10 +81,11 @@ export default function FormLogIn() {
             onChange={(e) => setCorreoInput(e.target.value)}
           />
           <br />
-          <label htmlFor="contrasenaUser">Contraseña</label>
+          <label htmlFor="FormLogIn_contrasenaUser">Contraseña</label>
           <input
             type="password"
-            name="contrasenaUser"
+            id="FormLogIn_contrasenaUser"
+            name="FormLogIn_contrasenaUser"
             placeholder="Ingrese contraseña"
             autoComplete="off"
             required
@@ -92,7 +93,7 @@ export default function FormLogIn() {
             onChange={(e) => setContrasenaInput(e.target.value)}
           />
           <br />
-          <input type="submit" value="Iniciar Sesión" />
+          <input type="submit" value="Iniciar Sesión" className="FormLogIn_submit" />
         </form>
       </CardContent>
     </Card>

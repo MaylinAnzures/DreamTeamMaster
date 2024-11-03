@@ -2,6 +2,7 @@ import { ExpandMore } from '@mui/icons-material';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import './PreguntasFrecuentes.css';
 
 export default function PreguntasFrecuentes() {
     const [preguntas, setPreguntas] = useState([]);
@@ -20,28 +21,26 @@ export default function PreguntasFrecuentes() {
     return (
         <>
             {preguntas.map((pregunta, index) => (
-                <Accordion key={index}>
+                <Accordion key={index} className='acordeon'>
                     <AccordionSummary
                         expandIcon={<ExpandMore />}
                         aria-controls={`panel${index}-content`}
                         id={`panel${index}-header`}
                     >
                         {/* Mostrar la pregunta y el nombre del usuario en el AccordionSummary */}
-                        <div>
+                        <div className='preguntita'>
                             <strong>{pregunta.pregunta} </strong> <br />
-                            {pregunta.nombreUsuario}
                         </div>
                     </AccordionSummary>
-                    <AccordionDetails>
+                    <AccordionDetails className='detalles-pregunta'>
                         {/* Mostrar la respuesta y el especialista solo si hay respuesta */}
                         {pregunta.respuesta !== 'aún no hay respuesta para esta pregunta' && (
-                            <div>
+                            <div className='respuestita'>
                                 <strong>{pregunta.respuesta}</strong> <br />
-                                {pregunta.nombreEspecialista}
                             </div>
                         )}
                         {pregunta.respuesta === 'aún no hay respuesta para esta pregunta' && (
-                            <div>
+                            <div className='respuestita'>
                                 <strong>Aun no hay respuesta para esta pregunta</strong>
                             </div>
                         )
