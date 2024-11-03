@@ -53,8 +53,7 @@
 }
 
 .imagenTexto {
-    height: 45vw;
-    align-items: center;
+    height: 70vw;
     display: -webkit-flex; /* Cambiado a -webkit-flex */
     -webkit-flex-direction: column; /* Usando la combinación requerida */
     background: white;
@@ -77,6 +76,12 @@
 
 .preguntasFrecuentes figure {
     background-image: url('/public/sp2.jpg');
+    background-size: cover; /* Asegura que la imagen cubra todo el espacio */
+    background-position: center; /* Centra la imagen en el contenedor */
+    width: 50%; /* Asegura que el figure ocupe todo el ancho */
+    height: 100%; /* Asegura que el figure ocupe todo el alto */
+    margin: 0; /* Elimina márgenes si es necesario */
+    padding: 0; /* Elimina relleno si es necesario */
 }
 
 
@@ -86,4 +91,30 @@
 
 .imagenTexto-texto p{
     font-size: 1.3vw;
+}
+
+input[type="search"] {
+    width: 40vw;
+    margin-top: 2vw;
+    padding: 10px 15px; /* Espaciado interno */
+    border: 2px solid #4CAF50; /* Color del borde */
+    border-radius: 25px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: all 0.3s ease; /* Transición suave */
+    outline: none; /* Sin contorno al enfocar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+input[type="search"]:focus {
+    border-color: #4CAF90; /* Cambiar color del borde al enfocar */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* Sombra más intensa al enfocar */
+}
+
+input[type="search"]::placeholder {
+    color: #aaa; /* Color del texto del placeholder */
+    transition: color 0.3s ease; /* Transición suave para el color del placeholder */
+}
+
+input[type="search"]:hover::placeholder {
+    color: #666; /* Cambiar color del placeholder al pasar el mouse */
 }

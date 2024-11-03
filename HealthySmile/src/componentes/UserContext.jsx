@@ -1,4 +1,3 @@
-// UserContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
 
 // Crear contexto
@@ -11,8 +10,7 @@ export const UserProvider = ({ children }) => {
   const [tipoUsuario, setTipoUsuario] = useState(localStorage.getItem('tipoUsuario') || null);
   const [cedulaProfesional, setCedulaProfesional] = useState(localStorage.getItem('cedulaProfesional') || null);
   const [idUsuario, setIdUsuario] = useState(localStorage.getItem('idUsuario') || null);
-  const [correoUser, setCorreoUser] = useState(localStorage.getItem('correoUser') || null);
-  const [contrasenaUser, setContrasenaUser] = useState(localStorage.getItem('contrasenaUser') || null);
+  const [idEspecialista, setIdEspecialista] = useState(localStorage.getItem('idEspecialista') || null); // Nuevo estado
   const [nivelPermisos, setNivelPermisos] = useState(localStorage.getItem('nivelPermisos') || null);
 
   // Actualizar Local Storage cada vez que cambian los valores
@@ -21,13 +19,25 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('tipoUsuario', tipoUsuario);
     localStorage.setItem('cedulaProfesional', cedulaProfesional);
     localStorage.setItem('idUsuario', idUsuario);
-    localStorage.setItem('correoUser', correoUser);
-    localStorage.setItem('contrasenaUser', contrasenaUser);
+    localStorage.setItem('idEspecialista', idEspecialista); // Guardar idEspecialista
     localStorage.setItem('nivelPermisos', nivelPermisos);
-  }, [usuarioLogueado, tipoUsuario, cedulaProfesional, idUsuario, correoUser, contrasenaUser, nivelPermisos]);
+  }, [usuarioLogueado, tipoUsuario, cedulaProfesional, idUsuario, idEspecialista, nivelPermisos]);
 
   return (
-    <UserContext.Provider value={{ usuarioLogueado, setUsuarioLogueado, tipoUsuario, setTipoUsuario, cedulaProfesional, setCedulaProfesional, idUsuario, setIdUsuario, correoUser, setCorreoUser, contrasenaUser, setContrasenaUser, nivelPermisos, setNivelPermisos }}>
+    <UserContext.Provider value={{ 
+      usuarioLogueado, 
+      setUsuarioLogueado, 
+      tipoUsuario, 
+      setTipoUsuario, 
+      cedulaProfesional, 
+      setCedulaProfesional, 
+      idUsuario, 
+      setIdUsuario, 
+      idEspecialista, // Pasar idEspecialista
+      setIdEspecialista, // Función para actualizar idEspecialista
+      nivelPermisos, 
+      setNivelPermisos 
+    }}>
       {children}
     </UserContext.Provider>
   );

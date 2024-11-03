@@ -1,25 +1,100 @@
-.acordeon {
-    width: 40vw;
-    min-height: 3.5vw; /* Cambiado de height a min-height */
-    margin-bottom: 1rem; /* Espacio entre cada acordeón */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Añadir una sombra ligera */
+/* Estilos generales */
+.PreguntaFrec_titulo1 {
+    font-size: 3vw;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 1vw;
+    margin-bottom: 0.5vw;
+    color: #333;
 }
 
-.preguntita {
+/* Estilos del formulario */
+.PreguntaFrec_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilos de los labels */
+.PreguntaFrec_form label {
+    font-size: 1vw;
+    margin-left: 0.5vw;
+    align-self: flex-start;
+}
+
+/* Estilos de los inputs y textarea */
+input#PreguntaFrec_nombreUser,
+input#PreguntaFrec_correoUser,
+textarea#PreguntaFrec_mensajeUser {
+    width: 90%;
+    padding: 1vw;
+    margin-top: 0.4vw;
+    margin-bottom: 0.1vw;
+    border: none;
+    border-bottom: 0.16vw solid #000;
+    outline: none;
+    font-size: 1.1vw;
+}
+
+input#PreguntaFrec_nombreUser::placeholder,
+input#PreguntaFrec_correoUser::placeholder,
+textarea#PreguntaFrec_mensajeUser::placeholder {
+    color: #999;
+}
+
+/* Estilos del botón de enviar */
+.PreguntaFrec_submit {
+    width: 96%;
+    background-color: #7ba890;
+    color: white;
+    padding: 1vw;
+    border: none;
+    border-radius: 0;
     font-size: 1.25vw;
     font-weight: bold;
-    color: #333; /* Color del texto de la pregunta */
+    cursor: pointer;
+    margin-top: 1vw;
+}
+
+.PreguntaFrec_submit:hover {
+    background-color: black;
+}
+
+.PreguntaFrec_Card {
+    height: 40vw;
+    width: 40vw;
+}
+textarea#PreguntaFrec_mensajeUser{
+    min-height: 7vw;
+    min-width: 92%;
+    max-width: 92%;
+    resize: none;
+}
+
+.acordeon {
+    width: 40vw;
+    min-height: 3.5vw; /* Mantiene una altura mínima */
+    max-height: 100vh; /* Establecer un límite superior opcional para evitar que se expanda indefinidamente */
+    margin-top: 2.5vw; /* Espacio entre cada acordeón */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Añadir una sombra ligera */
+    overflow: hidden; /* Oculta el contenido que excede el tamaño del acordeón */
+    transition: max-height 0.3s ease; /* Transición suave para el cambio de altura */
 }
 
 .respuestita {
-    font-size: 1.25vw;
+    font-size: 0.8vw;
     color: #555; /* Color del texto de la respuesta */
     line-height: 1.5; /* Espacio entre líneas para mejor legibilidad */
 }
 
+.noPregunta{
+    color: red;
+}
+
 .detalles-pregunta {
-    width: 100%; /* Asegura que ocupe el ancho completo del acordeón */
-    padding: 1rem; /* Espacio interno en el contenido de respuesta */
+    width: 37.9vw; /* Asegura que ocupe el ancho completo del acordeón */
+    padding: 1vw; /* Espacio interno en el contenido de respuesta */
     background-color: #f9f9f9; /* Fondo claro para diferenciar la respuesta */
     border-top: 1px solid #ddd; /* Borde superior para separar de la pregunta */
 }
@@ -27,7 +102,6 @@
 /* Efecto hover para el acordeón */
 .acordeon:hover {
     background-color: #f0f0f0; /* Fondo más claro al pasar el cursor */
-    transition: background-color 0.3s ease; /* Transición suave */
 }
 
 /* Efecto para el botón expandir de Material-UI */
@@ -37,4 +111,50 @@
 
 .acordeon .MuiAccordionSummary-expandIconWrapper:hover {
     color: #333; /* Cambia de color al pasar el cursor sobre el icono */
+}
+
+.preguntita {
+    font-size: 1.25vw;
+    font-weight: bold;
+    color: #333; /* Color del texto de la pregunta */
+}
+
+
+/* Estilos del formulario de respuesta */
+.PreguntaFrec_form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1vw;
+}
+
+/* Estilos del textarea de respuesta */
+.Res_form textarea {
+    resize: none;
+    width: 90%;
+    padding: 1vw;
+    margin-top: 0.4vw;
+    margin-bottom: 0.1vw;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1.1vw;
+}
+
+/* Estilos del botón de enviar respuesta */
+.Res_submit {
+    width: auto;
+    background-color: #7ba890;
+    color: white;
+    padding: 0.5vw 1vw;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1vw;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1vw;
+}
+
+.Res_submit:hover {
+    background-color: black;
 }

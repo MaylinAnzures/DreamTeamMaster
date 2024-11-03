@@ -36,6 +36,14 @@ export default function IniciarSesion() {
         };
     }, []);
 
+    // Función para desplazarse suavemente a la sección accesoRapido
+    const handleScrollToAccesoRapido = () => {
+        const accesoRapidoSection = document.getElementById('accesoRapido');
+        if (accesoRapidoSection) {
+            accesoRapidoSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <div>
             <HeaderApp />
@@ -50,6 +58,7 @@ export default function IniciarSesion() {
                         hoverBorderColor="var(--color-principal)"
                         backgroundColor="var(--original-IniciarSesion-colorButton-blue,#478ac9)"
                         hoverBackgroundColor="var(--original-IniciarSesion-colorButton-white,white)"
+                        onClick={handleScrollToAccesoRapido} // Agrega el manejador de clic aquí
                     />
                     <MyOutlinedButton
                         label="REGISTRARSE"
@@ -86,19 +95,19 @@ export default function IniciarSesion() {
                 <figure></figure>
             </div>
             <div className='section-registrarse'>
-                <h2>Forma parte de la familia Healthy Smile y cuida de tu <br/> sonrisa con nosotros</h2>
+                <h2>Forma parte de la familia Healthy Smile y cuida de tu <br /> sonrisa con nosotros</h2>
                 <figure>
                     <img src='../../public/signUpImage.png' alt="Registro" />
                 </figure>
                 <figcaption>
                     <p>La seguridad de tu cuenta es importante. Asegúrate de utilizar una contraseña segura y de no compartirla 
-                        con <br/> nadie para proteger tu información personal.</p>
+                        con <br /> nadie para proteger tu información personal.</p>
                 </figcaption>
                 <MyButton label="REGISTRARSE" />
             </div>
             <div className='section-accesoRapido'>
                 <div className='prueba'>
-                    <div className='accesoRapido'><FormLogIn /></div>
+                    <div className='accesoRapido' id='accesoRapido'><FormLogIn /></div>
                     <div className='info-accesoRapido'>
                         <h5>Sesión activa</h5>
                         <h6>Accede con tu cuenta.</h6>

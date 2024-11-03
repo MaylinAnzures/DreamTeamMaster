@@ -170,7 +170,105 @@ import cors from 'cors';
     });
 
     
-    
+        // Ruta para responder preguntas frecuentes
+    app.post('/api/responderPregunta', (req, res) => {
+        const { idPreguntaFrecuente, idEspecialista, respuesta } = req.body;
+
+        const dbConnection = iniciarConexion();
+
+        dbConnection.connect((err) => {
+            if (err) {
+                console.error('Error al conectar a la base de datos:', err);
+                res.status(500).json({ error: 'Error al conectar con la base de datos' });
+                return;
+            }
+
+            const SQL_QUERY = 'CALL ResponderPreguntaFrecuente(?, ?, ?)';
+            dbConnection.query(SQL_QUERY, [idPreguntaFrecuente, idEspecialista, respuesta], (err, result) => {
+                dbConnection.end(); // Cerrar la conexión después de la consulta
+
+                if (err) {
+                    console.error('Error al ejecutar el procedimiento:', err);
+                    res.status(500).json({ error: 'Error al responder la pregunta frecuente' });
+                    return;
+                }
+
+                // Si la respuesta se actualizó correctamente
+                res.status(200).json({ message: 'Respuesta registrada exitosamente' });
+            });
+        });
+    });
+
+
+        // Ruta para aumentar el contador de búsquedas de una pregunta frecuente
+    app.post('/api/aumentarBusquedas', (req, res) => {
+        const { idPreguntaFrecuente } = req.body;
+
+        const dbConnection = iniciarConexion();
+
+        dbConnection.connect((err) => {
+            if (err) {
+                console.error('Error al conectar a la base de datos:', err);
+                res.status(500).json({ error: 'Error al conectar con la base de datos' });
+                return;
+            }
+
+            const SQL_QUERY = 'CALL AumentarBusquedas(?)';
+            dbConnection.query(SQL_QUERY, [idPreguntaFrecuente], (err, result) => {
+                dbConnection.end(); // Cerrar la conexión después de la consulta
+
+                if (err) {
+                    console.error('Error al ejecutar el procedimiento:', err);
+                    res.status(500).json({ error: 'Error al aumentar el contador de búsquedas' });
+                    return;
+                }
+
+                // Respuesta exitosa
+                res.status(200).json({ message: 'Contador de búsquedas incrementado exitosamente' });
+            });
+        });
+    });
+
+    // Ruta para buscar una pregunta frecuente
+    app.get('/api/buscarPregunta', (req, res) => {
+        const { pregunta } = req.query; // Obtener la pregunta del parámetro de la consulta
+        const dbConnection = iniciarConexion();
+
+        dbConnection.connect((err) => {
+            if (err) {
+                console.error('Error al conectar a la base de datos:', err);
+                res.status(500).json({ error: 'Error al conectar con la base de datos' });
+                return;
+            }
+
+            // Llamar al procedimiento almacenado
+            const SQL_QUERY = `CALL procedimiento_Buscar_Pregunta(?)`;
+
+            dbConnection.query(SQL_QUERY, [pregunta], (err, results) => {
+                dbConnection.end(); // Cerrar la conexión después de la consulta
+
+                if (err) {
+                    console.error('Error al obtener datos desde el procedimiento:', err);
+                    res.status(500).json({ error: 'Error al buscar la pregunta frecuente' });
+                    return;
+                }
+
+                // results[0] contiene el resultado de la consulta del procedimiento
+                const preguntas = results[0].map(preg => {
+                    // Cambiar el valor de respuesta si está vacío o es nulo
+                    return {
+                        ...preg,
+                        respuesta: preg.respuesta ? preg.respuesta : 'aún no hay respuesta para esta pregunta',
+                    };
+                });
+
+                res.json(preguntas);
+            });
+        });
+    });
+
+
+
 
     // Iniciar el servidor
     app.listen(PORT, () => {

@@ -15,8 +15,7 @@ export default function FormLogIn() {
     setTipoUsuario,
     setCedulaProfesional,
     setIdUsuario,
-    setCorreoUser,
-    setContrasenaUser,
+    setIdEspecialista, // Nuevo setter para idEspecialista
     setNivelPermisos,
   } = useUserContext();
 
@@ -48,8 +47,7 @@ export default function FormLogIn() {
       setTipoUsuario(result.tipoUser);
       setCedulaProfesional(result.tipoUser === 'Especialista' ? result.cedulaProfesional : null);
       setIdUsuario(result.idUsuario);
-      setCorreoUser(result.correoUser);
-      setContrasenaUser(result.contrasenaUser);
+      setIdEspecialista(result.tipoUser === 'Especialista' ? result.idEspecialista : null); // Almacenar idEspecialista
       setNivelPermisos(result.nivelPermisos);
 
       setResponseMessage('Inicio de sesión exitoso');
@@ -67,14 +65,14 @@ export default function FormLogIn() {
   return (
     <Card className='FormLogIn_Card'>
       <CardContent>
-        <h1 className='FormLogIn_titulo1'>Acceso rapido</h1>
+        <h1 className='FormLogIn_titulo1'>Acceso rápido</h1>
         <form onSubmit={handleSubmit} className="FormLogIn_form">
           <label htmlFor="FormLogIn_correoUser">Email</label>
           <input
             type="email"
             id="FormLogIn_correoUser"
             name="FormLogIn_correoUser"
-            placeholder="Ingrese un correo valido"
+            placeholder="Ingrese un correo válido"
             autoComplete="off"
             required
             value={correoInput}

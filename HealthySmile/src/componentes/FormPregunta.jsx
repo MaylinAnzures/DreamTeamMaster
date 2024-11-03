@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { useUserContext } from './UserContext';
 import './FormPregunta.css';
 
-//maximo 5
-
 export default function FormPregunta() {
-  const {idUsuario} = useUserContext();
+  const { idUsuario } = useUserContext();
 
   const [nombre, setNombre] = useState('');
   const [correo, setCorreo] = useState('');
@@ -18,7 +16,7 @@ export default function FormPregunta() {
     e.preventDefault();
 
     const preguntaData = {
-      pregunta: mensaje, 
+      pregunta: mensaje,
       idUsuario: idUsuario
     };
 
@@ -36,32 +34,28 @@ export default function FormPregunta() {
       }
 
       const result = await response.json();
-      setResponseMessage(result.message); // Guardamos el mensaje de respuesta
+      setResponseMessage(result.message);
       console.log('Pregunta creada:', result.message);
-      
-      // Limpiar los campos del formulario
+
       setNombre('');
       setCorreo('');
       setMensaje('');
 
     } catch (error) {
       console.error('Error al enviar la pregunta:', error);
-      setResponseMessage('Error al enviar la pregunta. Inténtalo de nuevo.'); // Mensaje de error
+      setResponseMessage('Error al enviar la pregunta. Inténtalo de nuevo.');
     }
   };
 
-  const {usuarioLogueado,tipoUsuario} = useUserContext();
-  
-
   return (
-    <Card sx={{ minWidth: 200 }}>
+    <Card className="PreguntaFrec_Card">
       <CardContent>
-        <h1>Contactenos</h1>
-        <form onSubmit={handleSubmit}>
+        <h1 className="PreguntaFrec_titulo1">Contáctenos</h1>
+        <form className="PreguntaFrec_form" onSubmit={handleSubmit}>
           <label htmlFor="nombre">Nombre</label>
           <input
             type='text'
-            name='nombre'
+            id='PreguntaFrec_nombreUser'
             placeholder='Ingresa tu nombre'
             autoComplete='off'
             required
@@ -71,9 +65,9 @@ export default function FormPregunta() {
           <br />
           <label htmlFor="correo">Email</label>
           <input
-            type='email' 
-            name='correo'
-            placeholder='Ingresa un email valido'
+            type='email'
+            id='PreguntaFrec_correoUser'
+            placeholder='Ingresa un email válido'
             autoComplete='off'
             required
             value={correo}
@@ -82,17 +76,16 @@ export default function FormPregunta() {
           <br />
           <label htmlFor="mensaje">Mensaje</label>
           <textarea
-            name='mensaje'
+            id='PreguntaFrec_mensajeUser'
             placeholder='Describe tu inconveniente'
             required
             value={mensaje}
             onChange={(e) => setMensaje(e.target.value)}
           />
           <br />
-          <input type='submit' value='Enviar' />
+          <input type='submit' className="PreguntaFrec_submit" value='ENVIAR' />
         </form>
       </CardContent>
     </Card>
   );
 }
-
