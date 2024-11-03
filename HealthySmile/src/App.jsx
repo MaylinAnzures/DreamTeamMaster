@@ -1,23 +1,23 @@
-import './App.css'
-import Index from './index.jsx'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
-
-
+import './App.css';
+import { Routes, Route } from 'react-router-dom'; 
+import Index from './index';
+import Home from './Inicio/Home';
+import Consulta from './Inicio/Consulta';
+import Chatboti from './Inicio/Chatbot';
+import NotFound from './Inicio/NotFound';
 
 function App() {
-  
   return (
-    <>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Index/>}/>
-      </Routes>
-    </Router>
-    
-    </>
+    <div className="app-container">
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/Home" element={<Home />} />
+      <Route path="/Consulta" element={<Consulta />} />
+      <Route path="/Chatbot" element={<Chatboti />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+    </div>
   );
-  
-  
 }
-  
+
 export default App;

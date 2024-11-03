@@ -9,7 +9,6 @@ header{
     margin: 0;
     top: 0;
     background: #F0F8FF;
-
     z-index: 1;
     
 }
@@ -29,9 +28,8 @@ header{
 }
 
 
-
 a{
-    color: var(--color-text, #000000);
+    color: var(--color-text, #09738A);
     transition: color 0.5s cubic-bezier(0.08,0.82,0.17,1);
     transition: transform 0.5s cubic-bezier(0.08,0.82,0.17,1);
 }
@@ -49,5 +47,5 @@ a:active{
 
 
 .activeStyle{
-    color: #000000;
+    color: #09738A;
 }
