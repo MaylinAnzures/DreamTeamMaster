@@ -96,10 +96,10 @@
 input[type="search"] {
     width: 40vw;
     margin-top: 2vw;
-    padding: 10px 15px; /* Espaciado interno */
+    padding: 1vw 1.5vw; /* Espaciado interno */
     border: 2px solid #4CAF50; /* Color del borde */
     border-radius: 25px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño de fuente */
+    font-size: 1.3vw; /* Tamaño de fuente */
     transition: all 0.3s ease; /* Transición suave */
     outline: none; /* Sin contorno al enfocar */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */

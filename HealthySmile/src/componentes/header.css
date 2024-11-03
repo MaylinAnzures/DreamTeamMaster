@@ -1,8 +1,8 @@
 header{
     display: flex;
-    width: calc(100% - (var(--XXS, 24px) * 2));
-    min-height: var(--XM, 56px);
-    padding: var(--XUS, 8px) var(--XXXS, 16px);
+    width: 99%;
+    height: 6vw;
+    padding: 1vw;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -16,16 +16,17 @@ header{
 
 .link-container{
     display: flex;
-    padding: 0px var(--XUS, 8px);
+    font-size: 1.5vw;
+    padding: 0px 1.5vw;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     color: var(--color-text, #000000);
 }
 
 .logo {
-    height: 150px;
-    padding: 0;
+    height: 8vw;
+    padding-top: 2.5vw;
 }
 
 

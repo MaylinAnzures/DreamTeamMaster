@@ -2,14 +2,22 @@
 
 footer[id="app"]{
     display: flex;
-    width: calc(100% - 2 * var(--XXS, 24px));
-    padding: var(--XXS, 24px);
+    width: 99%;
+    padding: 2.4vw;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--XS, 24px);
+    gap: 2.4vw;
     background: var(--color-footer, #333333);
     color: var(--color-text_alt, #F0F8FF);
     text-align: center;
     justify-self: flex-end;
+}
+
+footer[id="app"] img{
+    height: 14vw;
+}
+
+footer[id="app"] t7{
+    font-size: 1.2vw;
 }
