@@ -6,9 +6,9 @@ const CustomButton = styled(Button)(({ theme, color, borderColor, hoverColor, ho
   border: `2px solid ${borderColor}`,
   color: color,
   background: backgroundColor,
-  borderRadius: 20,
-  padding: '10px 20px',
-  fontSize: 'var(--XS, 1rem)', // Tamaño de fuente dinámico
+  borderRadius: 100,
+  padding: '10px 30px',
+  fontSize: 'var(--XS, 0.9rem)', // Tamaño de fuente dinámico
   fontWeight: 'var(--font-weight-bold, 700)',
   transition: 'all 0.3s ease',
   minWidth: '120px', // Anchura mínima para un buen diseño responsivo

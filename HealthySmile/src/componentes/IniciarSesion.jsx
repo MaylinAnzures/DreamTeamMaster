@@ -1,107 +1,114 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FooterApp from './footer';
 import HeaderApp from './header';
 import './IniciarSesion.css';
 import MyOutlinedButton from './OutlinedButton';
 import MyButton from './Button';
+import FormLogIn from './FormLogIn';
 
 export default function IniciarSesion() {
+    useEffect(() => {
+        const patrocinadores = document.querySelectorAll('.patrocinadores figure img');
+
+        function handleScroll() {
+            patrocinadores.forEach((img) => {
+                const rect = img.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Verifica si la imagen está visible en la ventana
+                if (rect.top <= windowHeight && rect.bottom >= 0) {
+                    // Añadir clase de animación
+                    img.classList.add('animate');
+                } else {
+                    // Remover clase de animación si se sale de la vista
+                    img.classList.remove('animate');
+                }
+            });
+        }
+
+        // Ejecuta la función al hacer scroll
+        window.addEventListener('scroll', handleScroll);
+        // Llamada inicial para verificar la posición en el primer render
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <div>
-            <HeaderApp/>
-            <div id='section-one'>
-                <div id='section-one-content'>
-                <h1>Entra a tu perfil personal</h1>
-                <MyOutlinedButton
-                    label="INICIAR SESIÓN"
-                    color="var(--color-text-alt)"
-                    borderColor="var(--color-principal-claro-button)"
-                    hoverColor="var(--color-text-alt)"
-                    hoverBorderColor="var(--color-principal)"
-                    backgroundColor="var(--color-principal-claro-button)"
-                    hoverBackgroundColor="var(--color-principal-claro)"
-                    />
-
+            <HeaderApp />
+            <div className='section-one'>
+                <div className='section-one-content'>
+                    <h1>Entra a tu perfil personal</h1>
                     <MyOutlinedButton
-                    label="REGISTRARSE"
-                    color="var(--color-text)"
-                    borderColor="var(--color-text)"
-                    hoverColor="var(--color-text)"
-                    hoverBorderColor="var(--color-principal-clarote)"
-                    backgroundColor="white"
-                    hoverBackgroundColor="var(--color-principal-clarote)"
+                        label="INICIAR SESIÓN"
+                        color="var(--original-IniciarSesion-colorButton-white,white)"
+                        borderColor="var(--original-IniciarSesion-colorButton-blue,#478ac9)"
+                        hoverColor="var(--original-IniciarSesion-colorButton-black,black)"
+                        hoverBorderColor="var(--color-principal)"
+                        backgroundColor="var(--original-IniciarSesion-colorButton-blue,#478ac9)"
+                        hoverBackgroundColor="var(--original-IniciarSesion-colorButton-white,white)"
+                    />
+                    <MyOutlinedButton
+                        label="REGISTRARSE"
+                        color="var(--original-IniciarSesion-colorButton-white,white)"
+                        borderColor="var(--original-IniciarSesion-colorButton-white,white)"
+                        hoverColor="var(--original-IniciarSesion-colorButton-black,black)"
+                        hoverBorderColor="var(--original-IniciarSesion-colorButton-white,white)"
+                        backgroundColor="transparent"
+                        hoverBackgroundColor="var(--original-IniciarSesion-colorButton-white,white)"
                     />
                 </div>
             </div>
-            <div id='patrocinadores'>
-                <figure>
-                    <img src='../../public/patrocinador1.png'/>
-                </figure>
-                <figure>
-                    <img src='../../public/patrocinador2.png'/>
-                </figure>
-                <figure>
-                    <img src='../../public/patrocinador4.png'/>
-                </figure>
-                <figure>
-                    <img src='../../public/patrocinador3.png'/>
-                </figure>
-                <figure>
-                    <img src='../../public/patrocinador5.jpg'/>
-                </figure>
+            <div className='patrocinadores'>
+                <figure><img src='../../public/patrocinador1.png' alt="Patrocinador 1" /></figure>
+                <figure><img src='../../public/patrocinador2.png' alt="Patrocinador 2" /></figure>
+                <figure><img src='../../public/patrocinador4.png' alt="Patrocinador 4" /></figure>
+                <figure><img src='../../public/patrocinador3.png' alt="Patrocinador 3" /></figure>
+                <figure><img src='../../public/patrocinador5.jpg' alt="Patrocinador 5" /></figure>
             </div>
-            <div id='section-two'>
-                <figure>
-                    
-                </figure>
+            <div className='section-two'>
+                <figure></figure>
                 <figcaption>
                     <h5>Acceso rápido</h5>
                     <h2>Acceso rápido y sencillo</h2>
-                    <p>Para iniciar sesipon en nuestro sitio web, 
-                        simplemente haga click en el enlace 
-                        correspondiente.</p>
+                    <p>Para iniciar sesión en nuestro sitio web, simplemente haga clic en el enlace correspondiente.</p>
                 </figcaption>
             </div>
-            <div id='section-three'>
+            <div className='section-three'>
                 <figcaption>
                     <h5>Sesión activa</h5>
                     <h2>Ingreso seguro</h2>
-                    <p>Lapágina de inicio de sesion le pedira que ingrese 
-                        su nombre de usuario y contraseña.</p>
+                    <p>La página de inicio de sesión le pedirá que ingrese su nombre de usuario y contraseña.</p>
                 </figcaption>
                 <figure></figure>
             </div>
-            <div id='section-registrarse'>
-                <h2>Forma parte de la familia Healthy Smile y cuida de tu 
-                    sonrisa con nosotros</h2>
+            <div className='section-registrarse'>
+                <h2>Forma parte de la familia Healthy Smile y cuida de tu <br/> sonrisa con nosotros</h2>
+                <figure>
+                    <img src='../../public/signUpImage.png' alt="Registro" />
+                </figure>
+                <figcaption>
+                    <p>La seguridad de tu cuenta es importante. Asegúrate de utilizar una contraseña segura y de no compartirla 
+                        con <br/> nadie para proteger tu información personal.</p>
+                </figcaption>
+                <MyButton label="REGISTRARSE" />
             </div>
-            <figure>
-                <img src='../../public/signUpImage.png'/>
-            </figure>
-            <figcaption>
-                <p>La seguridad de tu cuenta es importante. 
-                    Asegúrate de utilizar una contraseña segura y 
-                    de no compartirla con nadie para proteger tu informacion
-                    personal.</p>
-            </figcaption>
-            <MyButton
-                label="Registrarse"
-            ></MyButton>
-            <div id='section-accesoRapido'>
-                <div id='prueba'>
-                <div id='accesoRapido'>
-                    <h1>jowoefowjfe</h1>
-                </div>
-                <div id='info-accesoRapido'>
-                    <h5>Sesion activa</h5>
-                    <h6>Accede con tu cuenta.</h6>
-                    <h5>Ingreso seguro</h5>
-                    <h6>Ingresa tus datos personales.</h6>
-                    <h5>Abrir sesión</h5>
-                </div>
+            <div className='section-accesoRapido'>
+                <div className='prueba'>
+                    <div className='accesoRapido'><FormLogIn /></div>
+                    <div className='info-accesoRapido'>
+                        <h5>Sesión activa</h5>
+                        <h6>Accede con tu cuenta.</h6>
+                        <h5>Ingreso seguro</h5>
+                        <h6>Ingresa tus datos personales.</h6>
+                        <h5>Abrir sesión</h5>
+                    </div>
                 </div>
             </div>
-            <FooterApp/>
+            <FooterApp />
         </div>
     );
 }
