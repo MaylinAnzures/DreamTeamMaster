@@ -55,12 +55,14 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 12vw; /* Aproximadamente 300px */
+    height: 12vw; /* Mantiene la altura relativa para pantallas grandes */
     width: 100%;
+    overflow: hidden; /* Evita desbordamientos y barras de desplazamiento */
+    box-sizing: border-box; /* Incluye el padding y border en el cálculo del ancho */
 }
 
+
 .patrocinadores figure img {
-    margin: 2vw;
     height: 6vw; /* Aproximadamente 16vh en el contenedor */
     width: 10vw; /* Aproximadamente 11vw en el contenedor */
     opacity: 0;
