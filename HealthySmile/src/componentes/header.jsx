@@ -13,7 +13,7 @@ export default function HeaderApp() {
             <nav className={"link-container"}>
             <NavLink to="/IniciarSesion">Home</NavLink>
                 <NavLink to="/Home">Consulta</NavLink>
-                <NavLink to="#">Educacion dental</NavLink>
+                <NavLink to="/EducacionDental">Educacion dental</NavLink>
                 <NavLink to="#">Tienda Virtual</NavLink>
                 <NavLink to="/Registro">Gestion</NavLink>
                 <NavLink to="/AyudaYSoporte">Ayuda y soporte</NavLink>

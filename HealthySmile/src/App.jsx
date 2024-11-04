@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CodigoVerificacion from './componentes/CodigoVerificacion.jsx';
 import Inicio from './componentes/Inicio.jsx';
+import EducacionDental from './componentes/EducacionDental.jsx';
+import Gingivitis from './componentes/Gingivitis.jsx';
 
 
 
@@ -23,6 +25,8 @@ function App() {
         <Route path='/Registro' element={<RegistrarSesion/>}/>
         <Route path='/Verificacion' element={<CodigoVerificacion/>}/>
         <Route path='/Home' element={<Inicio/>}/>
+        <Route path='/EducacionDental' element={<EducacionDental/>}/>
+        <Route path='/Gingivitis' element={<Gingivitis/>}/>
       </Routes>
     </Router>
     
