@@ -7,6 +7,7 @@ import RegistrarSesion from './componentes/RegistrarSesion.jsx';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import CodigoVerificacion from './componentes/CodigoVerificacion.jsx';
+import Inicio from './componentes/Inicio.jsx';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/AyudaYSoporte' element={<AyudaYSoporte/>}/>
         <Route path='/Registro' element={<RegistrarSesion/>}/>
         <Route path='/Verificacion' element={<CodigoVerificacion/>}/>
+        <Route path='/Home' element={<Inicio/>}/>
       </Routes>
     </Router>
     
