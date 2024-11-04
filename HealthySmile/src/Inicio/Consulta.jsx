@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import HeaderApp from "../componentes/header";
 import FooterApp from "../componentes/footer";
+import Chat from "./Chatsito";
 
-
-function Consulta (){
-    return(
+function Consulta(){
+    return (
         <>
-        <HeaderApp/>
-        <FooterApp/>
+            <HeaderApp />
+            <Chat/>
+            <FooterApp />
         </>
     );
-}
+};
+
 
 export default Consulta;

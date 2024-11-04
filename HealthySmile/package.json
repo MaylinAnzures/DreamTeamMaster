@@ -1,14 +1,14 @@
 {
   "name": "healthysmile",
   "private": true,
+  "proxy": "http://localhost:8080",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "shadcn-init": "shadcn-ui init"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -27,11 +27,15 @@
     "express": "^4.21.0",
     "gapi-script": "^1.2.0",
     "mysql": "^2.18.1",
+    "net": "^1.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
+    "react-stomp": "^5.1.0",
     "save": "^2.9.0",
     "shadcn-ui": "^0.2.3",
+    "sockjs": "^0.3.24",
+    "sockjs-client": "^1.6.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
   },

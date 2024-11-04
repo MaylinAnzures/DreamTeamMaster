@@ -1,6 +1,7 @@
 import MyButton from './componentes/Button';
 import FooterApp from './componentes/footer';
 import HeaderApp from './componentes/header';
+window.global = window;
 
 
 export default function Index() {
