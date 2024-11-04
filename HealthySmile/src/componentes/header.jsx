@@ -11,11 +11,11 @@ export default function HeaderApp() {
                 <img src={Logito}alt="EducaSim Logo" className="logo"></img>
             </Link>
             <nav className={"link-container"}>
-            <NavLink to="/IniciarSesion">Home</NavLink>
-                <NavLink to="/Home">Consulta</NavLink>
+            <NavLink to="/Home">Home</NavLink>
+                <NavLink to="#">Consulta</NavLink>
                 <NavLink to="#">Educacion dental</NavLink>
                 <NavLink to="#">Tienda Virtual</NavLink>
-                <NavLink to="/Registro">Gestion</NavLink>
+                <NavLink to="#">Gestion</NavLink>
                 <NavLink to="/AyudaYSoporte">Ayuda y soporte</NavLink>
                 <NavLink to="#">
                     <Badge/>                    </NavLink>          
