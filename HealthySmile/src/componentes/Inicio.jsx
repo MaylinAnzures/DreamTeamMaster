@@ -16,7 +16,7 @@ import part36 from './part36.png';
 
 export default function Inicio() {
     return (
-        <div>
+        <div className="body">
             <HeaderApp />
             <div className="contenedor">
                 <div className="columnamedio">
@@ -30,14 +30,13 @@ export default function Inicio() {
                         <p>
                             El futuro del cuidado dental se acerca rápidamente, marcando el comienzo de una nueva era de innovación digital y transformación en la salud bucal.
                         </p>
-                        <br />
+                        <br/>
                     </div>
                 </div>
             </div>
             <br /><br />
             <div className="contenedor">
                 <div className="columnaiz">
-                    <p>Automatización del Proceso Dental</p>
                     <p style={{ fontSize: '60px', fontWeight: 'bold' }}>
                         ¿Pueden los bots reemplazar a los especialistas?
                     </p>
@@ -59,7 +58,7 @@ export default function Inicio() {
             <img src={part31} alt="Descripción de la imagen" />
             <div className="contenedor">
                 <div className="columnaiz">
-                    <p>Consulta Virtual</p>
+                    <p className="titulo">Consulta Virtual</p>
                     <p>Nuestra plataforma de Consulta Virtual está diseñada para facilitar la interacción entre pacientes y especialistas, ofreciendo acceso rápido
                         y seguro a atención dental de calidad sin necesidad de visitas físicas. Los pacientes pueden reprogramar citas, y recibir diagnósticos
                         preliminares basados en la información proporcionada, todo en tiempo real.
@@ -79,8 +78,7 @@ export default function Inicio() {
                     <img src={part33} className="imagen" alt="Descripción de la imagen" />
                 </div>
                 <div className="columnamedio">
-                    <p>Educación</p>
-                    <p>DENTAL</p>
+                <p className="titulo">Educación Dental</p>
                     <p>Puedes acceder a recursos educativos sobre salud bucal, incluyendo guías, modelos 3D, hábitos y consejos para tratar tu problema, lo que te
                         ayudará a tomar decisiones informadas sobre tu salud dental.
                     </p>
@@ -89,8 +87,7 @@ export default function Inicio() {
             </div>
             <div className="contenedor">
                 <div className="columnamedio">
-                    <p>Tienda</p>
-                    <p>VIRTUAL</p>
+                    <p className="titulo">Tienda Virtual</p>
                     <p>Explora nuestra tienda, añade productos al carrito, sube tu receta médica si es necesario y recibe tu pedido en casa.
                     </p>
                     <button className="boton">Comprar ahora</button>
@@ -104,8 +101,7 @@ export default function Inicio() {
                     <img src={part35} className="imagen" alt="Descripción de la imagen" />
                 </div>
                 <div className="columnamedio">
-                    <p>Ayuda y</p>
-                    <p>Soporte</p>
+                <p className="titulo">Ayuda y Soporte</p>
                     <p>Puedes acceder a nuestra sección de Ayuda y Soporte para encontrar preguntas frecuentes, asistencia técnica, que te ayudarán a resolver
                         dudas sobre la plataforma, consultas virtuales y la gestión de citas o compras.
                     </p>
@@ -114,7 +110,7 @@ export default function Inicio() {
             </div>
             <div className="contenedor">
                 <div className="columnamedio">
-                    <p>Gestión</p>
+                    <p className="titulo">Gestión</p>
                     <p>Los administradores pueden gestionar citas, actualizar productos en la tienda, acceder a reportes y estadísticas, y comunicarse con
                         proveedores para asegurar un funcionamiento óptimo de la plataforma.
                     </p>

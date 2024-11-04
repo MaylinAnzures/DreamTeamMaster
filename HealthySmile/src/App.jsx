@@ -23,6 +23,7 @@ function App() {
         <Route path='/Registro' element={<RegistrarSesion/>}/>
         <Route path='/Verificacion' element={<CodigoVerificacion/>}/>
         <Route path='/Home' element={<Inicio/>}/>
+        <Route path='/Inicio' element={<Home/>}/>
       </Routes>
     </Router>
     

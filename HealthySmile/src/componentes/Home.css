@@ -1,0 +1,343 @@
+.body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+}
+
+.general {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    background-color: white;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+#carousel1 .panel1 {
+    background-image: url("panel1.png");
+    background-size: cover;
+    color: #fff;
+}
+#carousel1 .panel7 {
+    background-image: url("panel7.png");
+    background-size: cover;
+    color: #fff;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 150px;
+}
+#carousel1 .panel7 p,
+#carousel1 .panel7 h1 {
+    width: 100%;
+    text-align: left;
+    margin: 5px 0;
+}
+.bpanel7 {
+    align-self: flex-start;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1px solid white;
+    font-weight: bold;
+    color: white;
+    height: 60px;
+    width: 400px;
+    font-size: 20px;
+}
+#carousel1 .panel2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#carousel1 .panel2 .textpanel2 {
+    max-width: 300px;
+}
+#carousel1 .carousel-slide {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: 100%;
+}
+
+#carousel1 .slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#carousel1 .panel2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#carousel1 .panel2 .contenedor {
+    display: flex;
+    width: 80%;
+}
+#carousel1 .panel2 .columna, #carousel1 .panel2 .columnamedio {
+    flex: 1;
+}
+#carousel1 .panel2 .columna {
+    text-align: left;
+    padding-right: 10px;
+}
+#carousel1 .panel2 .columnamedio {
+    text-align: center;
+    align-items: center;
+}
+
+#carousel1 .panel6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#carousel1 .panel6 .contenedor {
+    display: flex;
+    width: 80%;
+}
+#carousel1 .panel6 .columna, #carousel1 .panel6 .columnamedio {
+    flex: 1;
+}
+#carousel1 .panel6 .columna {
+    text-align: left;
+    padding-right: 10px;
+}
+#carousel1 .panel6 .columnamedio {
+    text-align: center;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.button2 {
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    font-weight: bold;
+    height: 50px;
+    width: 400px;
+    border: 0px;
+}
+
+#carousel2 .carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+#carousel2 .slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#carousel2 .slide img {
+    width: auto;
+    height: 400px;
+}
+
+.contenedor {
+    display: flex;
+    align-items: center;
+}
+.columna {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.columnamedio {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.columna2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: end;
+}
+.morado {
+    background-color: #d7bde2;
+    padding-left: 150px;
+}
+.especialistas {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.espe h3 {
+    color: darkcyan;
+}
+.azul {
+    padding-top: 20px;
+    background-color: darkcyan;
+    color: white;
+}
+.footer {
+    background-color: #373737;
+    color: white;
+}
+.form1 {
+    padding-left: 100px;
+    margin-left: 200px;
+    background-color: lightblue;
+    height: 380px;
+}
+.form2 {
+    margin-right: 200px;
+    background-color: lightgray;
+    height: 380px;
+}
+.ingresa {
+    background-color: transparent;
+    border: none; 
+    border-bottom: 1px solid black; 
+    outline: none; 
+    color: #333;
+    padding: 5px;
+    font-size: large;
+    width: 600px;
+}
+.entregar {
+    width: 600px;
+    font-size: larger;
+    background-color: #d7bde2;
+    color: black;
+    font-weight: bold;
+    border-radius: 20px;
+    border: 0px;
+    padding: 10px;
+}
+.privacidad {
+    background-color: transparent;
+    border: 3px solid white;
+    width: 180px;
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    font-weight: bold;
+}
+.bazul {
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1px solid white;
+    font-weight: bold;
+    color: white;
+    height: 50px;
+    width: 400px;
+}
+.mbuton {
+    width: 600px;
+    height: 150px;
+    background-color: transparent;
+    border-radius: 100px;
+    border: 5px solid cornflowerblue;
+    color: cornflowerblue;
+    font-size: 30px;
+}
+.explora {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    padding: 20px;
+}
+.bslide2 {
+    background-color: transparent;
+    color: black;
+    border: 2px solid black;
+    padding: 10px;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    width: 400px;
+    font-weight: bold;
+}
+#carousel1 .panel2 .imgpanel2 {
+    max-height: none;
+    height: auto;
+    width: 100%;
+}
+#carousel1 .panel6 .imgpanel6 {
+    max-height: none;
+    height: auto;
+    width: 100%;
+}
+.panel3 {
+    background-image: url("panel3.png");
+    background-size: cover;
+    color: #fff;
+}
+.panel5 {
+    background-image: url("panel5.png");
+    background-size: cover;
+    color: #fff;
+}
+.panel4 {
+    background-color: black;
+    color: white;
+}
+.comprar {
+    background-color: darkblue;
+    color: white;
+    border-radius: 15px;
+    padding: 10px;
+    border: 0px;
+    font-size: 15px;
+    font-weight: bold;
+    width: 400px;
+}
