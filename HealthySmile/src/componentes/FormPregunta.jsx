@@ -48,7 +48,7 @@ export default function FormPregunta() {
   };
 
   return (
-    <Card className="PreguntaFrec_Card">
+    <Card className="PreguntaFrec_Card allY">
       <CardContent>
         <h1 className="PreguntaFrec_titulo1">Contáctenos</h1>
         <form className="PreguntaFrec_form" onSubmit={handleSubmit}>

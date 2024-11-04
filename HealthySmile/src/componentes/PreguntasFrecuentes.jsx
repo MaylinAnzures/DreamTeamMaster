@@ -76,7 +76,7 @@ export default function PreguntasFrecuentes() {
             {preguntas.map((pregunta, index) => (
                 <Accordion 
                     key={index} 
-                    className='acordeon' 
+                    className='acordeon allY' 
                     expanded={acordeonAbierto === index} // Controla si el acordeón está abierto
                     onChange={() => handleChangeAcordeon(index)} // Cambia el acordeón abierto
                 >

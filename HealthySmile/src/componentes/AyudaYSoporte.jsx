@@ -26,7 +26,7 @@ export default function AyudaYSoporte() {
     return (
         <div>
             <HeaderApp />
-            <div className='init-ayudaYsoporte container'>
+            <div className='init-ayudaYsoporte container allY'>
                 <img src='/public/sp3.jpg' className='image' alt='Ayuda y Soporte' />
                 <div className='overlay'>
                     <h1>Ayuda y <br />soporte</h1>
@@ -37,7 +37,7 @@ export default function AyudaYSoporte() {
                     <MyButton label="ENVIAR PREGUNTA" onClick={handleScrollToContactenos} />
                 </div>
             </div>
-            <div className='preguntasFrecuentes imagenTexto'>
+            <div className='preguntasFrecuentes imagenTexto allY'>
                 <figure className='imagenTexto-img'></figure>
                 <div className='imagenTexto-texto'>
                     <h1>Preguntas Frecuentes</h1>
@@ -64,7 +64,7 @@ export default function AyudaYSoporte() {
                     )}
                 </div>
             </div>
-            <section className='Contactenos' id='Contactenos'>
+            <section className='Contactenos allY' id='Contactenos'>
                 <div className='contactenos-container'>
                     <hr className='contactenos-divider' />
                     <img src='../../public/sp1.jpg' className='contactenos-image' alt='Contactenos' />

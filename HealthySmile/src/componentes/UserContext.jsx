@@ -10,8 +10,11 @@ export const UserProvider = ({ children }) => {
   const [tipoUsuario, setTipoUsuario] = useState(localStorage.getItem('tipoUsuario') || null);
   const [cedulaProfesional, setCedulaProfesional] = useState(localStorage.getItem('cedulaProfesional') || null);
   const [idUsuario, setIdUsuario] = useState(localStorage.getItem('idUsuario') || null);
-  const [idEspecialista, setIdEspecialista] = useState(localStorage.getItem('idEspecialista') || null); // Nuevo estado
+  const [idEspecialista, setIdEspecialista] = useState(localStorage.getItem('idEspecialista') || null);
   const [nivelPermisos, setNivelPermisos] = useState(localStorage.getItem('nivelPermisos') || null);
+  const [codigoDeVerificacion, setCodigoDeVerificacion] = useState(localStorage.getItem('codigoDeVerificacion') || null);
+  const [contrasena, setContrasena] = useState(localStorage.getItem('contrasena') || null); // Nuevo estado para la contraseña
+  const [correo, setCorreo] = useState(localStorage.getItem('correo') || null); // Nuevo estado para el correo
 
   // Actualizar Local Storage cada vez que cambian los valores
   useEffect(() => {
@@ -19,9 +22,12 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('tipoUsuario', tipoUsuario);
     localStorage.setItem('cedulaProfesional', cedulaProfesional);
     localStorage.setItem('idUsuario', idUsuario);
-    localStorage.setItem('idEspecialista', idEspecialista); // Guardar idEspecialista
+    localStorage.setItem('idEspecialista', idEspecialista);
     localStorage.setItem('nivelPermisos', nivelPermisos);
-  }, [usuarioLogueado, tipoUsuario, cedulaProfesional, idUsuario, idEspecialista, nivelPermisos]);
+    localStorage.setItem('codigoDeVerificacion', codigoDeVerificacion);
+    localStorage.setItem('contrasena', contrasena); // Guardar contrasena
+    localStorage.setItem('correo', correo); // Guardar correo
+  }, [usuarioLogueado, tipoUsuario, cedulaProfesional, idUsuario, idEspecialista, nivelPermisos, codigoDeVerificacion, contrasena, correo]);
 
   return (
     <UserContext.Provider value={{ 
@@ -33,10 +39,16 @@ export const UserProvider = ({ children }) => {
       setCedulaProfesional, 
       idUsuario, 
       setIdUsuario, 
-      idEspecialista, // Pasar idEspecialista
-      setIdEspecialista, // Función para actualizar idEspecialista
+      idEspecialista, 
+      setIdEspecialista, 
       nivelPermisos, 
-      setNivelPermisos 
+      setNivelPermisos,
+      codigoDeVerificacion, 
+      setCodigoDeVerificacion,
+      contrasena, // Pasar contrasena
+      setContrasena, // Función para actualizar contrasena
+      correo, // Pasar correo
+      setCorreo // Función para actualizar correo
     }}>
       {children}
     </UserContext.Provider>

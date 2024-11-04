@@ -1,0 +1,65 @@
+.card{
+    
+}
+
+.cardContent h1{
+    font-size: 4vw;
+}
+
+.inputGroup{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup-2{
+    justify-content: left;
+    text-align: left;
+    display: flex;
+    padding: 1.5vw;
+    flex-direction: column;
+}
+
+.inputGroup-2 label{
+    font-size: 1.3vw;
+}
+
+.inputGroup-2 input {
+    height: 4vw;
+    background: #f2f2f2; /* Color de fondo del input */
+    border: 0; /* Sin borde */
+    color: transparent; /* Ocultar el texto cuando se escribe */
+    text-shadow: 0 0 0 #333; /* Hacer el texto visible al escribir */
+}
+
+.inputGroup-2 input::placeholder {
+    color: #111111; /* Color del placeholder igual al fondo */
+    opacity: 1; /* Asegúrate de que el placeholder sea totalmente opaco */
+    padding-left: 1vw;
+}
+
+.form{
+    justify-content: left;
+    text-align: left;
+}
+
+.form button{
+    margin: 1.5vw;
+}
+
+#cardPaciente .cardContent form button{
+    color: white;
+    background: #5a9240;
+    border-color: #5a9240;
+}
+
+#cardEspecialista .cardContent form button{
+    color: black;
+    background: #adcce9 ;
+    border-color: #adcce9 ;
+}
+
+
+.cardContent form button{
+    font-size: 1.5vw;
+    padding: 0.7vw 1.1vw;
+}

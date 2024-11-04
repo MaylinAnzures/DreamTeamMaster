@@ -1,6 +1,7 @@
 import React from "react";
 import './Footer.css';
 import Logito from "../../public/Logito.png"
+import MyButton from "./Button";
 
 
 export default function FooterApp() {

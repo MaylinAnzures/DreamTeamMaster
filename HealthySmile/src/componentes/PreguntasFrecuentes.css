@@ -93,7 +93,7 @@ textarea#PreguntaFrec_mensajeUser{
 }
 
 .detalles-pregunta {
-    width: 37.9vw; /* Asegura que ocupe el ancho completo del acordeón */
+    width: 100%; /* Asegura que ocupe el ancho completo del acordeón */
     padding: 1vw; /* Espacio interno en el contenido de respuesta */
     background-color: #f9f9f9; /* Fondo claro para diferenciar la respuesta */
     border-top: 1px solid #ddd; /* Borde superior para separar de la pregunta */

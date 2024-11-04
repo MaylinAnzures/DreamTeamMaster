@@ -47,7 +47,7 @@ export default function IniciarSesion() {
     return (
         <div>
             <HeaderApp />
-            <div className='section-one'>
+            <div className='section-one allY'>
                 <div className='section-one-content'>
                     <h1>Entra a tu perfil personal</h1>
                     <MyOutlinedButton
@@ -60,7 +60,7 @@ export default function IniciarSesion() {
                         hoverBackgroundColor="var(--original-IniciarSesion-colorButton-white,white)"
                         onClick={handleScrollToAccesoRapido} // Agrega el manejador de clic aquí
                     />
-                    <MyOutlinedButton
+                   <a href='/Registro'> <MyOutlinedButton
                         label="REGISTRARSE"
                         color="var(--original-IniciarSesion-colorButton-white,white)"
                         borderColor="var(--original-IniciarSesion-colorButton-white,white)"
@@ -68,7 +68,7 @@ export default function IniciarSesion() {
                         hoverBorderColor="var(--original-IniciarSesion-colorButton-white,white)"
                         backgroundColor="transparent"
                         hoverBackgroundColor="var(--original-IniciarSesion-colorButton-white,white)"
-                    />
+                    /> </a>
                 </div>
             </div>
             <div className='patrocinadores'>
@@ -103,7 +103,7 @@ export default function IniciarSesion() {
                     <p>La seguridad de tu cuenta es importante. Asegúrate de utilizar una contraseña segura y de no compartirla 
                         con <br /> nadie para proteger tu información personal.</p>
                 </figcaption>
-                <MyButton label="REGISTRARSE" />
+              <a href='/Registro'><MyButton label="REGISTRARSE"/> </a>
             </div>
             <div className='section-accesoRapido'>
                 <div className='prueba'>

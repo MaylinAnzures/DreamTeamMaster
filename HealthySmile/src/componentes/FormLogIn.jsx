@@ -63,7 +63,7 @@ export default function FormLogIn() {
   };
 
   return (
-    <Card className='FormLogIn_Card'>
+    <Card className='FormLogIn_Card allY'>
       <CardContent>
         <h1 className='FormLogIn_titulo1'>Acceso rápido</h1>
         <form onSubmit={handleSubmit} className="FormLogIn_form">

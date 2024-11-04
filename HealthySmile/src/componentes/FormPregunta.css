@@ -31,10 +31,12 @@
 }
 
 .form-container {
+    padding-left: 8vw;
     position: absolute;
-    top: 52%; /* Ajusta según sea necesario para posicionar el formulario */
-    left: 64vw;
-    transform: translate(-50%, -50%);
+    top: 52%; /* Ajusta según sea necesario para posicionar el formulario verticalmente */
+    left: 48%; /* Mueve el formulario un poco más a la derecha */
+    transform: translateX(-45%) translateY(-50%); /* Ajusta X para mover solo un poco a la derecha */
     z-index: 3; /* Asegura que el formulario esté encima de todo */
     width: 90%; /* Controla el ancho del formulario */
 }
+
