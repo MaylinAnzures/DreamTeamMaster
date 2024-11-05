@@ -3,11 +3,14 @@ import CardContent from '@mui/material/CardContent';
 import { useState } from 'react';
 import { useUserContext } from './UserContext';
 import './FormLogIn.css';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 export default function FormLogIn() {
   const [correoInput, setCorreoInput] = useState('');
   const [contrasenaInput, setContrasenaInput] = useState('');
-  const [responseMessage, setResponseMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   // Obtener funciones del contexto
   const {
@@ -15,7 +18,7 @@ export default function FormLogIn() {
     setTipoUsuario,
     setCedulaProfesional,
     setIdUsuario,
-    setIdEspecialista, // Nuevo setter para idEspecialista
+    setIdEspecialista,
     setNivelPermisos,
   } = useUserContext();
 
@@ -47,10 +50,12 @@ export default function FormLogIn() {
       setTipoUsuario(result.tipoUser);
       setCedulaProfesional(result.tipoUser === 'Especialista' ? result.cedulaProfesional : null);
       setIdUsuario(result.idUsuario);
-      setIdEspecialista(result.tipoUser === 'Especialista' ? result.idEspecialista : null); // Almacenar idEspecialista
+      setIdEspecialista(result.tipoUser === 'Especialista' ? result.idEspecialista : null);
       setNivelPermisos(result.nivelPermisos);
 
-      setResponseMessage('Inicio de sesión exitoso');
+      // Establecer el estado de éxito
+      setIsSuccess(true);
+      setIsError(false); // Asegúrate de que el error esté desactivado
 
       // Limpiar los campos del formulario
       setCorreoInput('');
@@ -58,7 +63,8 @@ export default function FormLogIn() {
 
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
-      setResponseMessage('Error al iniciar sesión. Inténtalo de nuevo.');
+      setIsSuccess(false); // Asegúrate de que el éxito esté desactivado
+      setIsError(true);
     }
   };
 
@@ -93,6 +99,20 @@ export default function FormLogIn() {
           <br />
           <input type="submit" value="Iniciar Sesión" className="FormLogIn_submit" />
         </form>
+
+        {/* Mostrar mensaje de éxito */}
+        {isSuccess && (
+          <Stack sx={{ width: '100%', marginTop: 2 }} spacing={2}>
+            <Alert severity="success">Inicio de sesión exitoso</Alert>
+          </Stack>
+        )}
+
+        {/* Mostrar mensaje de error */}
+        {isError && (
+          <Stack sx={{ width: '100%', marginTop: 2 }} spacing={2}>
+            <Alert severity="error">Inicio fallido. Inténtalo de nuevo.</Alert>
+          </Stack>
+        )}
       </CardContent>
     </Card>
   );
