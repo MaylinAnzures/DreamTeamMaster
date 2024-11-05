@@ -300,6 +300,7 @@ export default function Home() {
                 </div>
                 <br /><br /><br /><br />
             </div>
+            <script src='Home.js'></script>
             <FooterApp />
         </div>
     );
