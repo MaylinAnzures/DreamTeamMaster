@@ -1,7 +1,7 @@
-body {
+#body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    font-size: 25px;
+    
 }
 
 .contenedor {
@@ -85,4 +85,8 @@ body {
 .columnaiz, .columnamedio {
     justify-content: center;
     align-items: center;
+}
+
+#imagen-intermedia{
+    width: 100%;
 }

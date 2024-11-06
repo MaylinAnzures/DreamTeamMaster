@@ -18,7 +18,7 @@ export default function Inicio() {
     return (
         <div>
             <HeaderApp />
-            <div className="contenedor">
+            <div id='body' className="contenedor">
                 <div className="columnamedio">
                     <img src={part1} className="imagen" alt="Descripción de la imagen" />
                 </div>
@@ -56,7 +56,7 @@ export default function Inicio() {
                 </div>
             </div>
             <br /><br />
-            <img src={part31} alt="Descripción de la imagen" />
+            <img id='imagen-intermedia' src={part31} alt="Descripción de la imagen" />
             <div className="contenedor">
                 <div className="columnaiz">
                     <p>Consulta Virtual</p>
