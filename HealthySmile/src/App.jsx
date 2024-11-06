@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CodigoVerificacion from './componentes/CodigoVerificacion.jsx';
 import Inicio from './componentes/Inicio.jsx';
-
+import Home from './componentes/Home.jsx'
 
 
 function App() {
