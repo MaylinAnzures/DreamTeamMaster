@@ -2,7 +2,6 @@
 .slick-next {
   font-size: 24px; /* Tamaño de la flecha */
   color: black; /* Color del texto de la flecha */
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
   border: none; /* Sin borde */
   border-radius: 50%; /* Bordes redondeados */
   width: 50px; /* Ancho de las flechas */
@@ -15,23 +14,9 @@
   z-index: 2; /* Asegúrate de que esté por encima del contenido */
 }
 
-.slick-prev {
-  left: 10%; /* Posición de la flecha izquierda */
-  top: 50%; /* Centrar verticalmente */
-  transform: translateY(-50%); /* Ajustar la posición al centro */
-}
 
-.slick-next {
-  position: absolute;
-  right: 50%; /* Posición de la flecha derecha */
-  top: 50%; /* Centrar verticalmente */
-  transform: translateY(-50%); /* Ajustar la posición al centro */
-}
 
-.slick-prev:hover,
-.slick-next:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro al pasar el mouse */
-}
+
 
 .slick-prev:before, 
 .slick-next:before {
@@ -39,14 +24,3 @@
   color: transparent; /* Oculta el icono de flecha predeterminado */
 }
 
-.slick-prev::after {
-  content: "<"; /* Flecha izquierda */
-  color: black; /* Color de la flecha */
-  font-size: 2.4vw; /* Tamaño de la flecha */
-}
-
-.slick-next::after {
-  content: ">"; /* Flecha derecha */
-  color: black; /* Color de la flecha */
-  font-size: 2.4vw; /* Tamaño de la flecha */
-}

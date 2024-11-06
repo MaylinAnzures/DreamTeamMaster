@@ -1,17 +1,17 @@
-.container {
+.containerY {
     position: relative;
     width: 100%;
     height: 59vw;
     background: white;
 }
 
-.image {
+.imageY {
     display: block;
     width: 100%;
     height: 50vw;
 }
 
-.overlay {
+.overlayY {
     height: 25vw;
     width: 35vw;
     position: absolute;
@@ -24,19 +24,19 @@
     padding: 1vw;
 }
 
-.overlay h1, .overlay p, .overlay button{
+.overlayY h1, .overlayY p, .overlayY button{
     margin: 1vw;
 }
 
-.overlay h1{
+.overlayY h1{
     font-size: 4.5vw;
 }
 
-.overlay p{
+.overlayY p{
     font-size: 1vw;
 }
 
-.overlay button{
+.overlayY button{
     font-size: 1vw;
     color: #332929;
     padding: 0.7vw;
@@ -47,19 +47,19 @@
     border-radius: 0;
 }
 
-.overlay button:hover{
+.overlayY button:hover{
     color: white;
     background: #332929;
 }
 
 .imagenTexto {
     height: 70vw;
-    display: -webkit-flex; /* Cambiado a -webkit-flex */
-    -webkit-flex-direction: column; /* Usando la combinación requerida */
+    display: -webkit-flex !important; /* Aplicando el !important correctamente */
     background: white;
     padding: 0;
     margin: 0;
 }
+
 
 .imagenTexto-img {
     height: 45vw;

@@ -26,9 +26,9 @@ export default function AyudaYSoporte() {
     return (
         <div>
             <HeaderApp />
-            <div className='init-ayudaYsoporte container allY'>
-                <img src='/public/sp3.jpg' className='image' alt='Ayuda y Soporte' />
-                <div className='overlay'>
+            <div className='init-ayudaYsoporte containerY allY'>
+                <img src='/public/sp3.jpg' className='imageY' alt='Ayuda y Soporte' />
+                <div className='overlayY'>
                     <h1>Ayuda y <br />soporte</h1>
                     <p>¿Tienes alguna duda? Aquí encontrarás respuestas a las <br />
                         preguntas más frecuentes sobre nuestros servicios, tu <br />
