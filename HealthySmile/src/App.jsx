@@ -8,7 +8,7 @@ import Consulta from './Inicio/Consulta';
 import Chatboti from './Inicio/Chatbot';
 import NotFound from './Inicio/NotFound';
 import IniciarSesion from './componentes/IniciarSesion.jsx';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; 
 import AyudaYSoporte from './componentes/AyudaYSoporte.jsx';
 import RegistrarSesion from './componentes/RegistrarSesion.jsx';
 import CodigoVerificacion from './componentes/CodigoVerificacion.jsx';
@@ -24,6 +24,7 @@ import Sensibilidad from './componentes/Sensibilidad.jsx'
 import Quiste from './componentes/Quiste.jsx'
 import Traumatismo from './componentes/Traumatismo.jsx'
 import Home from './componentes/Home.jsx'
+import Chat from './Inicio/Chat.jsx';
 
 
 function App() {
@@ -31,10 +32,11 @@ function App() {
 
     <div className="app-container">
       <Routes>
-        <Route path="/" element={<Index />} />
+      <Route path="/" element={<Navigate to="/Inicio" />} />
         <Route path="/ImplementacionChat" element={<ImplementacionChat />} />
         <Route path="/Consulta" element={<Consulta />} />
         <Route path="/Chatbot" element={<Chatboti />} />
+        <Route path='/Chat' element={<Chat/>}/>
         <Route path="*" element={<NotFound />} />
         <Route path="/IniciarSesion" element={<IniciarSesion />} />
         <Route path="/AyudaYSoporte" element={<AyudaYSoporte />} />

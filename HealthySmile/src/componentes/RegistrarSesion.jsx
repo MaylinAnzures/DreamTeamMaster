@@ -1,5 +1,5 @@
 import FooterApp from './footer';
-import { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import HeaderApp from './header';
 import './RegistrarSesion.css';
 import CarruselFormularios from './CarruselFormularios';
@@ -85,3 +85,31 @@ export default function RegistrarSesion() {
       </div>
     );
 }
+
+const UserContext = createContext();
+
+export const UserProvider = ({ children }) => {
+  const [usuarioLogueado, setUsuarioLogueado] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [codigoDeVerificacion, setCodigoDeVerificacion] = useState('');
+
+  return (
+    <UserContext.Provider
+      value={{
+        usuarioLogueado,
+        setUsuarioLogueado,
+        contrasena,
+        setContrasena,
+        correo,
+        setCorreo,
+        codigoDeVerificacion,
+        setCodigoDeVerificacion,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export const useUserContext = () => useContext(UserContext);
