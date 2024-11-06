@@ -143,21 +143,6 @@ export default function Cancer() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para prevenir el cáncer bucal:</p>
-                    <ul>
-                        <li>Evita el consumo de tabaco y alcohol.</li>
-                        <li>Protege tus labios del sol usando protector solar labial.</li>
-                        <li>Mantén una dieta rica en frutas y verduras.</li>
-                        <li>Vacúnate contra el VPH.</li>
-                        <li>Realiza autoexámenes y visita regularmente a tu dentista para chequeos.</li>
-                    </ul>
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>

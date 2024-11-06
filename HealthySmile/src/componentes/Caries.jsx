@@ -135,23 +135,6 @@ export default function Caries() {
         </div>
       </div>
 
-      {/* Sección "Prevención" */}
-      <div className="section" id="prevencion">
-        <h2 className="titulo-principal">Prevención</h2>
-        <p>Puedes prevenir las caries siguiendo estos hábitos:</p>
-        <ul>
-          <li>Cepíllate los dientes al menos dos veces al día con pasta dental con flúor.</li>
-          <li>Usa hilo dental diariamente para limpiar entre los dientes.</li>
-          <li>Limita el consumo de alimentos y bebidas azucaradas.</li>
-          <li>Bebe suficiente agua, especialmente agua fluorada.</li>
-          <li>Acude regularmente al dentista para limpiezas y chequeos profesionales.</li>
-        </ul>
-        <div className="images">
-          <img src="p1ca.jpg" alt="Prevención Imagen 1" />
-          <img src="p2ca.jpg" alt="Prevención Imagen 2" />
-        </div>
-      </div>
-
       {/* Sección "Tratamiento" */}
       <div className="section" id="tratamiento">
         <h2>Tratamiento</h2>

@@ -119,20 +119,6 @@ export default function Halitosis() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para prevenir la halitosis:</p>
-                    <ul>
-                        <li>Mantén una buena higiene oral cepillándote y usando hilo dental regularmente.</li>
-                        <li>Evita el consumo de tabaco y alcohol.</li>
-                        <li>Realiza chequeos dentales periódicos.</li>
-                        <li>Bebe suficiente agua para evitar la boca seca.</li>
-                    </ul>
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>

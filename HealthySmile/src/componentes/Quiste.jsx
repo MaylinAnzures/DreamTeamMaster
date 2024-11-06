@@ -125,24 +125,6 @@ export default function QuisteBucal() {
                     </div>
                 </div>
             </div>
-
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para prevenir los quistes bucales:</p>
-                    <ul>
-                        <li>Mantén una buena higiene oral.</li>
-                        <li>Trata las infecciones dentales lo antes posible.</li>
-                        <li>Visita regularmente al dentista para chequeos.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1q.jpg" alt="Prevención Imagen 1" />
-                    <img src="p2q.png" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>

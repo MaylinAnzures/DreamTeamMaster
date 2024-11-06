@@ -123,22 +123,6 @@ export default function Implantes() {
                 </div>
             </div>
 
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para cuidar los implantes y prevenir complicaciones:</p>
-                    <ul>
-                        <li>Mantén una excelente higiene oral, cepillando alrededor del implante y usando hilo dental.</li>
-                        <li>Evita fumar, ya que afecta la cicatrización.</li>
-                        <li>Visita regularmente al dentista para chequeos y limpiezas.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1i.png" alt="Prevención Imagen 1" />
-                    <img src="p2i.jpg" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
                 <p className="subtitle"><strong>El proceso de colocación del implante incluye:</strong></p>

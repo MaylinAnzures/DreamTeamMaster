@@ -127,23 +127,6 @@ export default function Traumatismos() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para prevenir traumatismos bucodentales:</p>
-                    <ul>
-                        <li>Usa un protector bucal durante deportes de contacto.</li>
-                        <li>Evita morder objetos duros, como hielo o caramelos duros.</li>
-                        <li>Asegura las áreas de juego para evitar caídas.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1t.jpg" alt="Prevención Imagen 1" />
-                    <img src="p2t.jpg" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>

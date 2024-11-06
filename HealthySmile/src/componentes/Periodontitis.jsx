@@ -117,24 +117,6 @@ export default function Periodontitis() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Las medidas preventivas incluyen:</p>
-                    <ul>
-                        <li>Mantener una buena higiene bucal.</li>
-                        <li>Visitar al dentista regularmente.</li>
-                        <li>Evitar el tabaquismo.</li>
-                        <li>Controlar enfermedades sistémicas como la diabetes.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1p.png" alt="Prevención Imagen 1" />
-                    <img src="p2p.jpg" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>

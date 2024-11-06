@@ -121,25 +121,6 @@ export default function Gingivitis() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>La mejor manera de prevenir la gingivitis es tener una buena higiene bucal. Aquí algunos hábitos preventivos:</p>
-                    <ul>
-                        <li>Cepíllate los dientes al menos dos veces al día con pasta dental con flúor.</li>
-                        <li>Usa hilo dental diariamente.</li>
-                        <li>Acude al dentista para limpiezas profesionales cada seis meses.</li>
-                        <li>Deja de fumar y evita el tabaco.</li>
-                        <li>Mantén una dieta equilibrada, rica en nutrientes que promuevan la salud de las encías.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1g.png" alt="Prevención Imagen 1" />
-                    <img src="p2g.jpg" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>

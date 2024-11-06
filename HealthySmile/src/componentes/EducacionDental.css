@@ -1,10 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+#bodyMitzi {
     font-family: Arial, sans-serif;
     color: #333;
 }
@@ -21,7 +15,7 @@ body {
 
 .hero h2 {
     font-family: 'Merriweather', serif;
-    font-size: 48px;
+    font-size: 48px;    
     transform: translateY(50px) scale(0.5);
     opacity: 0;
     animation: text-appear 1s ease forwards;

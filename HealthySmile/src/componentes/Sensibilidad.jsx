@@ -128,25 +128,6 @@ export default function Sensibilidad() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para prevenir la sensibilidad dental:</p>
-                    <ul>
-                        <li>Usa un cepillo de dientes de cerdas suaves.</li>
-                        <li>Cepíllate los dientes suavemente y usa una pasta dental para dientes sensibles.</li>
-                        <li>Evita alimentos y bebidas ácidas que desgasten el esmalte.</li>
-                        <li>Usa un protector dental si sufres de bruxismo.</li>
-                        <li>Visita regularmente al dentista para chequeos y limpiezas.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1s.jpg" alt="Prevención Imagen 1" />
-                    <img src="p2s.jpg" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
