@@ -5,28 +5,6 @@
     transition: background 0.3s ease-in-out;
 }
 
-/* Barra de navegación */
-.navbar {
-    background-color: #ffffff;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #f4f4f4;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.navbar img {
-    width: 50px;
-    height: 50px;
-}
-
-.navbar h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #0074cc;
-}
-
 /* Sección de título grande "Implantes" */
 .hero {
     background-image: url("1c.jpg"); /* Cambia por la ruta de tu imagen de fondo */
@@ -560,33 +538,6 @@ h2.titulo-principal {
 
 
 
-
-
-/* Barra inferior */
-.footer {
-    background-color: #2d2d2d;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    transition: background-color 0.3s ease-in-out;
-}
-
-/* Opcional: Transición en las secciones */
-.u-section-1 {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('Caries.png');
-    background-position: 50% 50%;
-    transition: background 0.5s ease-in-out;
-}
-
-.footer p {
-    margin: 5px;
-}
-
-.footer a {
-    color: #ffffff;
-    text-decoration: underline;
-}
 
 /* Estilo para la línea blanca debajo del encabezado */
 .divider {
