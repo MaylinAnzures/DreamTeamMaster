@@ -1,19 +1,19 @@
 // App.js
 import React, { useEffect } from 'react';
-import HeaderApp from './HeaderApp';
-import FooterApp from './FooterApp';
-import './Implante.css';
+import HeaderApp from './header';
+import FooterApp from './footer';
+import './Implantes.css';
 import logoSmile from './logoSmile.png';
-import modelosi from './modelosi.png';
-import s1i from './s1i.png';
-import s2i from './s2i.png';
-import s3i from './s3i.png';
-import p1i from './p1i.png';
-import p2i from './p2i.jpeg';
-import c1i from './c1i.jpg';
-import c2i from './c2i.jpeg';
-import c3i from './c3i.jpg';
-import c4i from './c4i.jpg';
+import modelosi from '/modelosi.png';
+import s1i from '/s1i.png';
+import s2i from '/s2i.png';
+import s3i from '/s3i.png';
+import p1i from '/p1i.png';
+import p2i from '/p2i.jpeg';
+import c1i from '/c1i.jpg';
+import c2i from '/c2i.jpeg';
+import c3i from '/c3i.jpg';
+import c4i from '/c4i.jpg';
 
 const App = () => {
     useEffect(() => {
@@ -34,7 +34,7 @@ const App = () => {
 
     return (
         <div>
-            <HeaderApp logo={logoSmile} title="Healthy Smile" />
+            <HeaderApp/>
             
             <div className="hero">
                 <h1>Implantes</h1>
