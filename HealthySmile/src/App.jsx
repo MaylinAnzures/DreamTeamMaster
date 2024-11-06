@@ -25,6 +25,7 @@ import Traumatismo from './componentes/Traumatismo.jsx';
 import Home from './componentes/Home.jsx';
 import Chat from './Inicio/Chat.jsx';
 import { useUserContext } from '../src/componentes/UserContext.jsx';  // Asegúrate de importar el contexto
+import Decision from './componentes/Decision.jsx';
 
 function App() {
   // Consumir el estado de estaLogueado desde el contexto
@@ -36,7 +37,7 @@ function App() {
         {/* Redirección condicional */}
         <Route 
           path="/" 
-          element={<Navigate to={estaLogueado ? "/Inicio" : "/Registro"} />} 
+          element={<Navigate to={estaLogueado ? "/Inicio" : "/Decision"} />} 
         />
         <Route path="/ImplementacionChat" element={<ImplementacionChat />} />
         <Route path="/Consulta" element={<Consulta />} />
@@ -59,6 +60,7 @@ function App() {
         <Route path="/Quiste" element={<Quiste />} />
         <Route path="/Traumatismo" element={<Traumatismo />} />
         <Route path="/Inicio" element={<Home />} />
+        <Route path='/Decision' element={<Decision/>}/>
       </Routes>
     </div>
   );

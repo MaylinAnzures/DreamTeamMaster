@@ -3,6 +3,7 @@ import FooterApp from './footer';
 import HeaderApp from './header';
 import { useUserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
+import Alert from '@mui/material/Alert'; // Importación del componente Alert de MUI
 import './CodigoVerificacion.css';
 
 export default function CodigoVerificacion() {
@@ -27,6 +28,7 @@ export default function CodigoVerificacion() {
     const [verificationMessage, setVerificationMessage] = useState('');
     const [isError, setIsError] = useState(false);
     const [timeRemaining, setTimeRemaining] = useState(300); // 5 minutos en segundos
+    const [loginWaitTime, setLoginWaitTime] = useState(0); // Inicialmente en 0
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -94,33 +96,56 @@ export default function CodigoVerificacion() {
                 if (response.ok) {
                     console.log(`Usuario ${cedulaProfesional ? 'especialista' : 'paciente'} creado exitosamente`);
 
-                    // Esperar a que el usuario esté registrado antes de hacer login
-                    let retries = 5;
-                    let loginResponse = null;
+                    // Iniciar el cronómetro de espera para el inicio de sesión
+                    setLoginWaitTime(60); // Cambiar a 1 minuto
+                    const waitUntilReady = new Promise(resolve => {
+                        const interval = setInterval(() => {
+                            setLoginWaitTime(prev => {
+                                if (prev <= 1) {
+                                    clearInterval(interval);
+                                    resolve();
+                                    return 0;
+                                }
+                                return prev - 1;
+                            });
+                        }, 1000);
+                    });
 
-                    // Intentamos varias veces para asegurarnos que los datos ya estén disponibles en la base de datos
-                    while (retries > 0 && !loginResponse) {
-                        loginResponse = await fetch('http://localhost:3000/api/LogInUsuario', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ correoUser: correo, contrasenaUser: contrasena }),
-                        });
+                    // Esperar hasta que el cronómetro llegue a cero
+                    await waitUntilReady;
 
-                        if (!loginResponse.ok) {
-                            console.log("Esperando a que el usuario esté registrado...");
-                            retries--;
-                            await new Promise((resolve) => setTimeout(resolve, 1000)); // Esperamos 1 segundo antes de intentar nuevamente
-                        }
-                    }
+                    // Iniciar sesión después de que se complete el cronómetro
+                    const loginResponse = await fetch('http://localhost:3000/api/LogInUsuario', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ correoUser: correo, contrasenaUser: contrasena }),
+                    });
 
-                    if (loginResponse && loginResponse.ok) {
+                    if (loginResponse.ok) {
                         const userData = await loginResponse.json();
                         console.log("Inicio de sesión exitoso:", userData);
-                        navigate('/Home');
+
+                        // Actualiza el contexto con los datos del usuario logueado
+                        setUsuarioLogueado(userData.nomUser);
+                        console.log("Usuario logueado:", userData.nomUser);
+
+                        setIdUsuario(userData.idUsuario);
+                        console.log("ID Usuario:", userData.idUsuario);
+
+                        setNivelPermisos(userData.nivelPermisos);
+                        console.log("Nivel de permisos:", userData.nivelPermisos);
+
+                        setEstaLogueado(true);
+                        console.log("Estado de sesión:", true);
+
+                        // Limpiar el código de verificación y la contraseña después de usarlos
                         setCodigoDeVerificacion(null);
                         setContrasena(null);
+
+                        // Navegar después de actualizar el contexto
+                        navigate('/Diagnostico');
                     } else {
                         console.error("Error en el inicio de sesión:", await loginResponse.json());
                         setIsError(true);
@@ -143,19 +168,24 @@ export default function CodigoVerificacion() {
         <div>
             <HeaderApp />
             <div id='cod-vef'>
-                <h2>Verificación de Correo</h2>
-                <input 
-                    type="text" 
-                    value={userInputCode} 
-                    onChange={(e) => setUserInputCode(e.target.value)} 
-                    placeholder="Ingrese el código de verificación" 
-                />
+                <div id='inputcito-veri'>
+                    <input 
+                        type="text" 
+                        value={userInputCode} 
+                        onChange={(e) => setUserInputCode(e.target.value)} 
+                        placeholder="Ingrese su código de verificación" 
+                    />
+                </div>
                 <button onClick={handleVerification}>Verificar</button>
-                {verificationMessage && <p>{verificationMessage}</p>}
-                {isError && <p className="error-message">Fallo al crear el usuario</p>}
-                <p>Tiempo restante: {Math.floor(timeRemaining / 60)}:{String(timeRemaining % 60).padStart(2, '0')}</p>
+                <div id='inf-code-validation'>
+                    <p>Tiempo restante para verificación: {Math.floor(timeRemaining / 60)}:{String(timeRemaining % 60).padStart(2, '0')}</p>
+                    {loginWaitTime > 0 && loginWaitTime < 60 && (
+                        <p className="login-wait-time">Tiempo estimado para el inicio de sesión: {Math.floor(loginWaitTime / 60)}:{String(loginWaitTime % 60).padStart(2, '0')}</p>
+                    )}
+                    {isError && <Alert id='Alertita' severity="error">Codigo incorrecto</Alert>}
+                </div>
             </div>
-            <FooterApp />
+            <FooterApp/>
         </div>
     );
 }

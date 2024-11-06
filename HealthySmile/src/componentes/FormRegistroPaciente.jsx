@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import './FormRegistroPaciente.css';
 
 function FormRegistroPaciente() {
-  const { setCodigoDeVerificacion, setUsuarioLogueado, setContrasena, setCorreo } = useUserContext();
+  const { setCodigoDeVerificacion, setUsuarioLogueado, setContrasena, setCorreo, setTipoUsuario,
+    setCedulaProfesional, setNivelPermisos, setIdEspecialista } = useUserContext();
   
   // Estado local para los datos del formulario
   const [userData, setUserData] = useState({
@@ -42,6 +43,10 @@ function FormRegistroPaciente() {
     setUsuarioLogueado(userData.user_name);
     setContrasena(userData.password); // Guarda la contraseña en el contexto
     setCorreo(userData.user_email); // Guarda el correo del usuario
+    setCedulaProfesional(null);
+    setTipoUsuario("Paciente");
+    setNivelPermisos(1);
+    setIdEspecialista(null);
 
     const templateParams = {
       user_name: userData.user_name,
