@@ -54,7 +54,7 @@ export default function Home() {
     return (
         <div>
             <HeaderApp />
-            <div className="body">
+            <div className="bodyMax">
             <div className="general">
                 <div id="carousel1" className="carousel">
                     <div className="carousel-slide">
@@ -77,7 +77,7 @@ export default function Home() {
                                     <p style={{ fontSize: '110px', fontFamily: "'Times New Roman', Times, serif" }}>
                                         Nuestro equipo
                                     </p>
-                                    <p style={{ fontSize: '20px', marginTop: '-100px', lineHeight: 1.6 }}>
+                                    <p style={{ fontSize: '20px', lineHeight: 1.6 }}>
                                         Nuestros especialistas están comprometidos con la
                                         <br />excelencia en el cuidado dental. Cada uno de ellos
                                         <br />aporta una amplia experiencia y conocimientos en
@@ -99,13 +99,13 @@ export default function Home() {
                                     <img src={panel4} className="imgpanel4" alt="Panel 4" />
                                 </div>
                                 <div className="columna">
-                                    <p style={{ fontSize: '20px', marginTop: '-100px', lineHeight: '1.6' }}>
+                                    <p style={{ fontSize: '20px', lineHeight: '1.6' }}>
                                         Tu aliado para una salud dental integral
                                     </p>
-                                    <p style={{ marginTop: '-20px', fontSize: '100px', fontFamily: "'Times New Roman', Times, serif" }}>
+                                    <p style={{ fontSize: '100px', fontFamily: "'Times New Roman', Times, serif" }}>
                                         ¡Más que una página online dental!
                                     </p>
-                                    <p style={{ fontSize: '20px', marginTop: '-100px', lineHeight: '1.6' }}>
+                                    <p style={{ fontSize: '20px', lineHeight: '1.6' }}>
                                         En HealthySmile no solo ofrecemos consultas y<br />
                                         productos, sino una experiencia completa para<br />
                                         mejorar tu bienestar dental. Conectamos con<br />
@@ -127,7 +127,7 @@ export default function Home() {
                                         Cuidado dental <br />
                                         <b>online</b>
                                     </p>
-                                    <p style={{ fontSize: '20px', marginTop: '-70px', lineHeight: '1.6' }}>
+                                    <p style={{ fontSize: '20px', lineHeight: '1.6' }}>
                                         Descubre productos dentales de alta calidad<br />
                                         para cuidar de tu salud bucal desde la<br />
                                         comodidad de tu hogar. Ofrecemos una<br />
@@ -143,7 +143,7 @@ export default function Home() {
                         </div>
 
                         <div className="slide panel7">
-                            <p style={{ fontSize: '25px', marginTop: '-100px', lineHeight: '1.6' }}>
+                            <p style={{ fontSize: '25px', lineHeight: '1.6' }}>
                                 Especialistas en sonrisas
                             </p>
                             <p style={{ fontSize: '110px', fontFamily: "'Times New Roman', Times, serif" }}>
@@ -159,7 +159,7 @@ export default function Home() {
                 </div>
 
                 <br />
-                <p style={{ textAlign: 'left', fontSize: '45px', fontWeight: 'bold', paddingLeft: '200px' }}>
+                <p style={{ textAlign: 'center', fontSize: '45px', fontWeight: 'bold' }}>
                     Tratamientos Dentales Integrales
                 </p>
                 <p style={{ fontSize: '25px' }}>
@@ -227,9 +227,9 @@ export default function Home() {
                             </div>
                             <div>
                                 <img src={espe1} alt="Especialista" className="especialistas" />
-                                <h1>Sigmund Rodríguez Rojas</h1>
-                                <h3>Cédula: 5782277</h3>
-                                <p>Especializado en el tratamiento quirúrgico de tumores malignos, con amplia experiencia en procedimientos mínimamente invasivos.</p>
+                                <h1>Samaria Patiño Cataño</h1>
+                                <h3>Cédula: 2850636</h3>
+                                <p>Odontóloga general con un enfoque en la salud dental preventiva y estética.</p>
                             </div>
                             <div>
                                 <img src={espe1} alt="Especialista" className="especialistas" />

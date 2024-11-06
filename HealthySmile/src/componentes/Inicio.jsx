@@ -37,10 +37,10 @@ export default function Inicio() {
             <br /><br />
             <div className="contenedor">
                 <div className="columnaiz">
-                    <p style={{ fontSize: '60px', fontWeight: 'bold' }}>
+                    <h2 style={{ fontSize: '60px', fontWeight: 'bold', paddingLeft:'50px' }}>
                         ¿Pueden los bots reemplazar a los especialistas?
-                    </p>
-                    <p>
+                    </h2>
+                    <p className="text2">
                         El futuro del cuidado dental está aquí, marcando una nueva era de innovación digital y automatización. Healthy Smile es el ejemplo perfecto
                         de cómo la tecnología está transformando el sector de la salud bucal. Con Healthy Smile, la automatización permite una gestión eficiente de
                         citas, el monitoreo continuo del historial dental de los pacientes y la entrega de diagnósticos preliminares basados en modelos 3D de
@@ -59,7 +59,7 @@ export default function Inicio() {
             <div className="contenedor">
                 <div className="columnaiz">
                     <p className="titulo">Consulta Virtual</p>
-                    <p>Nuestra plataforma de Consulta Virtual está diseñada para facilitar la interacción entre pacientes y especialistas, ofreciendo acceso rápido
+                    <p className="text2">Nuestra plataforma de Consulta Virtual está diseñada para facilitar la interacción entre pacientes y especialistas, ofreciendo acceso rápido
                         y seguro a atención dental de calidad sin necesidad de visitas físicas. Los pacientes pueden reprogramar citas, y recibir diagnósticos
                         preliminares basados en la información proporcionada, todo en tiempo real.
                         <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Funcionamiento
@@ -78,8 +78,8 @@ export default function Inicio() {
                     <img src={part33} className="imagen" alt="Descripción de la imagen" />
                 </div>
                 <div className="columnamedio">
-                <p className="titulo">Educación Dental</p>
-                    <p>Puedes acceder a recursos educativos sobre salud bucal, incluyendo guías, modelos 3D, hábitos y consejos para tratar tu problema, lo que te
+                    <p className="titulo">Educación Dental</p>
+                    <p className="text2">Puedes acceder a recursos educativos sobre salud bucal, incluyendo guías, modelos 3D, hábitos y consejos para tratar tu problema, lo que te
                         ayudará a tomar decisiones informadas sobre tu salud dental.
                     </p>
                     <button className="boton">EXPLORAR MÁS SOBRE EDUCACIÓN DENTAL</button>
@@ -88,7 +88,7 @@ export default function Inicio() {
             <div className="contenedor">
                 <div className="columnamedio">
                     <p className="titulo">Tienda Virtual</p>
-                    <p>Explora nuestra tienda, añade productos al carrito, sube tu receta médica si es necesario y recibe tu pedido en casa.
+                    <p className="text2">Explora nuestra tienda, añade productos al carrito, sube tu receta médica si es necesario y recibe tu pedido en casa.
                     </p>
                     <button className="boton">Comprar ahora</button>
                 </div>
@@ -102,7 +102,7 @@ export default function Inicio() {
                 </div>
                 <div className="columnamedio">
                 <p className="titulo">Ayuda y Soporte</p>
-                    <p>Puedes acceder a nuestra sección de Ayuda y Soporte para encontrar preguntas frecuentes, asistencia técnica, que te ayudarán a resolver
+                    <p className="text2">Puedes acceder a nuestra sección de Ayuda y Soporte para encontrar preguntas frecuentes, asistencia técnica, que te ayudarán a resolver
                         dudas sobre la plataforma, consultas virtuales y la gestión de citas o compras.
                     </p>
                     <button className="boton">Obtener ayuda</button>
@@ -111,7 +111,7 @@ export default function Inicio() {
             <div className="contenedor">
                 <div className="columnamedio">
                     <p className="titulo">Gestión</p>
-                    <p>Los administradores pueden gestionar citas, actualizar productos en la tienda, acceder a reportes y estadísticas, y comunicarse con
+                    <p className="text2">Los administradores pueden gestionar citas, actualizar productos en la tienda, acceder a reportes y estadísticas, y comunicarse con
                         proveedores para asegurar un funcionamiento óptimo de la plataforma.
                     </p>
                     <button className="boton">Acceder</button>

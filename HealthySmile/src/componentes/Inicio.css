@@ -1,7 +1,6 @@
 #body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    
 }
 
 .contenedor {
@@ -38,7 +37,7 @@
     align-items: end;
 }
 .text1 {
-    font-size: 23px;
+    font-size: 24px;
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -97,4 +96,9 @@
     font-family: Arial, sans-serif;
     line-height: 1.6;
     font-size: 25px;
+}
+.text2 {
+    font-size: 30px;
+    padding-left: 45px;
+    padding-right: 10px;
 }
