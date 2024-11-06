@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
-import './Gingivitis.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
+import { Canvas } from '@react-three/fiber';
+import { house_modelo1} from './path/to/your/model.jsx';  // Ajusta la ruta al archivo del modelo
+import './Gingivitis.css';
 import FooterApp from './footer';
 import HeaderApp from './header';
+
 
 export default function Gingivitis() {
     useEffect(() => {
@@ -46,7 +49,11 @@ export default function Gingivitis() {
             {/* Segunda sección: "Modelos 3D" */}
             <div className="section" id="modelos-3d">
                 <h2 className="titulo-principal">Modelo 3D</h2>
+                <Canvas style={{ height: '400px', width: '100%' }}>
+                <ambientLight intensity={0.5} />
+                    <directionalLight position={[10, 10, 5]} intensity={1} />  </Canvas>
                 <img src="m1g.png" alt="Modelo 3D" width="800" height="auto" />
+                <house_modelo1 />
             </div>
 
             {/* Tercera sección: "Factores de riesgo" */}
