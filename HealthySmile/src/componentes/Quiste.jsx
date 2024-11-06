@@ -23,8 +23,9 @@ export default function QuisteBucal() {
     return (
         <div>
             <HeaderApp />
-            {/* Sección destacada de título "Quiste Bucal" */}
-            <div className="hero">
+            <div id="bodyMitzi">
+{/* Sección destacada de título "Quiste Bucal" */}
+<div className="hero">
                 <h1>Quiste Bucal</h1>
             </div>
 
@@ -151,6 +152,7 @@ export default function QuisteBucal() {
                     <li>Tratamiento de la infección: Si hay una infección presente, se recetarán antibióticos.</li>
                     <li>Evaluación y seguimiento: Exámenes regulares para monitorear el área y asegurarse de que el quiste no vuelva a formarse.</li>
                 </ul>
+            </div>
             </div>
             <FooterApp />
         </div>
