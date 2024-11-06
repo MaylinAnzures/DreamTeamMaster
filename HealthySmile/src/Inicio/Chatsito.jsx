@@ -52,36 +52,49 @@ const Chatsito = () => {
     };
 
     return (
-      <div>
+      <Box display="flex" flexDirection="column" flex={1}>
+      <Box display="flex" alignItems="center" bgcolor="#3f51b5" color="#fff" p={2}>
+        <Avatar sx={{ bgcolor: "#fff", color: "#3f51b5", mr: 2 }}>
+          {specialist.name.charAt(0)}
+        </Avatar>
+        <Typography variant="h6">{specialist.name}</Typography>
+      </Box>
+
+      <Box flex={1} p={2} bgcolor="#f9f9f9" overflow="auto">
         <List>
           {messages.map((msg, index) => (
-            <ListItem key={index}>
-              <ListItemAvatar>
-                <Avatar>{msg.nickname.charAt(0)}</Avatar>
-              </ListItemAvatar>
+            <ListItem key={index} sx={{ justifyContent: msg.nickname === nickname ? 'flex-end' : 'flex-start' }}>
               <ListItemText
-                primary={
-                  <Typography variant="subtitle1">{msg.nickname}</Typography>
-                }
-                secondary={msg.message}
+                primary={msg.message}
+                sx={{
+                  p: 1.5,
+                  bgcolor: msg.nickname === nickname ? '#d1e7dd' : '#e2e3e5',
+                  borderRadius: 2,
+                  maxWidth: '60%',
+                  color: '#333'
+                }}
               />
             </ListItem>
           ))}
         </List>
-
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <TextField
-            placeholder="Type a message"
-            value={message}
-            onChange={handleMessageChange}
-            fullWidth
-          />
-          <Button onClick={sendMessage} disabled={!message.trim()}>
-            Send
-          </Button>
-        </div>
-      </div>
-    );
+      </Box>
+      <Box display="flex" alignItems="center" p={2} borderTop="1px solid #ddd">
+        <TextField
+          fullWidth
+          variant="outlined"
+          placeholder="Escribe un mensaje"
+          value={message}
+          onChange={handleMessageChange}
+          onKeyPress={(e) => e.key === "Enter" && sendMessage()}
+        />
+        
+        <Button onClick={sendMessage} color="primary" disabled={!message.trim()}>
+          <SendIcon />
+        </Button>
+      </Box>
+    </Box>
+  );
 };
+
 
 export default Chatsito;

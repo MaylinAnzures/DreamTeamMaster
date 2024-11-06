@@ -16,7 +16,6 @@
     padding: 40px;
     border: var(--XS, 24px) solid white; 
     max-width: 500px;
-    height: 400px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -36,15 +35,7 @@
     font-size: 20px;
     align-self:flex-start;
   }
-  
-.button {
-  background-color: white;
-  border: var(--XXS, 16px) solid white; 
-}
 
-.button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
 .divsito{
   margin: 40px;
 }

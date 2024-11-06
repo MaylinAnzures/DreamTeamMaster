@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Button, List, ListItem, ListItemText, Box } from '@mui/material';
+import HeaderApp from "../componentes/header";
+import FooterApp from "../componentes/footer";
+import MyButton from '../componentes/Button';
 
 const Chatbot = () => {
 
@@ -39,6 +42,8 @@ const Chatbot = () => {
   };
 
   return (
+    <>
+    <HeaderApp/>
     <Box sx={{ maxWidth: 500, mx: 'auto', p: 2 }}>
       <List>
         {messages.map((msg, index) => (
@@ -52,21 +57,22 @@ const Chatbot = () => {
       </List>
       <TextField
         fullWidth
-        label="Escribe tu mensaje"
+        label="Pregunta tus dudas"
         variant="outlined"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
       />
-      <Button
-        variant="contained"
-        color="primary"
+      
+      <MyButton
+        label="Enviar"
+        size='large'
         onClick={sendMessage}
         sx={{ mt: 1 }}
-      >
-        Enviar
-      </Button>
-    </Box>
+      />
+      </Box>
+    <FooterApp/>
+    </>
   );
 };
 

@@ -9,9 +9,11 @@ import Cabos from './../assets/Cabos.png'
 import historial from './../assets/historial.jpg'
 import { Link } from "react-router-dom";
 
+
+
 const services = [
-    { title: 'CHATBOT', image: chatbot, link: '/chatbot' },
-    { title: 'ESPECIALISTA', image: dentistaaa, link: '/especialista' },
+    { title: 'CHATBOT', image: chatbot, link: '/Chatbot' },
+    { title: 'ESPECIALISTA', image: dentistaaa, link: '/ImplementacionChat' },
     { title: 'REAGENDAR CITA', image: Cabos, link: '/reagendar' },
     { title: 'HISTORIAL DENTAL', image: historial, link: '/historial' }
   ];
