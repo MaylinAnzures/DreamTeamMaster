@@ -1,0 +1,142 @@
+/* Estilos del contenedor principal */
+#RegistroUsuarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor que divide el espacio en tres columnas */
+.info-tipos-registros {
+    display: flex;
+    width: 100%;
+    background: white;
+}
+
+/* Configuración de cada figure para que ocupe un tercio del ancho */
+.fondoimagen {
+    flex: 1; /* Ocupa un tercio del ancho del contenedor principal */
+    position: relative; /* Necesario para ajustar figcaption */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagen de fondo de figure */
+.fondoimagen img {
+    width: 100%;
+    height: 40vw;
+    object-fit: cover; /* Asegura que la imagen ocupe todo el espacio sin deformarse */
+}
+
+/* Estilo para figcaption dentro de cada figure */
+.desc-fondo-img {
+    text-align: left;
+    position: absolute;
+    bottom: 10vw; /* Puedes ajustar la posición */
+    left: 1vw;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    padding: 1vw;
+}
+
+.desc-fondo-img h1 {
+    font-size: 2.4vw;
+    margin-left: 0.7vw;
+    margin-bottom: 1vw;
+}
+
+.desc-fondo-img p {
+    font-size: 1.1vw;
+    font-style: oblique;
+}
+
+/* Ajuste de colores específicos para ciertos elementos */
+#fondo-image-2 h1, #fondo-image-2 p {
+    color: black;
+}
+
+/* Contenedor de la sección de registro */
+.init-Registro {
+    width: 100%;
+    padding-top: 3vw;
+    background: white;
+}
+
+.init-Registro h1{
+    font-size: 4.7vw;
+}
+
+.init-Registro p {
+    padding-top: 1.5vw;
+    font-size: 1.2vw;
+}
+
+/* Estilos de la sección detalles */
+.dets {
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    display: flex; /* Usar flexbox estándar */
+    justify-content: center;
+    gap: 8vw;
+}
+
+/* Alinear los elementos dentro de cada figure de manera flexible */
+.dets figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+
+/* Estilo de los títulos en dets */
+.dets h2 {
+    font-size: 3vw;
+    padding-top: 1vw;
+}
+
+/* Estilo del texto descriptivo en dets */
+.dets p {
+    font-size: 1.3vw;
+    padding-top: 1.5vw;
+}
+
+/* Imagen dentro de cada figure en dets */
+.dets img {
+    height: 30vw;
+    width: 30vw;
+    border-radius: 30px;
+}
+
+/* Estilos para el enlace en figcaption dentro de dets */
+.dets figcaption {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Ajuste para el enlace dentro de figcaption */
+.dets figcaption a {
+    margin-top: 2vw; /* Empuja el enlace hacia abajo */
+    font-size: 1.5vw;
+    text-decoration: underline; /* Subraya el enlace */
+    text-decoration-color: #36691f; /* Cambia el color del subrayado a azul */
+    text-underline-offset: 1vw; /* Ajusta la distancia del subrayado */
+    color: inherit; /* Mantiene el color del texto del enlace o lo puedes cambiar a otro color */
+}
+
+.dets figcaption a:hover{
+    color: #478ac9;
+    text-decoration-color: #61b63a;
+}
+
+
+#registros{
+    width: 100%;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    padding: 5vw;
+}

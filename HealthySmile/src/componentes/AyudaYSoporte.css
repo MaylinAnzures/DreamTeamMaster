@@ -1,0 +1,120 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 59vw;
+    background: white;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 50vw;
+}
+
+.overlay {
+    height: 25vw;
+    width: 35vw;
+    position: absolute;
+    text-align: left;
+    top: 45vw;
+    right: 39vw;
+    transform: translate(-50%, -50%);
+    color: black;
+    background-color: white;
+    padding: 1vw;
+}
+
+.overlay h1, .overlay p, .overlay button{
+    margin: 1vw;
+}
+
+.overlay h1{
+    font-size: 4.5vw;
+}
+
+.overlay p{
+    font-size: 1vw;
+}
+
+.overlay button{
+    font-size: 1vw;
+    color: #332929;
+    padding: 0.7vw;
+    background-color: transparent;
+    border-color: #332929;
+    width: 15vw;
+    border: solid 1px;
+    border-radius: 0;
+}
+
+.overlay button:hover{
+    color: white;
+    background: #332929;
+}
+
+.imagenTexto {
+    height: 70vw;
+    display: -webkit-flex; /* Cambiado a -webkit-flex */
+    -webkit-flex-direction: column; /* Usando la combinación requerida */
+    background: white;
+    padding: 0;
+    margin: 0;
+}
+
+.imagenTexto-img {
+    height: 45vw;
+    width: 50vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.imagenTexto-texto {
+    height: 45vw;
+    width: 50vw;
+    text-align: left;
+}
+
+.preguntasFrecuentes figure {
+    background-image: url('/public/sp2.jpg');
+    background-size: cover; /* Asegura que la imagen cubra todo el espacio */
+    background-position: center; /* Centra la imagen en el contenedor */
+    width: 50%; /* Asegura que el figure ocupe todo el ancho */
+    height: 100%; /* Asegura que el figure ocupe todo el alto */
+    margin: 0; /* Elimina márgenes si es necesario */
+    padding: 0; /* Elimina relleno si es necesario */
+}
+
+
+.imagenTexto-texto h1{
+    font-size: 5vw;
+}
+
+.imagenTexto-texto p{
+    font-size: 1.3vw;
+}
+
+input[type="search"] {
+    width: 40vw;
+    margin-top: 2vw;
+    padding: 1vw 1.5vw; /* Espaciado interno */
+    border: 2px solid #4CAF50; /* Color del borde */
+    border-radius: 25px; /* Bordes redondeados */
+    font-size: 1.3vw; /* Tamaño de fuente */
+    transition: all 0.3s ease; /* Transición suave */
+    outline: none; /* Sin contorno al enfocar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+input[type="search"]:focus {
+    border-color: #4CAF90; /* Cambiar color del borde al enfocar */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* Sombra más intensa al enfocar */
+}
+
+input[type="search"]::placeholder {
+    color: #aaa; /* Color del texto del placeholder */
+    transition: color 0.3s ease; /* Transición suave para el color del placeholder */
+}
+
+input[type="search"]:hover::placeholder {
+    color: #666; /* Cambiar color del placeholder al pasar el mouse */
+}

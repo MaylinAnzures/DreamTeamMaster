@@ -29,7 +29,7 @@ export default function HeaderApp() {
                 <NavLink className={(navData) => (navData.isActive ? "activeStyle" : '')} to="#">Educación Dental</NavLink>                
                 <BasicMenu buttonLabel="Tienda Virtual" menuOptions={menuOptions2}/>
                 <NavLink className={(navData) => (navData.isActive ? "activeStyle" : '')}  to="#">Gestion</NavLink>
-                <NavLink  className={(navData) => (navData.isActive ? "activeStyle" : '')} to="#">Ayuda y soporte</NavLink>
+                <NavLink  className={(navData) => (navData.isActive ? "activeStyle" : '')} to="/AyudaYSoporte">Ayuda y soporte</NavLink>
                 <NavLink to="#">
                     <Badge/>                    </NavLink>          
                   </nav>

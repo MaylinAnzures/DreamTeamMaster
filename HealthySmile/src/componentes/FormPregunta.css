@@ -1,0 +1,42 @@
+.Contactenos {
+    position: relative;
+    width: 100%;
+    height: 50vw;
+    background-color: white; /* Asegúrate de que tenga un fondo que permita ver el hr */
+}
+
+.contactenos-container {
+    position: relative;
+    text-align: center;
+}
+
+.contactenos-image {
+    width: 35vw;
+    height: 45vw; /* Ajustar la altura automáticamente */
+    left: 15vw;
+    position: relative;
+    z-index: 2; /* Asegura que la imagen esté encima del hr */
+}
+
+.contactenos-divider {
+    color: #1693a5; /* Cambia el color del hr */
+    height: 15vw; /* Cambia la altura para que se vea como una línea */
+    background-color: #1693a5; /* Cambia a un fondo para el hr */
+    position: absolute;
+    top: 50%; /* Ajusta según sea necesario para posicionar el hr */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 99.9%; /* Ajusta el ancho del hr */
+    z-index: 1; /* Asegura que el hr esté detrás de la imagen */
+}
+
+.form-container {
+    padding-left: 8vw;
+    position: absolute;
+    top: 52%; /* Ajusta según sea necesario para posicionar el formulario verticalmente */
+    left: 48%; /* Mueve el formulario un poco más a la derecha */
+    transform: translateX(-45%) translateY(-50%); /* Ajusta X para mover solo un poco a la derecha */
+    z-index: 3; /* Asegura que el formulario esté encima de todo */
+    width: 90%; /* Controla el ancho del formulario */
+}
+
