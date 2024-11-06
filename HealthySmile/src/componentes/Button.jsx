@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const CustomButton = styled(Button)({
   backgroundColor: '#092B5A',
@@ -19,8 +20,8 @@ const CustomButton = styled(Button)({
   
 });
 
-const MyButton = ({ onClick, label, size = 'large' }) => (
-  <CustomButton onClick={onClick} size={size}>
+const MyButton = ({ onClick, label, size = 'large' , to }) => (
+  <CustomButton onClick={onClick} size={size}  to={to}>
     {label}
   </CustomButton>
 );

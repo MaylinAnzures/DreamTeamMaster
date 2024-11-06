@@ -1,0 +1,109 @@
+.appointment-card {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./../../public/calendario.jpg'); 
+    background-size:cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+  }
+  
+  
+.overlay {
+    background-color: rgba(255, 255, 255, 0); 
+    padding: 40px;
+    border: var(--XS, 24px) solid white; 
+    max-width: 500px;
+    height: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--XS, 24px);
+    margin-left: 200px;
+  }
+  
+ 
+  
+  .title {
+    color: #F0F8FF;
+    
+  }
+
+  .subtitle{
+    color: #F0F8FF;
+    font-size: 20px;
+    align-self:flex-start;
+  }
+  
+.button {
+  background-color: white;
+  border: var(--XXS, 16px) solid white; 
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.divsito{
+  margin: 40px;
+}
+.service-container {
+  text-align: center;
+  padding: 40px;
+  margin-bottom: 50px;
+  
+}
+
+.service-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.05); 
+}
+
+.card-front {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover .overlay2 {
+  opacity: 1; 
+}
+
+
+.service-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}

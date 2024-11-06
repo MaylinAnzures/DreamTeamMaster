@@ -94,6 +94,7 @@ body {
   color: var(--color-text, #000000);
   background: var(--Color-Principales-Fuertes-Text_Alt, #F0F8FF);
   margin: 0;
+  overflow-x: hidden;
 }
 
 h1 {
