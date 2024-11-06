@@ -22,7 +22,7 @@ export default function Sensibilidad() {
 
     return (
         <div>
-            <HeaderApp />
+            <HeaderApp></HeaderApp>
             {/* Sección destacada de título "Sensibilidad Dental" */}
             <div className="hero">
                 <h1>Sensibilidad Dental</h1>

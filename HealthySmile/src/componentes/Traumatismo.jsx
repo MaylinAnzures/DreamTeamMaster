@@ -22,7 +22,7 @@ export default function Traumatismos() {
 
     return (
         <div>
-            <HeaderApp />
+            <HeaderApp/>
             {/* Sección destacada de título "Traumatismo Bucodental" */}
             <div className="hero">
                 <h1>Traumatismo Bucodental</h1>
