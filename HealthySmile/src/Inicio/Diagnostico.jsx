@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Button, List, ListItem, ListItemText, Box } from '@mui/material';
+import { Button, Box, Typography } from '@mui/material';
+import HeaderApp from '../componentes/header';
+import FooterApp from '../componentes/footer';
+import { useNavigate } from 'react-router-dom';
+import './Diagnostico.css';
 
 const questions = [
   "¿Sientes dolor en alguno de tus dientes al consumir alimentos fríos o calientes?",
@@ -10,42 +14,25 @@ const questions = [
 ];
 
 const DiagnosisChatbot = () => {
-  const [messages, setMessages] = useState([]); 
-  const [step, setStep] = useState(0); 
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); 
+  const [userAnswers, setUserAnswers] = useState([]); 
+  const [diagnosis, setDiagnosis] = useState(null); 
   const [showOptions, setShowOptions] = useState(true);
+  const navigate = useNavigate();
 
-  const addBotMessage = (text) => {
-    setMessages((prev) => [...prev, { sender: 'bot', text }]);
-  };
-
-  const addUserMessage = (text) => {
-    setMessages((prev) => [...prev, { sender: 'user', text }]);
-  };
-
-  useEffect(() => {
-    if (step < questions.length) {
-      if (!messages.some((msg) => msg.sender === 'bot' && msg.text === questions[step])) {
-        addBotMessage(questions[step]);
-        setShowOptions(true); 
-      }
-    } else if (step === questions.length) {
-      const diagnosis = getDiagnosis();
-      addBotMessage(diagnosis);
+  const handleAnswer = (answer) => {
+    setUserAnswers((prevAnswers) => [...prevAnswers, answer]);
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1); 
+    } else {
+      const generatedDiagnosis = getDiagnosis([...userAnswers, answer]);
+      setDiagnosis(generatedDiagnosis);
       setShowOptions(false); 
     }
-   
-  }, [step]); 
-  const handleAnswer = (answer) => {
-    addUserMessage(answer); 
-    setShowOptions(false); 
-
-    setTimeout(() => {
-      setStep((prevStep) => prevStep + 1); 
-    }, 1000);
   };
 
-  const getDiagnosis = () => {
-    const yesCount = messages.filter(msg => msg.sender === 'user' && msg.text === "Sí").length;
+  const getDiagnosis = (answers) => {
+    const yesCount = answers.filter(answer => answer === "Sí").length;
     if (yesCount >= 3) {
       return "Podrías estar experimentando síntomas de caries dental. Te recomendamos visitar a un dentista para una evaluación completa y tratamiento adecuado.";
     } else if (yesCount === 1 || yesCount === 2) {
@@ -55,36 +42,46 @@ const DiagnosisChatbot = () => {
     }
   };
 
+  useEffect(() => {
+    if (diagnosis) {
+      const timer = setTimeout(() => {
+        navigate('/Home');
+      }, 2000); 
+
+      return () => clearTimeout(timer); // Limpia el temporizador al desmontar
+    }
+  }, [diagnosis, navigate]);
+
+
   return (
-    <Box sx={{ maxWidth: 500, mx: 'auto', p: 2, border: '1px solid #ddd', borderRadius: 2 }}>
-      <List>
-        {messages.map((msg, index) => (
-          <ListItem key={index} alignItems="flex-start" sx={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
-            <ListItemText
-              primary={
-                <Box
-                  sx={{
-                    display: 'inline-block',
-                    p: 1.5,
-                    borderRadius: 2,
-                    bgcolor: msg.sender === 'user' ? '#1976d2' : '#e0e0e0',
-                    color: msg.sender === 'user' ? '#fff' : '#000'
-                  }}
-                >
-                  {msg.text}
+    <>
+      <HeaderApp/>
+      <Box className="fondo">
+        <div className='textote'>
+      <h1>¡Bienvenid@!</h1>
+      </div>
+        <Box sx={{ maxWidth: 600, mx: 'auto', p: 2, border: '4px solid #ddd', borderRadius: 2 }}>
+          {diagnosis ? (
+            <Typography variant="h6" align="center" gutterBottom>
+              {diagnosis}
+            </Typography>
+          ) : (
+            <>
+              <Typography variant="h6" align="center" gutterBottom>
+                {questions[currentQuestionIndex]}
+              </Typography>
+              {showOptions && (
+                <Box sx={{ display: 'flex', justifyContent: 'space-around', mt: 2 }}>
+                  <Button variant="contained" onClick={() => handleAnswer("Sí")}>Sí</Button>
+                  <Button variant="contained" color="secondary" onClick={() => handleAnswer("No")}>No</Button>
                 </Box>
-              }
-            />
-          </ListItem>
-        ))}
-      </List>
-      {showOptions && step < questions.length && (
-        <Box sx={{ display: 'flex', justifyContent: 'space-around', mt: 2 }}>
-          <Button variant="contained" onClick={() => handleAnswer("Sí")}>Sí</Button>
-          <Button variant="contained" color="secondary" onClick={() => handleAnswer("No")}>No</Button>
+              )}
+            </>
+          )}
         </Box>
-      )}
-    </Box>
+      </Box>
+      <FooterApp/>
+    </>
   );
 };
 

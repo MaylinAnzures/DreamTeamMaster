@@ -2,14 +2,13 @@ import { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { useUserContext } from './UserContext'; // Asegúrate de que la ruta sea correcta
+import { useUserContext } from './UserContext'; 
 import { useNavigate } from 'react-router-dom';
 import './FormRegistroPaciente.css';
 
 function FormRegistroPaciente() {
   const { setCodigoDeVerificacion, setUsuarioLogueado, setContrasena, setCorreo } = useUserContext();
   
-  // Estado local para los datos del formulario
   const [userData, setUserData] = useState({
     user_name: '',
     user_email: '',

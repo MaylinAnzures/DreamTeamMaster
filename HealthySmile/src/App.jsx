@@ -25,6 +25,9 @@ import Quiste from './componentes/Quiste.jsx'
 import Traumatismo from './componentes/Traumatismo.jsx'
 import Home from './componentes/Home.jsx'
 import Chat from './Inicio/Chat.jsx';
+import DiagnosisChatbot from './Inicio/Diagnostico.jsx';
+import Chatbot from './Inicio/Chatbot';
+import ChatbotIntro from './Inicio/Chatbotito.jsx';
 
 
 function App() {
@@ -32,7 +35,6 @@ function App() {
 
     <div className="app-container">
       <Routes>
-      <Route path="/" element={<Navigate to="/Inicio" />} />
         <Route path="/ImplementacionChat" element={<ImplementacionChat />} />
         <Route path="/Consulta" element={<Consulta />} />
         <Route path="/Chatbot" element={<Chatboti />} />
@@ -57,6 +59,9 @@ function App() {
         <Route path='/Sensibilidad' element={<Sensibilidad/>}/>
         <Route path='/Quiste' element={<Quiste/>}/>
         <Route path='/Traumatismo' element={<Traumatismo/>}/>
+        <Route path='/Diagnostico' element={<DiagnosisChatbot/>}/>
+        <Route path='/Chatbot' element={<Chatbot/>}/>
+        <Route path='/Chatbotito' element={<ChatbotIntro/>}/>
         <Route path='/Inicio' element={<Home/>}/>
       </Routes>
     </div>
