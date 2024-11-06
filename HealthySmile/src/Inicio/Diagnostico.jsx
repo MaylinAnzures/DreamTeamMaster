@@ -10,44 +10,37 @@ const questions = [
 ];
 
 const DiagnosisChatbot = () => {
-  const [messages, setMessages] = useState([]); // Almacena toda la conversación
-  const [step, setStep] = useState(0); // Índice de la pregunta actual
+  const [messages, setMessages] = useState([]); 
+  const [step, setStep] = useState(0); 
   const [showOptions, setShowOptions] = useState(true);
 
-  // Función para agregar un mensaje del bot
   const addBotMessage = (text) => {
     setMessages((prev) => [...prev, { sender: 'bot', text }]);
   };
 
-  // Función para agregar un mensaje del usuario
   const addUserMessage = (text) => {
     setMessages((prev) => [...prev, { sender: 'user', text }]);
   };
 
-  // Mostrar la pregunta correspondiente al `step` actual solo una vez
   useEffect(() => {
     if (step < questions.length) {
-      // Verifica si la pregunta ya está en `messages` para evitar duplicados
       if (!messages.some((msg) => msg.sender === 'bot' && msg.text === questions[step])) {
         addBotMessage(questions[step]);
-        setShowOptions(true); // Mostrar opciones después de agregar la pregunta
+        setShowOptions(true); 
       }
     } else if (step === questions.length) {
-      // Mostrar diagnóstico al finalizar todas las preguntas
       const diagnosis = getDiagnosis();
       addBotMessage(diagnosis);
-      setShowOptions(false); // No mostrar opciones después del diagnóstico
+      setShowOptions(false); 
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step]); // Ejecutar `useEffect` solo cuando `step` cambia
-
+   
+  }, [step]); 
   const handleAnswer = (answer) => {
-    addUserMessage(answer); // Agrega la respuesta del usuario
-    setShowOptions(false); // Oculta las opciones mientras el bot "responde"
+    addUserMessage(answer); 
+    setShowOptions(false); 
 
-    // Incrementa `step` después de un retraso
     setTimeout(() => {
-      setStep((prevStep) => prevStep + 1); // Incrementa el `step` para mostrar la siguiente pregunta
+      setStep((prevStep) => prevStep + 1); 
     }, 1000);
   };
 

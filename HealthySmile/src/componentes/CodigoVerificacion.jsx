@@ -102,7 +102,7 @@ export default function CodigoVerificacion() {
                         console.log("Inicio de sesión exitoso:", userData);
 
                         // Redirigir a la página de Ayuda y Soporte
-                        navigate('/AyudaYSoporte');
+                        navigate('/Home');
                         setCodigoDeVerificacion(null); // Limpiar código de verificación
                         setContrasena(null); // Limpiar la contraseña por seguridad
                     } else {
