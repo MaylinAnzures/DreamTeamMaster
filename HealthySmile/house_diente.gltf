@@ -534,26 +534,26 @@
     }
   ],
   "extensionsRequired": [
-    "KHR_materials_pbrSpecularGlossiness",
+    "KHR_materials_pbrMetallicRoughnes",
     "KHR_draco_mesh_compression"
   ],
   "extensionsUsed": [
-    "KHR_materials_pbrSpecularGlossiness",
+    "KHR_materials_pbrMetallicRoughness",
     "KHR_draco_mesh_compression"
   ],
   "materials": [
     {
       "doubleSided": true,
       "extensions": {
-        "KHR_materials_pbrSpecularGlossiness": {
+        "KHR_materials_pbrMetallicRoughness": {
           "diffuseFactor": [
             0.901153084616991,
             0.901153084616991,
             0.901153084616991,
             1
           ],
-          "glossinessFactor": 0.06111106632640528,
-          "specularFactor": [
+          "roughnessFactor": 0.06111106632640528,
+          "metallicFactor": [
             0,
             0,
             0
