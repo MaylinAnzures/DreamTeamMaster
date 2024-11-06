@@ -93,6 +93,11 @@ export default function PreguntasFrecuentes() {
                         {pregunta && pregunta.respuesta !== 'aún no hay respuesta para esta pregunta' ? (
                             <div className='respuestita'>
                                 <strong>{pregunta.respuesta}</strong><br />
+                                <p>
+                                            idUsuario: {idUsuario}<br />
+                                            idEspecialista: {idEspecialista}<br />
+                                            nivelPermisos: {nivelPermisos}<br />
+                                        </p>
                             </div>
                         ) : (
                             <div className='respuestita noPregunta'>

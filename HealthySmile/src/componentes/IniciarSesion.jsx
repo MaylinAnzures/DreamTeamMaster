@@ -5,6 +5,7 @@ import './IniciarSesion.css';
 import MyOutlinedButton from './OutlinedButton';
 import MyButton from './Button';
 import FormLogIn from './FormLogIn';
+import LimpiarLocalStorage from './LimpiarLocalStorage';
 
 export default function IniciarSesion() {
     useEffect(() => {
@@ -117,6 +118,7 @@ export default function IniciarSesion() {
                     </div>
                 </div>
             </div>
+            <LimpiarLocalStorage/>
             <FooterApp />
         </div>
     );
