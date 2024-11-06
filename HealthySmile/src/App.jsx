@@ -10,7 +10,14 @@ import CodigoVerificacion from './componentes/CodigoVerificacion.jsx';
 import Inicio from './componentes/Inicio.jsx';
 import EducacionDental from './componentes/EducacionDental.jsx';
 import Gingivitis from './componentes/Gingivitis.jsx';
-
+import Cancer from './componentes/Cancer.jsx'
+import Caries from './componentes/Caries.jsx'
+import Halitosis from './componentes/Halitosis.jsx'
+import Implantes from './componentes/Implantes.jsx'
+import Periodontitis from './componentes/Periodontitis.jsx'
+import Sensibilidad from './componentes/Sensibilidad.jsx'
+import Quiste from './componentes/Quiste.jsx'
+import Traumatismo from './componentes/Traumatismo.jsx'
 
 
 function App() {
@@ -27,6 +34,14 @@ function App() {
         <Route path='/Home' element={<Inicio/>}/>
         <Route path='/EducacionDental' element={<EducacionDental/>}/>
         <Route path='/Gingivitis' element={<Gingivitis/>}/>
+        <Route path='/Cancer' element={<Cancer/>}/>
+        <Route path='/Caries' element={<Caries/>}/>
+        <Route path='/Halitosis' element={<Halitosis/>}/>
+        <Route path='/Implantes' element={<Implantes/>}/>
+        <Route path='/Periodontitis' element={<Periodontitis/>}/>
+        <Route path='/Sensibilidad' element={<Sensibilidad/>}/>
+        <Route path='/Quiste' element={<Quiste/>}/>
+        <Route path='/Traumatismo' element={<Traumatismo/>}/>
       </Routes>
     </Router>
     

@@ -2,6 +2,17 @@ import React, { useEffect } from 'react';
 import './Implantes.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
 import FooterApp from './footer';
 import HeaderApp from './header';
+import logoSmile from './logoSmile.png';
+import modelosi from '/modelosi.png';
+import s1i from '/s1i.png';
+import s2i from '/s2i.png';
+import s3i from '/s3i.png';
+import p1i from '/p1i.png';
+import p2i from '/p2i.jpeg';
+import c1i from '/c1i.jpg';
+import c2i from '/c2i.jpeg';
+import c3i from '/c3i.jpg';
+import c4i from '/c4i.jpg';
 
 export default function Implantes() {
     useEffect(() => {
@@ -22,8 +33,7 @@ export default function Implantes() {
 
     return (
         <div>
-            <HeaderApp></HeaderApp>
-            {/* Sección destacada de título "Gingivitis" */}
+            <HeaderApp/>
             <div className="hero">
                 <h1>Implantes</h1>
             </div>
@@ -39,7 +49,7 @@ export default function Implantes() {
 
             <div className="section" id="modelos-3d">
                 <h2 className="titulo-principal">Modelo 3D</h2>
-                <img src="modelos1.png" alt="Modelo 3D" width="800" height="auto" />
+                <img src="modelosi.png" alt="Modelo 3D" width="800" height="auto" />
             </div>
 
             <div className="section" id="factores-riesgo">
@@ -67,7 +77,7 @@ export default function Implantes() {
                     </div>
                     <div className="symptom">
                         <img src="s3i.png" alt="Dolor en el sitio del implante" />
-                        <p>Sangrado leve después de la cirugía..</p>
+                        <p>Sangrado leve después de la cirugía.</p>
                     </div>
                 </div>
             </div>
@@ -96,7 +106,6 @@ export default function Implantes() {
                 </div>
             </div>
 
-            {/* Sexta sección: "Complicaciones" */}
             <div className="section" id="complicaciones">
                 <div className="circle-container">
                     <div className="circle-images" style={{ marginBottom: '-60px' }}>
@@ -105,10 +114,7 @@ export default function Implantes() {
                     </div>
                     <div className="center-circle">
                         <h2>Complicaciones</h2>
-                        <p>
-                            Si no se trata, la gingivitis puede avanzar a periodontitis, una condición más grave que puede provocar la pérdida de dientes. Las complicaciones adicionales pueden incluir:
-                            Abscesos en las encías,recesión de las encías, daño a los tejidos blandos y los huesos que sostienen los dientes.
-                        </p>
+                        <p>Si no se trata, la gingivitis puede avanzar a periodontitis, una condición más grave que puede provocar la pérdida de dientes. Las complicaciones adicionales pueden incluir abscesos en las encías, recesión de las encías, daño a los tejidos blandos y los huesos que sostienen los dientes.</p>
                     </div>
                     <div className="circle-images" style={{ marginTop: '-60px' }}>
                         <img src="c3i.jpg" alt="Complicación 3" />
@@ -128,8 +134,8 @@ export default function Implantes() {
                     </ul>
                 </div>
                 <div className="images">
-                <img src="p1i.png" alt="Prevención Imagen 1" />
-                <img src="p2i.jpg" alt="Prevención Imagen 2" />
+                    <img src="p1i.png" alt="Prevención Imagen 1" />
+                    <img src="p2i.jpg" alt="Prevención Imagen 2" />
                 </div>
             </div>
 
@@ -148,4 +154,3 @@ export default function Implantes() {
         </div>
     );
 };
-
