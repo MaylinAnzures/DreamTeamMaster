@@ -341,3 +341,11 @@
     font-weight: bold;
     width: 400px;
 }
+
+.form1 h3{
+    font-size: 2.5vw;
+}
+
+.form1 p{
+    font-size: 1vw;
+}
