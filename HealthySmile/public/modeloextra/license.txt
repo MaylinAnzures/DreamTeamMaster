@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dental Scan for a denture
+* source:	https://sketchfab.com/3d-models/dental-scan-for-a-denture-52736c16312d486097962b40f974f6df
+* author:	anknv (https://sketchfab.com/anknv)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dental Scan for a denture" (https://sketchfab.com/3d-models/dental-scan-for-a-denture-52736c16312d486097962b40f974f6df) by anknv (https://sketchfab.com/anknv) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Colorful dental model
+* source:	https://sketchfab.com/3d-models/colorful-dental-model-e45f1cefbe9d4881b728c1d9f37c57e0
+* author:	thunk3d.scanner (https://sketchfab.com/thunk3d.scanner)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Colorful dental model" (https://sketchfab.com/3d-models/colorful-dental-model-e45f1cefbe9d4881b728c1d9f37c57e0) by thunk3d.scanner (https://sketchfab.com/thunk3d.scanner) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
