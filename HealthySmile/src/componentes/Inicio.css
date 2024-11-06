@@ -86,7 +86,15 @@
     justify-content: center;
     align-items: center;
 }
-
 #imagen-intermedia{
     width: 100%;
+}
+.titulo {
+    font-size: 60px;
+    font-weight: bold;
+}
+.body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 25px;
 }

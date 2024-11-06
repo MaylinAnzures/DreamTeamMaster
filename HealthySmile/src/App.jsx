@@ -23,6 +23,7 @@ import Periodontitis from './componentes/Periodontitis.jsx'
 import Sensibilidad from './componentes/Sensibilidad.jsx'
 import Quiste from './componentes/Quiste.jsx'
 import Traumatismo from './componentes/Traumatismo.jsx'
+import Home from './componentes/Home.jsx'
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Route path='/Sensibilidad' element={<Sensibilidad/>}/>
         <Route path='/Quiste' element={<Quiste/>}/>
         <Route path='/Traumatismo' element={<Traumatismo/>}/>
+        <Route path='/Inicio' element={<Home/>}/>
       </Routes>
     </div>
   )}

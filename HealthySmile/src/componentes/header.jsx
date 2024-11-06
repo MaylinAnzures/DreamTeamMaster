@@ -31,7 +31,8 @@ export default function HeaderApp() {
                 <NavLink className={(navData) => (navData.isActive ? "activeStyle" : '')}  to="#">Gestion</NavLink>
                 <NavLink  className={(navData) => (navData.isActive ? "activeStyle" : '')} to="/AyudaYSoporte">Ayuda y soporte</NavLink>
                 <NavLink to="#">
-                    <Badge/>                    </NavLink>          
+                    <Badge/>                    
+                </NavLink>          
                   </nav>
         </header>
     );

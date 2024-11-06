@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import './Implantes.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
+import './Implantes.css'; 
 import FooterApp from './footer';
 import HeaderApp from './header';
-import logoSmile from './logoSmile.png';
+import logoSmile from '../../public/logoSmile.png';
 import modelosi from '/modelosi.png';
 import s1i from '/s1i.png';
 import s2i from '/s2i.png';
