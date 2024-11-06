@@ -2,6 +2,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useState } from 'react';
 import { useUserContext } from './UserContext';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import './FormPregunta.css';
 
 export default function FormPregunta() {
@@ -11,6 +13,8 @@ export default function FormPregunta() {
   const [correo, setCorreo] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,8 +38,9 @@ export default function FormPregunta() {
       }
 
       const result = await response.json();
-      setResponseMessage(result.message);
-      console.log('Pregunta creada:', result.message);
+      setResponseMessage('Pregunta enviada correctamente');
+      setIsSuccess(true);
+      setIsError(false);
 
       setNombre('');
       setCorreo('');
@@ -44,6 +49,8 @@ export default function FormPregunta() {
     } catch (error) {
       console.error('Error al enviar la pregunta:', error);
       setResponseMessage('Error al enviar la pregunta. Inténtalo de nuevo.');
+      setIsSuccess(false);
+      setIsError(true);
     }
   };
 
@@ -85,6 +92,20 @@ export default function FormPregunta() {
           <br />
           <input type='submit' className="PreguntaFrec_submit" value='ENVIAR' />
         </form>
+
+        {/* Mostrar mensaje de éxito */}
+        {isSuccess && (
+          <Stack sx={{ width: '100%', marginTop: 2 }} spacing={2}>
+            <Alert severity="success">{responseMessage}</Alert>
+          </Stack>
+        )}
+
+        {/* Mostrar mensaje de error */}
+        {isError && (
+          <Stack sx={{ width: '100%', marginTop: 2 }} spacing={2}>
+            <Alert severity="error">{responseMessage}</Alert>
+          </Stack>
+        )}
       </CardContent>
     </Card>
   );

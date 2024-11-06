@@ -20,6 +20,7 @@ export default function FormLogIn() {
     setIdUsuario,
     setIdEspecialista,
     setNivelPermisos,
+    setEstaLogueado, // Nueva función del contexto
   } = useUserContext();
 
   const handleSubmit = async (e) => {
@@ -52,6 +53,9 @@ export default function FormLogIn() {
       setIdUsuario(result.idUsuario);
       setIdEspecialista(result.tipoUser === 'Especialista' ? result.idEspecialista : null);
       setNivelPermisos(result.nivelPermisos);
+
+      // Establecer `estaLogueado` en `true`
+      setEstaLogueado(true);
 
       // Establecer el estado de éxito
       setIsSuccess(true);

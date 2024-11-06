@@ -15,6 +15,7 @@ export const UserProvider = ({ children }) => {
   const [codigoDeVerificacion, setCodigoDeVerificacion] = useState(localStorage.getItem('codigoDeVerificacion') || null);
   const [contrasena, setContrasena] = useState(localStorage.getItem('contrasena') || null); // Nuevo estado para la contraseña
   const [correo, setCorreo] = useState(localStorage.getItem('correo') || null); // Nuevo estado para el correo
+  const [estaLogueado, setEstaLogueado] = useState(false); // Variable lógica para el estado de sesión
 
   // Actualizar Local Storage cada vez que cambian los valores
   useEffect(() => {
@@ -27,6 +28,9 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('codigoDeVerificacion', codigoDeVerificacion);
     localStorage.setItem('contrasena', contrasena); // Guardar contrasena
     localStorage.setItem('correo', correo); // Guardar correo
+
+    // Actualizar el estado de `estaLogueado` según el valor de `usuarioLogueado`
+    setEstaLogueado(usuarioLogueado !== null);
   }, [usuarioLogueado, tipoUsuario, cedulaProfesional, idUsuario, idEspecialista, nivelPermisos, codigoDeVerificacion, contrasena, correo]);
 
   return (
@@ -48,7 +52,9 @@ export const UserProvider = ({ children }) => {
       contrasena, // Pasar contrasena
       setContrasena, // Función para actualizar contrasena
       correo, // Pasar correo
-      setCorreo // Función para actualizar correo
+      setCorreo, // Función para actualizar correo
+      estaLogueado, // Pasar estado de sesión
+      setEstaLogueado // Función para actualizar estado de sesión
     }}>
       {children}
     </UserContext.Provider>
