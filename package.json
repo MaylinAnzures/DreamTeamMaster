@@ -1,0 +1,16 @@
+{
+  "name": "dreamteammaster",
+  "version": "1.0.0",
+  "description": ":d\r XD\r # Comandos de ejecución\r `npm install` Descarga lo necesario\\\r `npm run dev` Ejecuta el proyectito\\\r `o + enter` Visualizarlo en el browser",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
