@@ -124,7 +124,6 @@ export default function Gingivitis() {
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento para la gingivitis es sencillo si se detecta en una etapa temprana. Los pasos comunes incluyen:</strong></p>
                 <ul>
                     <li>Limpieza profesional: Tu dentista o higienista dental eliminará toda la placa, el sarro y las bacterias de la boca.</li>
                     <li>Instrucciones de higiene oral: Te enseñarán a mantener una buena rutina de limpieza en casa para evitar la reaparición de la enfermedad.</li>

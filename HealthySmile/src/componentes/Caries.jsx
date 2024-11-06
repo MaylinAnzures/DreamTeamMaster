@@ -139,7 +139,6 @@ export default function Caries() {
       <div className="section" id="tratamiento">
         <h2>Tratamiento</h2>
         <p className="subtitle">
-          <strong>El tratamiento de la caries varía según la gravedad:</strong>
         </p>
         <ul>
           <li>Flúor: En las etapas iniciales, el flúor puede ayudar a revertir el daño en el esmalte.</li>

@@ -130,7 +130,6 @@ export default function Traumatismos() {
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento depende de la gravedad del traumatismo:</strong></p>
                 <ul>
                     <li>Fracturas dentales: Se pueden reparar con empastes o coronas.</li>
                     <li>Dientes desplazados: Un dentista puede reposicionar los dientes.</li>

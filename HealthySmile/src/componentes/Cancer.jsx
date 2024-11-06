@@ -146,7 +146,6 @@ export default function Cancer() {
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento depende de la gravedad del traumatismo:</strong></p>
                 <ul>
                     <li>Cirugía: Para extirpar el tumor y los tejidos afectados.</li>
                     <li>Radioterapia: Uso de rayos X de alta energía para destruir las células cancerosas.</li>

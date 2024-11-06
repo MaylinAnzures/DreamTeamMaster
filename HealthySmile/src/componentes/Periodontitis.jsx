@@ -120,7 +120,6 @@ export default function Periodontitis() {
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento de la periodontitis puede incluir:</strong></p>
                 <ul>
                     <li>Limpieza profunda por un dentista para eliminar la placa y el sarro.</li>
                     <li>Instrucciones de higiene bucal personalizadas.</li>

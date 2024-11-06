@@ -131,7 +131,6 @@ export default function Sensibilidad() {
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento para la sensibilidad dental incluye:</strong></p>
                 <ul>
                     <li>Pastas dentales desensibilizantes: Estas pastas bloquean las señales nerviosas del diente, reduciendo el dolor.</li>
                     <li>Flúor: El dentista puede aplicar flúor en las áreas afectadas para fortalecer el esmalte.</li>

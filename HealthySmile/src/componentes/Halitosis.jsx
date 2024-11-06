@@ -122,7 +122,6 @@ export default function Halitosis() {
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento depende de la causa de la halitosis:</strong></p>
                 <ul>
                     <li>Mejorar la higiene oral.</li>
                     <li>Tratar infecciones o problemas digestivos subyacentes.</li>

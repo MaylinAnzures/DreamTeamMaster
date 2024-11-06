@@ -128,7 +128,6 @@ export default function QuisteBucal() {
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento para los quistes bucales incluye:</strong></p>
                 <ul>
                     <li>Drenaje o extirpación quirúrgica: El dentista o cirujano oral puede extraer el quiste para prevenir complicaciones.</li>
                     <li>Tratamiento de la infección: Si hay una infección presente, se recetarán antibióticos.</li>

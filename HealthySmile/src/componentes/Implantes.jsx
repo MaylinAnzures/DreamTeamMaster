@@ -125,7 +125,6 @@ export default function Implantes() {
 
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El proceso de colocación del implante incluye:</strong></p>
                 <ul>
                     <li>Evaluación previa: Un examen detallado de la boca y los huesos para asegurarse de que puedes recibir un implante.</li>
                     <li>Cirugía de colocación: El implante de titanio se inserta en el hueso maxilar.</li>
