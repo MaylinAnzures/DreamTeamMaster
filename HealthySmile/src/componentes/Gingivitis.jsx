@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { house_modelo1} from './path/to/your/model.jsx';  // Ajusta la ruta al archivo del modelo
+import {House_modelo1}  from './House_modelo1'
 import './Gingivitis.css';
 import FooterApp from './footer';
 import HeaderApp from './header';
-
+import { OrbitControls } from '@react-three/drei';
 
 export default function Gingivitis() {
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function Gingivitis() {
 
     return (
         <div>
-            <HeaderApp></HeaderApp>
+            <HeaderApp />
             {/* Sección destacada de título "Gingivitis" */}
             <div className="hero">
                 <h1>Gingivitis</h1>
@@ -49,17 +49,26 @@ export default function Gingivitis() {
             {/* Segunda sección: "Modelos 3D" */}
             <div className="section" id="modelos-3d">
                 <h2 className="titulo-principal">Modelo 3D</h2>
-                <Canvas style={{ height: '400px', width: '100%' }}>
-                <ambientLight intensity={0.5} />
-                    <directionalLight position={[10, 10, 5]} intensity={1} />  </Canvas>
-                <img src="m1g.png" alt="Modelo 3D" width="800" height="auto" />
-                <house_modelo1 />
+                <Canvas 
+                    style={{ height: '400px', width: '100%' }}
+                    camera={{ position: [0, 2, 5], fov: 50 }} // Cámara para que el modelo sea visible
+                >
+                    {/* Iluminación mejorada */}
+                    <ambientLight intensity={0.5} />
+                    <directionalLight position={[10, 10, 5]} intensity={1} />
+                    
+                    {/* Modelo 3D */}
+                    <House_modelo1 />
+                    
+                    {/* Agregar controles para rotar el modelo */}
+                    <OrbitControls />
+                </Canvas>
             </div>
 
             {/* Tercera sección: "Factores de riesgo" */}
             <div className="section" id="factores-riesgo">
                 <h2 className="titulo-principal">Factores de riesgo</h2>
-                <hr className="divider" /> {/* Línea blanca debajo del encabezado */}
+                <hr className="divider" />
                 <p>
                     Las personas con mayor riesgo son aquellas que participan en deportes
                     de contacto sin protectores bucales, los niños pequeños, y las personas
@@ -140,7 +149,7 @@ export default function Gingivitis() {
                     Si se siguen estas recomendaciones, la gingivitis suele desaparecer en unos días o semanas. En casos más avanzados, puede ser necesario un tratamiento más agresivo, como raspado y alisado radicular.
                 </p>
             </div>
-            <FooterApp></FooterApp>
+            <FooterApp />
         </div>
     );
 }

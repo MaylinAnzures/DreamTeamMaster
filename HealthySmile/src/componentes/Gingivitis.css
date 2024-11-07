@@ -168,6 +168,10 @@
     list-style-type: disc; /* Para asegurar que las viñetas estén rellenas */
 }
 
+canvas{
+    height: 200vw;
+    width: 200vw;
+}
 
 
 

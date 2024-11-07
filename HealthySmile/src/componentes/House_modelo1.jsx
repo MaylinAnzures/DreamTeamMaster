@@ -10,8 +10,8 @@ Title: Colorful dental model
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function house_modelo1(props) {
-  const { nodes, materials } = useGLTF('/house_modelo1.gltf')
+export function House_modelo1(props) {
+  const { nodes, materials } = useGLTF('./house_modelo1.gltf')
   return (
     <group {...props} dispose={null}>
       <group position={[185.98, -194.95, 354.49]} rotation={[-0.688, 0.264, 2.944]}>
