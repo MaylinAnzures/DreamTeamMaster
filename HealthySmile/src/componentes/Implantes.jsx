@@ -52,6 +52,26 @@ export default function Implantes() {
                 <img src="modelosi.png" alt="Modelo 3D" width="800" height="auto" />
             </div>
 
+
+            {/* Segunda sección: "Modelos 3D" */}
+            <div className="section" id="modelos-3d">
+                <h2 className="titulo-principal">Modelo 3D</h2>
+                <Canvas 
+                    style={{ height: '400px', width: '100%' }}
+                    camera={{ position: [0, 2, 5], fov: 50 }} // Cámara para que el modelo sea visible
+                >
+                    {/* Iluminación mejorada */}
+                    <ambientLight intensity={0.5} />
+                    <directionalLight position={[10, 10, 5]} intensity={1} />
+                    
+                    {/* Modelo 3D */}
+                    <House_modelo1 />
+                    
+                    {/* Agregar controles para rotar el modelo */}
+                    <OrbitControls />
+                </Canvas>
+            </div>
+
             <div className="section" id="factores-riesgo">
                 <h2 className="titulo-principal">Factores de riesgo</h2>
                 <hr className="divider" />

@@ -37,10 +37,22 @@ export default function Halitosis() {
                 <p>La halitosis, o mal aliento, es un olor desagradable que sale de la boca y que puede estar causado por una mala higiene oral, enfermedades bucales o problemas de salud subyacentes.</p>
             </section>
 
-            {/* Segunda sección: "Modelo 3D" */}
             <div className="section" id="modelos-3d">
                 <h2 className="titulo-principal">Modelo 3D</h2>
-                <img src="modeloh.png" alt="Modelo 3D" width="800" />
+                <Canvas 
+                    style={{ height: '400px', width: '100%' }}
+                    camera={{ position: [0, 2, 5], fov: 50 }} // Cámara para que el modelo sea visible
+                >
+                    {/* Iluminación mejorada */}
+                    <ambientLight intensity={0.5} />
+                    <directionalLight position={[10, 10, 5]} intensity={1} />
+                    
+                    {/* Modelo 3D */}
+                    <House_modeloextra />
+                    
+                    {/* Agregar controles para rotar el modelo */}
+                    <OrbitControls />
+                </Canvas>
             </div>
 
             {/* Tercera sección: "Factores de riesgo" */}
