@@ -14,7 +14,9 @@ export const UserProvider = ({ children }) => {
   const [codigoDeVerificacion, setCodigoDeVerificacion] = useState(localStorage.getItem('codigoDeVerificacion') || null);
   const [contrasena, setContrasena] = useState(localStorage.getItem('contrasena') || null);
   const [correo, setCorreo] = useState(localStorage.getItem('correo') || null);
-  const [estaLogueado, setEstaLogueado] = useState(false);
+
+  // Inicializar estaLogueado basándose en el valor almacenado de usuarioLogueado
+  const [estaLogueado, setEstaLogueado] = useState(!!localStorage.getItem('usuarioLogueado'));
 
   useEffect(() => {
     localStorage.setItem('usuarioLogueado', usuarioLogueado);
@@ -27,6 +29,7 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('contrasena', contrasena);
     localStorage.setItem('correo', correo);
 
+    // Actualizar estaLogueado en cada cambio de usuarioLogueado
     setEstaLogueado(usuarioLogueado !== "");
   }, [usuarioLogueado, tipoUsuario, cedulaProfesional, idUsuario, idEspecialista, nivelPermisos, codigoDeVerificacion, contrasena, correo]);
 

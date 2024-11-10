@@ -36,7 +36,9 @@ function App() {
   return (
     <div className="app-container">
       <Routes>
+        {/* Redirige a /Inicio solo si estaLogueado es true; de lo contrario, redirige a /Decision */}
         <Route path="/" element={<Navigate to={estaLogueado ? "/Inicio" : "/Decision"} />} />
+        
         <Route path="/ImplementacionChat" element={<ImplementacionChat />} />
         <Route path="/Consulta" element={<Consulta />} />
         <Route path="/Chatbot" element={<Chatboti />} />
