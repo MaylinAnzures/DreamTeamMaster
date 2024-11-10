@@ -19,7 +19,7 @@ const menuOptions = [
 export default function HeaderApp() {
     return (
         <header>
-            <Link to="/">
+            <Link to="/Inicio">
                 <img src={Logito}alt="EducaSim Logo" className="logo"></img>
             </Link>
             <nav className={"link-container"}>
