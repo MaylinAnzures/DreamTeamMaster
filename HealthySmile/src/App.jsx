@@ -28,6 +28,7 @@ import Decision from './componentes/Decision.jsx';
 import DiagnosisChatbot from './Inicio/Diagnostico.jsx';
 import Chatbot from './Inicio/Chatbot';
 import ChatbotIntro from './Inicio/Chatbotito.jsx';
+window.global = window;
 
 function App() {
   const { estaLogueado } = useUserContext();

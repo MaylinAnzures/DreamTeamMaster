@@ -1,63 +1,104 @@
 import React, { useState, useEffect } from "react";
 import Stomp from 'stompjs';
 import SockJS from "sockjs-client";
-import { Avatar, Button, List, ListItem, ListItemAvatar, ListItemText, TextField, Typography } from "@mui/material";
-import { useUserContext } from './../componentes/RegistrarSesion'; 
+import { Avatar, Button, List, ListItem, ListItemText, TextField, Typography, Box } from "@mui/material";
+import { useUserContext } from './../componentes/UserContext'; 
+
 const Chatsito = () => {
-    const { usuarioLogueado } = useUserContext(); 
-    const [messages, setMessages] = useState([]);
-    const [message, setMessage] = useState('');
-    const [nickname, setNickname] = useState(usuarioLogueado); 
-    const [stompClient, setStompClient] = useState(null);
-    const [active, setActive] = useState(false);
+  const { usuarioLogueado } = useUserContext() || {};
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [stompClient, setStompClient] = useState(null);
+  const [active, setActive] = useState(false);
 
-    useEffect(() => {
-        setNickname(usuarioLogueado);
-    }, [usuarioLogueado]);
+  // UseEffect para establecer el nickname cuando el usuario está logueado
+  useEffect(() => {
+    console.debug('useEffect: usuarioLogueado:', usuarioLogueado);
+    if (usuarioLogueado) {
+      setNickname(usuarioLogueado);
+    }
+  }, [usuarioLogueado]);
 
-    const conectar = () => {
-        if (!active) {
-          const socket = new SockJS('http://localhost:8080/ws');
-          const client = Stomp.over(socket);
+  // UseEffect para conectar al WebSocket solo una vez
+  useEffect(() => {
+    // Solo intentamos conectar si el socket aún no está activo
+    if (!active) {
+      conectar();  // Se conecta al WebSocket solo una vez
+    }
+  }, [active]); // El efecto se ejecuta solo cuando el estado 'active' cambia
 
-          client.connect({}, () => {
-            client.subscribe('/topic/messages', (message) => {
-              const receivedMessage = JSON.parse(message.body);
-              setMessages(prevMessages => [...prevMessages, receivedMessage]); 
-            });
-          }, (error) => {
-            console.error('Connection error: ', error);
-          });
+  // Función para conectar al WebSocket
+  const conectar = () => {
+    console.debug('Intentando conectar al WebSocket...');
+    if (!active) {
+      console.debug('Conectando al WebSocket...');
+      const socket = new SockJS('http://localhost:8080/ws');
+      const client = Stomp.over(socket);
 
-          setStompClient(client);
-          setActive(true);
-        }
-    };
+      client.connect({}, () => {
+        console.debug('Conexión WebSocket exitosa');
+        client.subscribe('/topic/messages', (message) => {
+          console.debug('Mensaje recibido del servidor:', message);
+          const receivedMessage = JSON.parse(message.body);
+          setMessages(prevMessages => [...prevMessages, receivedMessage]); 
+        });
+      }, (error) => {
+        console.error('Error de conexión:', error);
+      });
 
-    const handleMessageChange = (event) => {
-      setMessage(event.target.value);
-    };
+      setStompClient(client);
+      setActive(true);  // Marcar como activo una vez conectado
+      console.debug('stompClient configurado:', client);
+    } else {
+      console.debug('Ya se está conectado, no es necesario conectar nuevamente.');
+    }
+  };
 
-    const sendMessage = () => {
-        conectar();
-        if (message.trim()) {
-          const chatMessage = {
-            nickname,
-            message,
-          };
+  // Función para manejar cambios en el campo de mensaje
+  const handleMessageChange = (event) => {
+    console.debug('Mensaje cambiado:', event.target.value);
+    setMessage(event.target.value);
+  };
 
-          stompClient.send('/app/chat', {}, JSON.stringify(chatMessage));
-          setMessage('');
-        }
-    };
+  // Función para enviar mensaje
+  const sendMessage = () => {
+    console.debug('Enviando mensaje...');
+    
+    // Verificar si stompClient está disponible antes de enviar el mensaje
+    if (!stompClient) {
+      console.error('No se puede enviar el mensaje, WebSocket no está conectado');
+      return;  // Si el stompClient no está disponible, no intentamos enviar el mensaje
+    }
 
-    return (
-      <Box display="flex" flexDirection="column" flex={1}>
+    if (message.trim()) {
+      console.debug('Mensaje a enviar:', message);
+      const chatMessage = {
+        nickname,
+        message,
+      };
+
+      stompClient.send('/app/chat', {}, JSON.stringify(chatMessage));
+      setMessage('');
+      console.debug('Mensaje enviado:', chatMessage);
+    } else {
+      console.debug('El mensaje está vacío, no se enviará.');
+    }
+  };
+
+  // Si no hay usuario logueado, mostrar mensaje de carga
+  if (!usuarioLogueado) {
+    console.debug('Usuario no logueado, mostrando cargando...');
+    return <div>Cargando...</div>;
+  }
+
+  return (
+    <Box display="flex" flexDirection="column" flex={1}>
       <Box display="flex" alignItems="center" bgcolor="#3f51b5" color="#fff" p={2}>
         <Avatar sx={{ bgcolor: "#fff", color: "#3f51b5", mr: 2 }}>
-          {specialist.name.charAt(0)}
+          {nickname.charAt(0)}
         </Avatar>
-        <Typography variant="h6">{specialist.name}</Typography>
+        <Typography variant="h6">{nickname}</Typography>
       </Box>
 
       <Box flex={1} p={2} bgcolor="#f9f9f9" overflow="auto">
@@ -78,6 +119,7 @@ const Chatsito = () => {
           ))}
         </List>
       </Box>
+
       <Box display="flex" alignItems="center" p={2} borderTop="1px solid #ddd">
         <TextField
           fullWidth
@@ -89,12 +131,11 @@ const Chatsito = () => {
         />
         
         <Button onClick={sendMessage} color="primary" disabled={!message.trim()}>
-          <SendIcon />
+          Enviar
         </Button>
       </Box>
     </Box>
   );
 };
-
 
 export default Chatsito;
