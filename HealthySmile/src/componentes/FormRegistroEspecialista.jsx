@@ -7,8 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import './FormRegistroPaciente.css';
 
 function FormRegistroEspecialista() {
-  const { setCodigoDeVerificacion, setUsuarioLogueado, setContrasena, 
-    setCorreo, setCedulaProfesional, setTipoUsuario,setNivelPermisos } = useUserContext();
+  const { setCodigoDeVerificacion, setUsuarioLogueado, setContrasena, setCorreo, setCedulaProfesional } = useUserContext();
   
   const [userData, setUserData] = useState({
     user_name: '',
@@ -42,8 +41,6 @@ function FormRegistroEspecialista() {
     setContrasena(userData.password); 
     setCorreo(userData.user_email);
     setCedulaProfesional(userData.cedulaProfesional);
-    setTipoUsuario("Especialista");
-    setNivelPermisos(2);
 
     const templateParams = {
       user_name: userData.user_name,

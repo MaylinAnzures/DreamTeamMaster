@@ -1,4 +1,5 @@
 /* Código CSS para el componente de verificación */
+
 #cod-vef {
     padding: 10vw;
     background: white;
@@ -11,7 +12,7 @@
 }
 
 #cod-vef h2 {
-    font-size: 5vw; /* Ajusta el tamaño según tu diseño */
+    font-size: 2.5rem; /* Ajusta el tamaño según tu diseño */
     text-align: center;
     margin-bottom: 20px;
     color: #333; /* Color del texto */
@@ -20,7 +21,7 @@
 #cod-vef input {
     width: 50%;
     padding: 10px;
-    margin: 15px 0;
+    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
@@ -45,14 +46,22 @@
 }
 
 #cod-vef button:hover {
-    background-color: #0056b3; /* Color del botón al hacer hover */
-    transform: scale(1.05); /* Escala al hacer hover */
+    background-color: #0056b3; /* Color más oscuro al hacer hover */
+    transform: translateY(-2px); /* Mover hacia arriba al hacer hover */
 }
 
-.login-wait-time {
-    color: red;
-    font-weight: bold;
-    padding-top: 30px;
-    font-size: 1.2em;
+#cod-vef p {
     text-align: center;
+    color: #666; /* Color del mensaje de verificación */
+    animation: fadeIn 0.5s; /* Animación de aparición */
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
