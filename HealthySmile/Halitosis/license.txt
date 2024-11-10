@@ -1,0 +1,11 @@
+Model Information:
+* title:	#30 on Full Mandibular Dentoform
+* source:	https://sketchfab.com/3d-models/30-on-full-mandibular-dentoform-16ec8610299f4d509df687143c016837
+* author:	Se Won An (https://sketchfab.com/sewonan)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "#30 on Full Mandibular Dentoform" (https://sketchfab.com/3d-models/30-on-full-mandibular-dentoform-16ec8610299f4d509df687143c016837) by Se Won An (https://sketchfab.com/sewonan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

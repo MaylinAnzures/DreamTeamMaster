@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lymphatics of head and neck
+* source:	https://sketchfab.com/3d-models/lymphatics-of-head-and-neck-5abcaca1574248c0860ae1d81b06998d
+* author:	University of Dundee, School of Dentistry (https://sketchfab.com/DundeeDental)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lymphatics of head and neck" (https://sketchfab.com/3d-models/lymphatics-of-head-and-neck-5abcaca1574248c0860ae1d81b06998d) by University of Dundee, School of Dentistry (https://sketchfab.com/DundeeDental) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
