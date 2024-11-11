@@ -39,7 +39,8 @@
     border: 10px solid white;
     padding: 0;
     margin: 0;
-    margin-right: 30px;
+    margin-right: 4200px;
+    margin-left: -90px;
 }
 .text1 p {
     margin: 0;
@@ -81,11 +82,15 @@
     align-items: center;
 }
 .titulo {
-    font-size: 60px;
+    font-size: 90px;
     font-weight: bold;
 }
-.body {
+#body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     font-size: 25px;
+}
+.part21 {
+    width: 75%;
+    height: auto;
 }

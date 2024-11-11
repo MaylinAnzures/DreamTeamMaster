@@ -36,8 +36,8 @@ export default function Inicio() {
             </div>
             <br /><br />
             <div className="contenedor">
-                <div className="columnaiz">
-                    <p style={{ fontSize: '60px', fontWeight: 'bold' }}>
+                <div className="columnaiz" style={{ paddingLeft: '50px', paddingRight: '10px'}}>
+                    <p style={{ fontSize: '100px', fontWeight: 'bold' }}>
                         ¿Pueden los bots reemplazar a los especialistas?
                     </p>
                     <p>
@@ -51,13 +51,14 @@ export default function Inicio() {
                 </div>
                 <div className="columnamedio">
                     <img src={part21} className="part21" alt="Descripción de la imagen 1" />
+                    <br />
                     <img src={part22} className="part21" alt="Descripción de la imagen 2" />
                 </div>
             </div>
             <br /><br />
             <img src={part31} alt="Descripción de la imagen" />
             <div className="contenedor">
-                <div className="columnaiz">
+                <div className="columnaiz" style={{ paddingLeft: '50px', paddingRight: '10px'}}>
                     <p className="titulo">Consulta Virtual</p>
                     <p>Nuestra plataforma de Consulta Virtual está diseñada para facilitar la interacción entre pacientes y especialistas, ofreciendo acceso rápido
                         y seguro a atención dental de calidad sin necesidad de visitas físicas. Los pacientes pueden reprogramar citas, y recibir diagnósticos
@@ -77,7 +78,7 @@ export default function Inicio() {
                 <div className="columnamedio">
                     <img src={part33} className="imagen" alt="Descripción de la imagen" />
                 </div>
-                <div className="columnamedio">
+                <div className="columnamedio" style={{ paddingLeft: '10px', paddingRight: '50px'}}>
                 <p className="titulo">Educación Dental</p>
                     <p>Puedes acceder a recursos educativos sobre salud bucal, incluyendo guías, modelos 3D, hábitos y consejos para tratar tu problema, lo que te
                         ayudará a tomar decisiones informadas sobre tu salud dental.
@@ -86,7 +87,7 @@ export default function Inicio() {
                 </div>
             </div>
             <div className="contenedor">
-                <div className="columnamedio">
+                <div className="columnamedio" style={{ paddingLeft: '50px', paddingRight: '10px'}}>
                     <p className="titulo">Tienda Virtual</p>
                     <p>Explora nuestra tienda, añade productos al carrito, sube tu receta médica si es necesario y recibe tu pedido en casa.
                     </p>
@@ -100,7 +101,7 @@ export default function Inicio() {
                 <div className="columnamedio">
                     <img src={part35} className="imagen" alt="Descripción de la imagen" />
                 </div>
-                <div className="columnamedio">
+                <div className="columnamedio" style={{ paddingLeft: '10px', paddingRight: '50px'}}>
                 <p className="titulo">Ayuda y Soporte</p>
                     <p>Puedes acceder a nuestra sección de Ayuda y Soporte para encontrar preguntas frecuentes, asistencia técnica, que te ayudarán a resolver
                         dudas sobre la plataforma, consultas virtuales y la gestión de citas o compras.
@@ -109,7 +110,7 @@ export default function Inicio() {
                 </div>
             </div>
             <div className="contenedor">
-                <div className="columnamedio">
+                <div className="columnamedio" style={{ paddingLeft: '50px', paddingRight: '10px'}}>
                     <p className="titulo">Gestión</p>
                     <p>Los administradores pueden gestionar citas, actualizar productos en la tienda, acceder a reportes y estadísticas, y comunicarse con
                         proveedores para asegurar un funcionamiento óptimo de la plataforma.
