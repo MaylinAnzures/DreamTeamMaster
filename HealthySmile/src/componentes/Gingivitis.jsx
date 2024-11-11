@@ -46,23 +46,25 @@ export default function Gingivitis() {
                 </p>
             </section>
 
-            {/* Segunda sección: "Modelos 3D" */}
-            <div className="section" id="modelos-3d">
+{/* Segunda sección: "Modelos 3D" */}
+<div className="section" id="modelos-3d">
     <h2 className="titulo-principal" style={{ marginBottom: '0px' }}>Modelo 3D</h2>
     <Canvas 
-        style={{ height: '400px', width: '100%', marginTop: '10px' }}
-        camera={{ position: [0, 1, 2], fov: 50 }} // Ajuste de posición de cámara más cerca del modelo
+        style={{ height: '100px', width: '100%', marginTop: '10px' }} // Ajuste de margen para colocar el modelo justo debajo del título
+        camera={{ position: [0, 1, 2], fov: 30 }} // Cámara más cerca y con un campo de visión más ajustado
     >
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
+        {/* Iluminación mejorada */}
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
         
-        {/* Escalar y orientar el modelo */}
-        <House_modelo1 scale={[2, 2, 2]} rotation={[0, Math.PI / 4, 0]} /> 
+        {/* Modelo 3D con escala aumentada para mayor visibilidad */}
+        <House_modelo1 scale={[3, 3, 3]} /> 
         
-        {/* Controles para que puedas mover el modelo si lo necesitas */}
+        {/* Desactiva los controles para que el modelo no se pueda mover */}
         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false} />
     </Canvas>
 </div>
+
 
 
             {/* Tercera sección: "Factores de riesgo" */}
