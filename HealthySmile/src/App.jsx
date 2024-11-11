@@ -6,7 +6,7 @@ import Consulta from './Inicio/Consulta';
 import Chatboti from './Inicio/Chatbot';
 import NotFound from './Inicio/NotFound';
 import IniciarSesion from './componentes/IniciarSesion.jsx';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import AyudaYSoporte from './componentes/AyudaYSoporte.jsx';
 import RegistrarSesion from './componentes/RegistrarSesion.jsx';
 import CodigoVerificacion from './componentes/CodigoVerificacion.jsx';
@@ -28,44 +28,43 @@ import Decision from './componentes/Decision.jsx';
 import DiagnosisChatbot from './Inicio/Diagnostico.jsx';
 import Chatbot from './Inicio/Chatbot';
 import ChatbotIntro from './Inicio/Chatbotito.jsx';
+window.global = window;
 
 function App() {
   const { estaLogueado } = useUserContext();
 
   return (
     <div className="app-container">
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={<Navigate to={estaLogueado ? "/Inicio" : "/Decision"} />}
-          />
-          <Route path="/ImplementacionChat" element={<ImplementacionChat />} />
-          <Route path="/Consulta" element={<Consulta />} />
-          <Route path="/Chatbot" element={<Chatboti />} />
-          <Route path="/Chat" element={<Chat />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/IniciarSesion" element={<IniciarSesion />} />
-          <Route path="/AyudaYSoporte" element={<AyudaYSoporte />} />
-          <Route path="/Registro" element={<RegistrarSesion />} />
-          <Route path="/Verificacion" element={<CodigoVerificacion />} />
-          <Route path="/Home" element={<Inicio />} />
-          <Route path="/EducacionDental" element={<EducacionDental />} />
-          <Route path="/Gingivitis" element={<Gingivitis />} />
-          <Route path="/Cancer" element={<Cancer />} />
-          <Route path="/Caries" element={<Caries />} />
-          <Route path="/Halitosis" element={<Halitosis />} />
-          <Route path="/Implantes" element={<Implantes />} />
-          <Route path="/Periodontitis" element={<Periodontitis />} />
-          <Route path="/Sensibilidad" element={<Sensibilidad />} />
-          <Route path="/Quiste" element={<Quiste />} />
-          <Route path="/Traumatismo" element={<Traumatismo />} />
-          <Route path="/Diagnostico" element={<DiagnosisChatbot />} />
-          <Route path="/Chatbotito" element={<ChatbotIntro />} />
-          <Route path="/Inicio" element={<Home />} />
-          <Route path="/Decision" element={<Decision />} />
-        </Routes>
-      </Router>
+      <Routes>
+        {/* Redirige a /Inicio solo si estaLogueado es true; de lo contrario, redirige a /Decision */}
+        <Route path="/" element={<Navigate to={estaLogueado ? "/Inicio" : "/Decision"} />} />
+        
+        <Route path="/ImplementacionChat" element={<ImplementacionChat />} />
+        <Route path="/Consulta" element={<Consulta />} />
+        <Route path="/Chatbot" element={<Chatboti />} />
+        <Route path="/Chat" element={<Chat />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/IniciarSesion" element={<IniciarSesion />} />
+        <Route path="/AyudaYSoporte" element={<AyudaYSoporte />} />
+        <Route path="/Registro" element={<RegistrarSesion />} />
+        <Route path="/Verificacion" element={<CodigoVerificacion />} />
+        <Route path="/Inicio" element={<Home />} />
+        <Route path='/Home' element={<Inicio/>}/>
+        <Route path="/EducacionDental" element={<EducacionDental />} />
+        <Route path="/Gingivitis" element={<Gingivitis />} />
+        <Route path="/Cancer" element={<Cancer />} />
+        <Route path="/Caries" element={<Caries />} />
+        <Route path="/Halitosis" element={<Halitosis />} />
+        <Route path="/Implantes" element={<Implantes />} />
+        <Route path="/Periodontitis" element={<Periodontitis />} />
+        <Route path="/Sensibilidad" element={<Sensibilidad />} />
+        <Route path="/Quiste" element={<Quiste />} />
+        <Route path="/Traumatismo" element={<Traumatismo />} />
+        <Route path="/Diagnostico" element={<DiagnosisChatbot />} />
+        <Route path="/Chatbot" element={<Chatbot />} />
+        <Route path="/Chatbotito" element={<ChatbotIntro />} />
+        <Route path="/Decision" element={<Decision />} />
+      </Routes>
     </div>
   );
 }

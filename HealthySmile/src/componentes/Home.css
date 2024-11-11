@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100vw;
     margin: 0;
     background-color: white;
 }
@@ -16,11 +16,12 @@
     background-color: white;
 }
 
+
 .carousel {
     position: relative;
     overflow: hidden;
     background-color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 1.2vw;
     border-radius: 10px;
 }
 
@@ -32,7 +33,7 @@
 .slide {
     min-width: 100%;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 2vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,11 +45,11 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 24px;
+    font-size: 2vw;
     color: #333;
     background-color: rgba(255, 255, 255, 0.7);
     border: none;
-    padding: 10px;
+    padding: 1vw;
     cursor: pointer;
     border-radius: 50%;
 }
@@ -69,31 +70,31 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 150px;
+    padding-left: 15vw;
 }
 #carousel1 .panel7 p,
 #carousel1 .panel7 h1 {
     width: 100%;
     text-align: left;
-    margin: 5px 0;
+    margin: 0.5vw 0;
 }
 .bpanel7 {
     align-self: flex-start;
-    padding: 10px;
+    padding: 1vw;
     background-color: transparent;
     border-radius: 20px;
     border: 1px solid white;
     font-weight: bold;
     color: white;
-    height: 60px;
-    width: 400px;
-    font-size: 20px;
+    height: 4.5vw;
+    width: 25vw;
+    font-size: 1.3vw;
 }
 #carousel1 .panel2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 2vw;
 }
 
 #carousel1 .panel2 .textpanel2 {
@@ -126,7 +127,7 @@
 }
 #carousel1 .panel2 .columna {
     text-align: left;
-    padding-right: 10px;
+    padding-right: 1vw;
 }
 #carousel1 .panel2 .columnamedio {
     text-align: center;
@@ -147,7 +148,7 @@
 }
 #carousel1 .panel6 .columna {
     text-align: left;
-    padding-right: 10px;
+    padding-right: 1vw;
 }
 #carousel1 .panel6 .columnamedio {
     text-align: center;
@@ -156,8 +157,8 @@
 
 .button-container {
     display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    gap: 1vw;
+    margin-top: 1vw;
 }
 
 .button2 {
@@ -165,8 +166,8 @@
     color: black;
     border-radius: 20px;
     font-weight: bold;
-    height: 50px;
-    width: 400px;
+    height: 3.2vw;
+    width: 28vw;
     border: 0px;
 }
 
@@ -183,7 +184,7 @@
 }
 #carousel2 .slide img {
     width: auto;
-    height: 400px;
+    height: 20vw;
 }
 
 .contenedor {
@@ -212,20 +213,15 @@
 }
 .morado {
     background-color: #d7bde2;
-    padding: 30px;
-    padding-left: 150px;
+    padding: 3vw;
 }
-.especialistas {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+
+
 .espe h3 {
     color: darkcyan;
 }
 .azul {
-    padding-top: 20px;
+    padding-top: 2vw;
     background-color: darkcyan;
     color: white;
 }
@@ -233,16 +229,28 @@
     background-color: #373737;
     color: white;
 }
+
+.contenedor-forms{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 4vw;
+}
+
 .form1 {
-    padding-left: 100px;
-    margin-left: 200px;
+    width: 50%;
+    padding-left: 5vw;
     background-color: lightblue;
-    height: 380px;
+    height: 25vw;
 }
 .form2 {
-    margin-right: 200px;
+    width: 50%;
     background-color: lightgray;
-    height: 380px;
+    height: 25vw;
 }
 .ingresa {
     background-color: transparent;
@@ -250,63 +258,61 @@
     border-bottom: 1px solid black; 
     outline: none; 
     color: #333;
-    padding: 5px;
+    margin: 0.5vw;
     font-size: large;
-    width: 600px;
+    padding-top: 1vw;
+    width: 32vw;
 }
+
+.form2 textarea{
+    resize: none;
+}
+
 .entregar {
-    width: 600px;
+    width: 90%;
     font-size: larger;
     background-color: #d7bde2;
     color: black;
     font-weight: bold;
     border-radius: 20px;
     border: 0px;
-    padding: 10px;
+    padding: 0.7vw;
 }
-.privacidad {
-    background-color: transparent;
-    border: 3px solid white;
-    width: 180px;
-    color: white;
-    font-size: 15px;
-    padding: 10px;
-    font-weight: bold;
-}
+
 .bazul {
     background-color: transparent;
     border-radius: 20px;
     border: 1px solid white;
     font-weight: bold;
     color: white;
-    height: 50px;
-    width: 400px;
+    height: 3.2vw;
+    width: 28vw;
 }
 .mbuton {
-    width: 600px;
-    height: 150px;
+    width: 50vw;
+    height: 8vw;
     background-color: transparent;
     border-radius: 100px;
     border: 5px solid cornflowerblue;
     color: cornflowerblue;
-    font-size: 30px;
+    font-size: 2vw;
 }
 .explora {
     background-color: black;
     color: white;
-    font-size: 20px;
+    font-size: 1vw;
     font-weight: bold;
     border: none;
-    padding: 20px;
+    padding: 1vw;
 }
 .bslide2 {
     background-color: transparent;
     color: black;
     border: 2px solid black;
-    padding: 10px;
-    font-size: 25px;
+    padding: 0.7vw;
+    font-size: 1.5vw;
     font-family: 'Courier New', Courier, monospace;
-    width: 400px;
+    width: 27vw;
     font-weight: bold;
 }
 #carousel1 .panel2 .imgpanel2 {
@@ -337,9 +343,23 @@
     background-color: darkblue;
     color: white;
     border-radius: 15px;
-    padding: 10px;
+    padding: 0.7vw;
     border: 0px;
-    font-size: 15px;
+    font-size: 1.3vw;
     font-weight: bold;
-    width: 400px;
+    width: 27vw;
+}
+
+.form1 h3{
+    margin-top: 2vw;
+    font-size: 3vw;
+}
+
+.form1 p{
+    margin-top: 0.3vw;
+    font-size: 1.1vw;
+}
+
+.form2 h1{
+    font-size: 4vw;
 }

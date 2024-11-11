@@ -16,8 +16,22 @@ import panel4 from './panel4.png';
 import panel5 from './panel5.png';
 import panel6 from './panel6.png';
 import panel7 from './panel7.png';
+import Especialistas from './Especialistas';
+import { useState } from 'react';
+import { Alert, Stack } from '@mui/material';
 
 export default function Home() {
+
+
+    // Estados para nombre, correo, mensaje y los mensajes de respuesta
+    const [nombre, setNombre] = useState('');
+    const [correo, setCorreo] = useState('');
+    const [mensaje, setMensaje] = useState('');
+    const [responseMessage, setResponseMessage] = useState('');
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isError, setIsError] = useState(false);
+
+
     useEffect(() => {
         // Reemplazo de `window.onload` para que funcione cuando el componente monte
         window.scrollTo(0, 0);
@@ -51,6 +65,44 @@ export default function Home() {
         showSlide(carouselId, currentSlide + step);
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const preguntaData = {
+            pregunta: mensaje,
+            nombre,
+            correo
+        };
+    
+        try {
+            const response = await fetch('http://localhost:3000/api/crearPregunta', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(preguntaData),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Error al crear la pregunta frecuente');
+            }
+    
+            setResponseMessage('Notas enviadas correctamente');
+            setIsSuccess(true);
+            setIsError(false);
+    
+            setNombre('');
+            setCorreo('');
+            setMensaje('');
+        } catch (error) {
+            console.error('Error al enviar la pregunta:', error);
+            setResponseMessage('Error al enviar la pregunta. Inténtalo de nuevo.');
+            setIsSuccess(false);
+            setIsError(true);
+        }
+    };
+    
+
     return (
         <div>
             <HeaderApp />
@@ -67,7 +119,7 @@ export default function Home() {
                                 <br />de consulta, productos dentales y más.
                             </p>
                             <div className="button-container">
-                                <button className="bazul">SOLICITAR CONSULTA</button>
+                          <a href='/Consulta'>   <button className="bazul">SOLICITAR CONSULTA</button> </a>
                                 <button className="button2">IR A LA TIENDA</button>
                             </div>
                         </div>
@@ -200,7 +252,7 @@ export default function Home() {
                     <button className="next" onClick={() => moveSlide('carousel2', 1)}>&#10095;</button>
                 </div>
                 <br />
-                <button className="explora">EXPLORAR MÁS</button>
+            <a href='/EducacionDental'> <button className="explora">EXPLORAR MÁS</button> </a>
                 <br /><br /><br /><br />
                 <div className="morado">
                     <div className="contenedor">
@@ -210,7 +262,7 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="columnamedio">
-                            <button className="mbuton">CONSULTA AHORA</button>
+                     <a href='/Consulta'>      <button className="mbuton">CONSULTA AHORA</button> </a>
                         </div>
                     </div>
                 </div>
@@ -218,50 +270,7 @@ export default function Home() {
                 <p style={{ fontSize: '40px' }}>Conoce a Nuestros Especialistas</p>
                 <div className="espe">
                     <div className="contenedor">
-                        <div className="columnamedio">
-                            <div>
-                                <img src={espe1} alt="Especialista" className="especialistas" />
-                                <h1>Sigmund Rodríguez Rojas</h1>
-                                <h3>Cédula: 5782277</h3>
-                                <p>Especializado en el tratamiento quirúrgico de tumores malignos, con amplia experiencia en procedimientos mínimamente invasivos.</p>
-                            </div>
-                            <div>
-                                <img src={espe1} alt="Especialista" className="especialistas" />
-                                <h1>Samaria Patiño Cataño</h1>
-                                <h3>Cédula: 2850636</h3>
-                                <p>Odontóloga general con un enfoque en la salud dental preventiva y estética.</p>
-                            </div>
-                            <div>
-                                <img src={espe1} alt="Especialista" className="especialistas" />
-                                <h1>Sigmund Rodríguez Rojas</h1>
-                                <h3>Cédula: 5782277</h3>
-                                <p>Especializado en el tratamiento quirúrgico de tumores malignos, con amplia experiencia en procedimientos mínimamente invasivos.</p>
-                            </div>
-                            <div>
-                                <img src={espe1} alt="Especialista" className="especialistas" />
-                                <h1>Sigmund Rodríguez Rojas</h1>
-                                <h3>Cédula: 5782277</h3>
-                                <p>Especializado en el tratamiento quirúrgico de tumores malignos, con amplia experiencia en procedimientos mínimamente invasivos.</p>
-                            </div>
-                            <div>
-                                <img src={espe1} alt="Especialista" className="especialistas" />
-                                <h1>Sigmund Rodríguez Rojas</h1>
-                                <h3>Cédula: 5782277</h3>
-                                <p>Especializado en el tratamiento quirúrgico de tumores malignos, con amplia experiencia en procedimientos mínimamente invasivos.</p>
-                            </div>
-                            <div>
-                                <img src={espe1} alt="Especialista" className="especialistas" />
-                                <h1>Sigmund Rodríguez Rojas</h1>
-                                <h3>Cédula: 5782277</h3>
-                                <p>Especializado en el tratamiento quirúrgico de tumores malignos, con amplia experiencia en procedimientos mínimamente invasivos.</p>
-                            </div>
-                            <div>
-                                <img src={espe1} alt="Especialista" className="especialistas" />
-                                <h1>Sigmund Rodríguez Rojas</h1>
-                                <h3>Cédula: 5782277</h3>
-                                <p>Especializado en el tratamiento quirúrgico de tumores malignos, con amplia experiencia en procedimientos mínimamente invasivos.</p>
-                            </div>
-                        </div>
+                        <Especialistas/>
                     </div>
                 </div>
 
@@ -283,6 +292,7 @@ export default function Home() {
                         <p style={{ fontSize: '80px', fontWeight: 'bold' }}>55 2000 6100</p>
                     </div>
                     <div className="contenedor">
+                        <div className='contenedor-forms'> 
                         <div className="columna form1">
                         <h3>CALL US</h3>
                         <p style={{ color: 'cornflowerblue', fontWeight: 'bold' }}>55 2000 6100</p>
@@ -293,14 +303,55 @@ export default function Home() {
                         </div>
                         <div className="columnamedio form2">
                         <h1>Contáctenos</h1>
-                        <input type="text" name="nombre" placeholder="Ingresa tu nombre" autoFocus autoComplete="off" className="ingresa" />
-                        <br />
-                        <input type="email" name="email" placeholder="Ingresa un email válido" autoFocus autoComplete="off" className="ingresa" />
-                        <br /><br /><br />
-                        <input type="text" name="nombre" placeholder="Notas para el doctor" autoFocus autoComplete="off" className="ingresa" />
-                        <br /><br />
-                        <button className="entregar">ENTREGAR</button>
-                        <br />
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                name="nombre"
+                                placeholder="Ingresa tu nombre"
+                                autoFocus
+                                autoComplete="off"
+                                className="ingresa"
+                                value={nombre}
+                                onChange={(e) => setNombre(e.target.value)}
+                            />
+                            <br />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Ingresa un email válido"
+                                autoFocus
+                                autoComplete="off"
+                                className="ingresa"
+                                value={correo}
+                                onChange={(e) => setCorreo(e.target.value)}
+                            />
+                            <textarea
+                                name="mensaje"
+                                placeholder="Notas para el doctor"
+                                autoFocus
+                                autoComplete="off"
+                                className="ingresa"
+                                value={mensaje}
+                                onChange={(e) => setMensaje(e.target.value)}
+                            />
+                            <br /><br />
+                            <button type="submit" className="entregar">ENTREGAR</button>
+                        </form>
+
+                        {/* Mostrar mensaje de éxito */}
+                        {isSuccess && (
+                            <Stack sx={{ width: '100%', marginTop: 2 }} spacing={2}>
+                                <Alert severity="success">{responseMessage}</Alert>
+                            </Stack>
+                        )}
+
+                        {/* Mostrar mensaje de error */}
+                        {isError && (
+                            <Stack sx={{ width: '100%', marginTop: 2 }} spacing={2}>
+                                <Alert severity="error">{responseMessage}</Alert>
+                            </Stack>
+                        )}
+                    </div>
                         </div>
                     </div>
                     <br /><br /><br /><br />
