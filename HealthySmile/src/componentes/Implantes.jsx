@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import {House_implante}  from './House_implante'
 import './Implantes.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
 import FooterApp from './footer';
 import HeaderApp from './header';
+import { OrbitControls } from '@react-three/drei';
 import logoSmile from './logoSmile.png';
 import modelosi from '/modelosi.png';
 import s1i from '/s1i.png';
@@ -65,7 +68,7 @@ export default function Implantes() {
                     <directionalLight position={[10, 10, 5]} intensity={1} />
                     
                     {/* Modelo 3D */}
-                    <House_modelo1 />
+                    <House_implante />
                     
                     {/* Agregar controles para rotar el modelo */}
                     <OrbitControls />

@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import {House_Halitosis}  from './House_Halitosis'
 import './Halitosis.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
 import FooterApp from './footer';
 import HeaderApp from './header';
+import { OrbitControls } from '@react-three/drei';
 
 export default function Halitosis() {
     useEffect(() => {
@@ -37,6 +40,7 @@ export default function Halitosis() {
                 <p>La halitosis, o mal aliento, es un olor desagradable que sale de la boca y que puede estar causado por una mala higiene oral, enfermedades bucales o problemas de salud subyacentes.</p>
             </section>
 
+            {/* Segunda Seccion: Modelo 3D */}
             <div className="section" id="modelos-3d">
                 <h2 className="titulo-principal">Modelo 3D</h2>
                 <Canvas 
@@ -48,7 +52,7 @@ export default function Halitosis() {
                     <directionalLight position={[10, 10, 5]} intensity={1} />
                     
                     {/* Modelo 3D */}
-                    <House_modeloextra />
+                    <House_Halitosis />
                     
                     {/* Agregar controles para rotar el modelo */}
                     <OrbitControls />
