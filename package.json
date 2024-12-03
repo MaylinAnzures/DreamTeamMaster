@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "@react-three/drei": "^9.115.0",
+    "express": "^4.21.1",
+    "react-three-fiber": "^6.0.13",
+    "three": "^0.170.0"
   }
 }

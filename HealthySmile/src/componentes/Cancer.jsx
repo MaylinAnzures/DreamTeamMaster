@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import {House_Cancer}  from './House_Cancer'
 import './Cancer.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
 import FooterApp from './footer';
 import HeaderApp from './header';
+import { OrbitControls } from '@react-three/drei';
 
 export default function Cancer() {
     useEffect(() => {
@@ -40,11 +43,24 @@ export default function Cancer() {
                 las mejillas y la garganta.Es una enfermedad seria que requiere un diagnóstico temprano para mejorar 
                 las probabilidades de tratamiento exitoso.</p>
             </section>
-
-            {/* Segunda sección: "Modelos 3D" */}
-            <div className="section" id="modelos-3d">
-                <h2 className="titulo-principal">Modelo 3D</h2>
-                <img src="modeloc.png" alt="Modelo 3D" width="800" />
+            
+           {/* Segunda sección: "Modelos 3D" */}
+           <div className="section" id="modelos-3d">
+                 <h2 className="titulo-principal" style={{ marginBottom: '0px' }}>Modelo 3D</h2>
+            <Canvas 
+                style={{ height: '400px', width: '100%', marginTop: '10px' }} // Ajuste de margen para colocar el modelo justo debajo del título
+                camera={{ position: [0, 2, 5], fov: 50 }} // Cámara para que el modelo sea visible
+             >
+               {/* Iluminación mejorada */}
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[10, 10, 5]} intensity={1} />
+        
+        {/* Modelo 3D */}
+         <House_Cancer />
+        
+        {/* Agregar controles para rotar el modelo */}
+                 <OrbitControls />
+            </Canvas>
             </div>
 
             {/* Tercera sección: "Factores de riesgo" */}
@@ -143,25 +159,9 @@ export default function Cancer() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para prevenir el cáncer bucal:</p>
-                    <ul>
-                        <li>Evita el consumo de tabaco y alcohol.</li>
-                        <li>Protege tus labios del sol usando protector solar labial.</li>
-                        <li>Mantén una dieta rica en frutas y verduras.</li>
-                        <li>Vacúnate contra el VPH.</li>
-                        <li>Realiza autoexámenes y visita regularmente a tu dentista para chequeos.</li>
-                    </ul>
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento depende de la gravedad del traumatismo:</strong></p>
                 <ul>
                     <li>Cirugía: Para extirpar el tumor y los tejidos afectados.</li>
                     <li>Radioterapia: Uso de rayos X de alta energía para destruir las células cancerosas.</li>

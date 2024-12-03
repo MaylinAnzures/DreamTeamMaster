@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import './Implantes.css'; 
+import { Canvas } from '@react-three/fiber';
+import {House_implante}  from './House_implante'
+import './Implantes.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
 import FooterApp from './footer';
 import HeaderApp from './header';
-import logoSmile from '../../public/logoSmile.png';
+import { OrbitControls } from '@react-three/drei';
 import modelosi from '/modelosi.png';
 import s1i from '/s1i.png';
 import s2i from '/s2i.png';
@@ -51,6 +53,35 @@ export default function Implantes() {
                 <h2 className="titulo-principal">Modelo 3D</h2>
                 <img src="modelosi.png" alt="Modelo 3D" width="800" height="auto" />
             </div>
+
+
+            <div className="section" id="modelos-3d">
+    <h2 className="titulo-principal" style={{ textAlign: 'center', marginBottom: '20px' }}>
+        Modelo 3D - Implantes
+    </h2>
+    <Canvas
+        style={{
+            height: '70vh', // Asegura un tamaño adecuado para el canvas
+            width: '100%',
+            margin: '0 auto', // Centra el canvas horizontalmente
+        }}
+        camera={{
+            position: [0, 2, 5], // Posición de la cámara para ver claramente el modelo
+            fov: 50, // Campo de visión ajustado
+        }}
+    >
+        {/* Iluminación */}
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+
+        {/* Modelo 3D */}
+        <House_implante scale={[0.6, 0.6, 0.6]} position={[0, -0.5, 0]} />
+
+        {/* Controles para interactuar con el modelo */}
+        <OrbitControls target={[0, 0, 0]} />
+    </Canvas>
+</div>
+
 
             <div className="section" id="factores-riesgo">
                 <h2 className="titulo-principal">Factores de riesgo</h2>
@@ -123,25 +154,8 @@ export default function Implantes() {
                 </div>
             </div>
 
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para cuidar los implantes y prevenir complicaciones:</p>
-                    <ul>
-                        <li>Mantén una excelente higiene oral, cepillando alrededor del implante y usando hilo dental.</li>
-                        <li>Evita fumar, ya que afecta la cicatrización.</li>
-                        <li>Visita regularmente al dentista para chequeos y limpiezas.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1i.png" alt="Prevención Imagen 1" />
-                    <img src="p2i.jpg" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El proceso de colocación del implante incluye:</strong></p>
                 <ul>
                     <li>Evaluación previa: Un examen detallado de la boca y los huesos para asegurarse de que puedes recibir un implante.</li>
                     <li>Cirugía de colocación: El implante de titanio se inserta en el hueso maxilar.</li>

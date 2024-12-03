@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import {House_Halitosis}  from './House_Halitosis'
 import './Halitosis.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
 import FooterApp from './footer';
 import HeaderApp from './header';
+import { OrbitControls } from '@react-three/drei';
 
 export default function Halitosis() {
     useEffect(() => {
@@ -37,11 +40,36 @@ export default function Halitosis() {
                 <p>La halitosis, o mal aliento, es un olor desagradable que sale de la boca y que puede estar causado por una mala higiene oral, enfermedades bucales o problemas de salud subyacentes.</p>
             </section>
 
-            {/* Segunda sección: "Modelo 3D" */}
             <div className="section" id="modelos-3d">
-                <h2 className="titulo-principal">Modelo 3D</h2>
-                <img src="modeloh.png" alt="Modelo 3D" width="800" />
-            </div>
+    <h2 className="titulo-principal" style={{ textAlign: 'center', marginBottom: '20px' }}>
+        Modelo 3D - Implantes
+    </h2>
+    <Canvas
+        style={{
+            height: '70vh', // Asegura un tamaño adecuado para el canvas
+            width: '100%',
+            margin: '0 auto', // Centra el canvas horizontalmente
+        }}
+        camera={{
+            position: [0, 2, 5], // Posición de la cámara para ver claramente el modelo
+            fov: 50, // Campo de visión ajustado
+        }}
+    >
+        {/* Iluminación */}
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+
+        {/* Modelo 3D */}
+        <House_Halitosis scale={[0.6, 0.6, 0.6]} position={[0, -0.5, 0]} />
+
+        {/* Controles para interactuar con el modelo */}
+        <OrbitControls target={[0, 0, 0]} />
+        </Canvas>
+        </div>
+
+                
+                    
+                  
 
             {/* Tercera sección: "Factores de riesgo" */}
             <div className="section" id="factores-riesgo">
@@ -119,24 +147,9 @@ export default function Halitosis() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para prevenir la halitosis:</p>
-                    <ul>
-                        <li>Mantén una buena higiene oral cepillándote y usando hilo dental regularmente.</li>
-                        <li>Evita el consumo de tabaco y alcohol.</li>
-                        <li>Realiza chequeos dentales periódicos.</li>
-                        <li>Bebe suficiente agua para evitar la boca seca.</li>
-                    </ul>
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento depende de la causa de la halitosis:</strong></p>
                 <ul>
                     <li>Mejorar la higiene oral.</li>
                     <li>Tratar infecciones o problemas digestivos subyacentes.</li>

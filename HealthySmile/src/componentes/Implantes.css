@@ -420,52 +420,6 @@ h2.titulo-principal {
 
 
 
-/* Prevención */
-#prevencion {
-    background-color: #ffffff;
-    display: flex;
-    align-items: flex-start; /* Mantiene los elementos alineados al principio de la sección */
-    justify-content: space-between; /* Distribuir el espacio */
-    padding: 40px;
-    transition: background-color 0.3s ease-in-out;
-    font-weight: normal;
-}
-
-/* Estilo para el texto */
-#prevencion .text {
-    width: 60%;
-    text-align: left;
-    padding-right: 10px;
-    font-size: 13.5px;
-    margin-bottom: 10px;
-    position: relative;
-    font-weight: normal;
-}
-
-/* Estilo para las imágenes */
-#prevencion .images {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Mantener alineación a la derecha */
-    padding-left: 700px; /* Mantiene la imagen bien a la derecha */
-    margin-top: -500px; /* Mueve las imágenes hacia arriba */
-}
-
-#prevencion .images img {
-    width: 75%; /* Mantener el ancho al 70% del contenedor */
-    height: 350px; /* Ajustar la altura para que sean más pequeñas */
-    object-fit: cover; /* Asegura que la imagen llene el contenedor sin deformarse */
-    margin-bottom: 10px;
-    border-radius: 5px; /* Añadir borde redondeado */
-    transition: transform 0.5s ease;
-}
-
-#prevencion .images img:hover {
-    transform: scale(1.1);
-}
-
-
 /* Tratamiento */
 #tratamiento {
     background-color: #7B904B;

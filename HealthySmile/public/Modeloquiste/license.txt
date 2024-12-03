@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ortho Study Models sr12
+* source:	https://sketchfab.com/3d-models/ortho-study-models-sr12-ef47849bd84d47628cb4f7cd699b524a
+* author:	drpcnaidu (https://sketchfab.com/drpcnaidu)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ortho Study Models sr12" (https://sketchfab.com/3d-models/ortho-study-models-sr12-ef47849bd84d47628cb4f7cd699b524a) by drpcnaidu (https://sketchfab.com/drpcnaidu) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

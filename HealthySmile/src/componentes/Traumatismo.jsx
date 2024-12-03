@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import {House_Traumatismo}  from './House_Traumatismo'
 import './Traumatismo.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
 import FooterApp from './footer';
 import HeaderApp from './header';
+import { OrbitControls } from '@react-three/drei';
 
 export default function Traumatismos() {
     useEffect(() => {
@@ -41,11 +44,33 @@ export default function Traumatismos() {
                 </p>
             </section>
 
-            {/* Segunda sección: "Modelos 3D" */}
             <div className="section" id="modelos-3d">
-                <h2 className="titulo-principal">Modelo 3D</h2>
-                <img src="modelot.png" alt="Modelo 3D" width="800" height="auto" />
-            </div>
+    <h2 className="titulo-principal" style={{ textAlign: 'center', marginBottom: '20px' }}>
+        Modelo 3D - Implantes
+    </h2>
+    <Canvas
+        style={{
+            height: '70vh', // Asegura un tamaño adecuado para el canvas
+            width: '100%',
+            margin: '0 auto', // Centra el canvas horizontalmente
+        }}
+        camera={{
+            position: [0, 2, 5], // Posición de la cámara para ver claramente el modelo
+            fov: 50, // Campo de visión ajustado
+        }}
+    >
+        {/* Iluminación */}
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+
+        {/* Modelo 3D */}
+        <House_Traumatismo scale={[0.6, 0.6, 0.6]} position={[0, -0.5, 0]} />
+
+        {/* Controles para interactuar con el modelo */}
+        <OrbitControls target={[0, 0, 0]} />
+    </Canvas>
+</div>
+
 
             {/* Tercera sección: "Factores de riesgo" */}
             <div className="section" id="factores-riesgo">
@@ -127,27 +152,9 @@ export default function Traumatismos() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>Para prevenir traumatismos bucodentales:</p>
-                    <ul>
-                        <li>Usa un protector bucal durante deportes de contacto.</li>
-                        <li>Evita morder objetos duros, como hielo o caramelos duros.</li>
-                        <li>Asegura las áreas de juego para evitar caídas.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1t.jpg" alt="Prevención Imagen 1" />
-                    <img src="p2t.jpg" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento depende de la gravedad del traumatismo:</strong></p>
                 <ul>
                     <li>Fracturas dentales: Se pueden reparar con empastes o coronas.</li>
                     <li>Dientes desplazados: Un dentista puede reposicionar los dientes.</li>

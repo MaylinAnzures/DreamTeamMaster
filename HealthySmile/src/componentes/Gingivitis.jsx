@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
-import './Gingivitis.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
+import { Canvas } from '@react-three/fiber';
+import {House_modelo1}  from './House_modelo1'
+import './Gingivitis.css';
 import FooterApp from './footer';
 import HeaderApp from './header';
+import { OrbitControls } from '@react-three/drei';
 
 export default function Gingivitis() {
     useEffect(() => {
@@ -22,7 +25,7 @@ export default function Gingivitis() {
 
     return (
         <div>
-            <HeaderApp></HeaderApp>
+            <HeaderApp />
             {/* Sección destacada de título "Gingivitis" */}
             <div className="hero">
                 <h1>Gingivitis</h1>
@@ -43,32 +46,41 @@ export default function Gingivitis() {
                 </p>
             </section>
 
-            {/* Segunda sección: "Modelos 3D" */}
+
             <div className="section" id="modelos-3d">
-                <h2 className="titulo-principal">Modelo 3D</h2>
-                <Canvas 
-                    style={{ height: '400px', width: '100%' }}
-                    camera={{
-                        position: [0, 2, 5],
-                        fov: 50
-                      }}// Cámara para que el modelo sea visible
-                >
-                    {/* Iluminación mejorada */}
-                    <ambientLight intensity={0.5} />
-                    <directionalLight position={[10, 10, 5]} intensity={1} />
-                    
-                    {/* Modelo 3D */}
-                    <House_modelo1 />
-                    
-                    {/* Agregar controles para rotar el modelo */}
-                    <OrbitControls />
-                </Canvas>
-            </div>
+    <h2 className="titulo-principal" style={{ marginBottom: '0px', textAlign: 'center' }}>Modelo 3D</h2>
+    <Canvas
+        style={{
+            height: '70vh', // Canvas ocupa el 70% de la altura de la ventana
+            width: '100%',
+            margin: '0 auto', // Centrado horizontalmente
+        }}
+        camera={{
+            position: [0, 2, 5], // Posición inicial de la cámara
+            fov: 50, // Campo de visión ajustado para una buena perspectiva
+        }}
+    >
+        {/* Iluminación */}
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+
+        {/* Modelo 3D */}
+        <House_modelo1 scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]} />
+        
+        {/* Controles de órbita */}
+        <OrbitControls target={[0, 0, 0]} /> {/* Fijar el centro del modelo como objetivo */}
+    </Canvas>
+</div>
+
+
+
+
+
 
             {/* Tercera sección: "Factores de riesgo" */}
             <div className="section" id="factores-riesgo">
                 <h2 className="titulo-principal">Factores de riesgo</h2>
-                <hr className="divider" /> {/* Línea blanca debajo del encabezado */}
+                <hr className="divider" />
                 <p>
                     Las personas con mayor riesgo son aquellas que participan en deportes
                     de contacto sin protectores bucales, los niños pequeños, y las personas
@@ -137,29 +149,9 @@ export default function Gingivitis() {
                 </div>
             </div>
 
-            {/* Séptima sección: "Prevención" */}
-            <div className="section" id="prevencion">
-                <div className="text">
-                    <h2 className="titulo-principal">Prevención</h2>
-                    <p>La mejor manera de prevenir la gingivitis es tener una buena higiene bucal. Aquí algunos hábitos preventivos:</p>
-                    <ul>
-                        <li>Cepíllate los dientes al menos dos veces al día con pasta dental con flúor.</li>
-                        <li>Usa hilo dental diariamente.</li>
-                        <li>Acude al dentista para limpiezas profesionales cada seis meses.</li>
-                        <li>Deja de fumar y evita el tabaco.</li>
-                        <li>Mantén una dieta equilibrada, rica en nutrientes que promuevan la salud de las encías.</li>
-                    </ul>
-                </div>
-                <div className="images">
-                    <img src="p1g.png" alt="Prevención Imagen 1" />
-                    <img src="p2g.jpg" alt="Prevención Imagen 2" />
-                </div>
-            </div>
-
             {/* Octava sección: "Tratamiento" */}
             <div className="section" id="tratamiento">
                 <h2>Tratamiento</h2>
-                <p className="subtitle"><strong>El tratamiento para la gingivitis es sencillo si se detecta en una etapa temprana. Los pasos comunes incluyen:</strong></p>
                 <ul>
                     <li>Limpieza profesional: Tu dentista o higienista dental eliminará toda la placa, el sarro y las bacterias de la boca.</li>
                     <li>Instrucciones de higiene oral: Te enseñarán a mantener una buena rutina de limpieza en casa para evitar la reaparición de la enfermedad.</li>
@@ -169,7 +161,7 @@ export default function Gingivitis() {
                     Si se siguen estas recomendaciones, la gingivitis suele desaparecer en unos días o semanas. En casos más avanzados, puede ser necesario un tratamiento más agresivo, como raspado y alisado radicular.
                 </p>
             </div>
-            <FooterApp></FooterApp>
+            <FooterApp />
         </div>
     );
 }

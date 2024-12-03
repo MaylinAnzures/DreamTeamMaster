@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import {House_Caries}  from './House_Caries'
 import './Caries.css'; // Asegúrate de que este archivo CSS esté en la ruta correcta
 import FooterApp from './footer';
 import HeaderApp from './header';
+import { OrbitControls } from '@react-three/drei';
 
 export default function Caries() {
     useEffect(() => {
@@ -43,11 +46,35 @@ export default function Caries() {
         </p>
       </section>
 
-      {/* Sección "Modelo 3D" */}
       <div className="section" id="modelos-3d">
-        <h2 className="titulo-principal">Modelo 3D</h2>
-        <img src="m1ca.png" alt="Modelo 3D" width="800" height="auto" />
-      </div>
+    <h2 className="titulo-principal" style={{ textAlign: 'center', marginBottom: '20px' }}>
+        Modelo 3D - Implantes
+    </h2>
+    <Canvas
+        style={{
+            height: '70vh', // Asegura un tamaño adecuado para el canvas
+            width: '100%',
+            margin: '0 auto', // Centra el canvas horizontalmente
+        }}
+        camera={{
+            position: [0, 2, 5], // Posición de la cámara para ver claramente el modelo
+            fov: 50, // Campo de visión ajustado
+        }}
+    >
+        {/* Iluminación */}
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+
+        
+         <House_Caries scale={[0.6, 0.6, 0.6]} position={[0, -0.5, 0]} />
+
+        {/* Controles para interactuar con el modelo */}
+        <OrbitControls target={[0, 0, 0]} />
+    </Canvas>
+    </div>
+
+        
+       
 
       {/* Sección "Factores de riesgo" */}
       <div className="section" id="factores-riesgo">
@@ -135,28 +162,10 @@ export default function Caries() {
         </div>
       </div>
 
-      {/* Sección "Prevención" */}
-      <div className="section" id="prevencion">
-        <h2 className="titulo-principal">Prevención</h2>
-        <p>Puedes prevenir las caries siguiendo estos hábitos:</p>
-        <ul>
-          <li>Cepíllate los dientes al menos dos veces al día con pasta dental con flúor.</li>
-          <li>Usa hilo dental diariamente para limpiar entre los dientes.</li>
-          <li>Limita el consumo de alimentos y bebidas azucaradas.</li>
-          <li>Bebe suficiente agua, especialmente agua fluorada.</li>
-          <li>Acude regularmente al dentista para limpiezas y chequeos profesionales.</li>
-        </ul>
-        <div className="images">
-          <img src="p1ca.jpg" alt="Prevención Imagen 1" />
-          <img src="p2ca.jpg" alt="Prevención Imagen 2" />
-        </div>
-      </div>
-
       {/* Sección "Tratamiento" */}
       <div className="section" id="tratamiento">
         <h2>Tratamiento</h2>
         <p className="subtitle">
-          <strong>El tratamiento de la caries varía según la gravedad:</strong>
         </p>
         <ul>
           <li>Flúor: En las etapas iniciales, el flúor puede ayudar a revertir el daño en el esmalte.</li>
