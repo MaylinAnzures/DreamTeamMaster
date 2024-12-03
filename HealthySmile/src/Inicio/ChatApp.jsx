@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 import SideBar from './SideBar'
 import Chatsito from "./Chatsito";
+import { UserContext } from "../componentes/UserContext";
+
 
 const ChatApp = () => {
   const [selectedSpecialist, setSelectedSpecialist] = useState(null);

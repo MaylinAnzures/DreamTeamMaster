@@ -1,6 +1,8 @@
+
 #body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+     font-size: 25px;
 }
 
 .contenedor {
@@ -11,8 +13,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    text-align: left;
     justify-content: center;
+    gap: 10px;
 }
 .columnaiz img {
     height: 100%;
@@ -36,6 +38,12 @@
     text-align: center;
     align-items: end;
 }
+
+.tit{
+    align-items: center;
+    justify-content: center;
+
+}
 .text1 {
     font-size: 24px;
     justify-content: center;
@@ -44,8 +52,8 @@
     border: 10px solid white;
     padding: 0;
     margin: 0;
-    margin-right: 4200px;
-    margin-left: -90px;
+    margin: 20px auto;
+
 }
 .text1 p {
     margin: 0;
@@ -63,20 +71,9 @@
     font-size: 15px;
     padding: 10px;
     font-weight: bold;
+    
 }
-.boton {
-    border: 2px solid #d7bde2;
-    border-radius: 10px;
-    outline: none; 
-    color: #333;
-    padding: 5px;
-    width: auto;
-    background-color: #d7bde2;
-    font-size: 30px;
-    min-width: 300px;
-    padding-left: 30px;
-    padding-right: 30px;
-}
+
 .columnamedio .imagen {
     width: 100%;
     height: auto;
@@ -85,6 +82,7 @@
 .columnaiz, .columnamedio {
     justify-content: center;
     align-items: center;
+    align-content: center;
 }
 #imagen-intermedia{
     width: 100%;
@@ -93,16 +91,17 @@
     font-size: 90px;
     font-weight: bold;
 }
-#body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    font-size: 25px;
+p {
+    font-size: calc(1rem + 1vw);
 }
 
 .text2 {
-    font-size: 30px;
+    margin-top: 20px;
+    text-align: justify;
+    font-size: 25px;
     padding-left: 45px;
     padding-right: 10px;
+    margin-bottom: 10px;
 }
 .part21 {
     width: 75%;

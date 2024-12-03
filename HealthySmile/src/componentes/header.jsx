@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useUserContext } from '../componentes/UserContext.jsx';
 
 const menuOptions = [
-    { label: 'Consulta Urgente', to: '/Consulta' },
+    { label: 'Consulta', to: '/Consulta' },
     { label: 'Chatbot', to: '/Chatbot' },
     { label: 'Control de citas', to: '#' },
 ];
@@ -29,11 +29,8 @@ export default function HeaderApp() {
                 <img src={Logito} alt="EducaSim Logo" className="logo" />
             </Link>
             <nav className="link-container">
-                <NavLink to={secureLink("/Home")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
+                <NavLink to={secureLink("/Inicio")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
                     Home
-                </NavLink>
-                <NavLink to={secureLink("#")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
-                    Inicio Sesion
                 </NavLink>
                 <BasicMenu buttonLabel="Consulta Virtual" menuOptions={menuOptions.map(option => ({ ...option, to: secureLink(option.to) }))} />
                 <NavLink to={secureLink("/EducacionDental")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>

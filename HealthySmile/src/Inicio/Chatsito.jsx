@@ -94,7 +94,7 @@ const Chatsito = () => {
 
   return (
     <Box display="flex" flexDirection="column" flex={1}>
-      <Box display="flex" alignItems="center" bgcolor="#3f51b5" color="#fff" p={2}>
+      <Box display="flex" alignItems="center" bgcolor="#092B5A" color="#fff" p={2}>
         <Avatar sx={{ bgcolor: "#fff", color: "#3f51b5", mr: 2 }}>
           {nickname.charAt(0)}
         </Avatar>
