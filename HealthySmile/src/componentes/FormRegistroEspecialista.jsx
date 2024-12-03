@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { Button, CircularProgress, Menu, MenuItem } from '@mui/material';
 import { useUserContext } from './UserContext'; // Asegúrate de que la ruta sea correcta
 import { useNavigate } from 'react-router-dom';
 import './FormRegistroPaciente.css';
@@ -15,10 +16,45 @@ function FormRegistroEspecialista() {
     user_email: '',
     password: '',
     cedulaProfesional: '',
+    descripcion: '',
+    especilidad: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+  const [optionsVisible, setOptionsVisible] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const SpinnerDropdownMUI = () => {
+    const handleClick = (event) => {
+      setLoading(true);
+      setOptionsVisible(false);
+      setAnchorEl(event.currentTarget);
+      setTimeout(() => {
+        setLoading(false);
+        setOptionsVisible(true);
+      }, 2000);
+    };
+
+    return (
+      <div className="spinner-dropdown-container">
+        <Button variant="contained" onClick={handleClick}>
+          {loading ? <CircularProgress size={24} color="inherit" /> : 'Texto'}
+        </Button>
+        <Menu
+          anchorEl={anchorEl}
+          open={optionsVisible}
+          onClose={() => setAnchorEl(null)}
+        >
+          <MenuItem onClick={() => alert('opción 1')}>Opción 1</MenuItem>
+          <MenuItem onClick={() => alert('opción 2')}>Opción 2</MenuItem>
+          <MenuItem onClick={() => alert('opción 3')}>Opción 3</MenuItem>
+        </Menu>
+      </div>
+    );
+  };
 
   useEffect(() => {
     emailjs.init("FSzB2scbpugQQbPwH"); // Inicializa emailJS con tu clave de usuario
@@ -119,12 +155,24 @@ function FormRegistroEspecialista() {
                 required 
               />
             </div>
+            <div className='inputGroup-2'>
+              <label>Descripción</label>
+              <input 
+                placeholder='Ingresa la descripción' 
+                className='inputField' 
+                type="text" 
+                name="descripcion" 
+                value={userData.descripcion} 
+                onChange={handleChange} 
+                required 
+              />
+            </div>
+            <SpinnerDropdownMUI />
           </div>
           <button type="submit" disabled={isSubmitting} className='submitButton'>Registrarse</button>
         </form>
       </CardContent>
     </Card>
-
   );
 }
 

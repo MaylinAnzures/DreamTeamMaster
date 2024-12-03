@@ -14,6 +14,12 @@ export const UserProvider = ({ children }) => {
   const [codigoDeVerificacion, setCodigoDeVerificacion] = useState(localStorage.getItem('codigoDeVerificacion') || null);
   const [contrasena, setContrasena] = useState(localStorage.getItem('contrasena') || null);
   const [correo, setCorreo] = useState(localStorage.getItem('correo') || null);
+  //Agregado
+  const [preliminar, setPreliminar] = useState(localStorage.getItem('preliminar') || null);
+  const [fotoPerfil, setFotoPerfil] = useState(localStorage.getItem('fotoPerfil') || null);
+  const [descripcion, setDescripcion] = useState(localStorage.getItem('descripcion') || null);
+  const [especialidad, setEspecialidad] = useState(localStorage.getItem('especialidad') || null);
+  //
 
   // Inicializar estaLogueado basándose en el valor almacenado de usuarioLogueado
   const [estaLogueado, setEstaLogueado] = useState(!!localStorage.getItem('usuarioLogueado'));
@@ -28,10 +34,16 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('codigoDeVerificacion', codigoDeVerificacion);
     localStorage.setItem('contrasena', contrasena);
     localStorage.setItem('correo', correo);
+    //Agregado
+    localStorage.setItem('preliminar', preliminar);
+    localStorage.setItem('fotoPerfil', fotoPerfil);
+    localStorage.setItem('descripcion', descripcion);
+    localStorage.setItem('especialidad', especialidad);
+    //
 
     // Actualizar estaLogueado en cada cambio de usuarioLogueado
     setEstaLogueado(usuarioLogueado !== "");
-  }, [usuarioLogueado, tipoUsuario, cedulaProfesional, idUsuario, idEspecialista, nivelPermisos, codigoDeVerificacion, contrasena, correo]);
+  }, [usuarioLogueado, tipoUsuario, cedulaProfesional, idUsuario, idEspecialista, nivelPermisos, codigoDeVerificacion, contrasena, correo, preliminar, fotoPerfil, descripcion, especialidad]);
 
   return (
     <UserContext.Provider value={{ 
@@ -54,7 +66,16 @@ export const UserProvider = ({ children }) => {
       correo, 
       setCorreo, 
       estaLogueado, 
-      setEstaLogueado 
+      setEstaLogueado,
+      //Agregado
+      preliminar,
+      setPreliminar,
+      fotoPerfil,
+      setFotoPerfil,
+      descripcion,
+      setDescripcion,
+      especialidad,
+      setEspecialidad 
     }}>
       {children}
     </UserContext.Provider>

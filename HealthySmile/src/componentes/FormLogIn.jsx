@@ -21,6 +21,11 @@ export default function FormLogIn() {
     setIdEspecialista,
     setNivelPermisos,
     setEstaLogueado, // Nueva función del contexto
+    //Agregado
+    setPreliminar,
+    setFotoPerfil,
+    setDescripcion,
+    setEspecialidad, //
   } = useUserContext();
 
   const handleSubmit = async (e) => {
@@ -53,6 +58,12 @@ export default function FormLogIn() {
       setIdUsuario(result.idUsuario);
       setIdEspecialista(result.tipoUser === 'Especialista' ? result.idEspecialista : null);
       setNivelPermisos(result.nivelPermisos);
+      //Agregado
+      setPreliminar(result.preliminar);
+      setFotoPerfil(result.fotoPerfil);
+      setDescripcion(result.descripcion === 'Especialista' ? result.descripcion : null);
+      setEspecialidad(result.especialidad === 'Especialista' ? result.especialidad : null);
+      //
 
       // Establecer `estaLogueado` en `true`
       setEstaLogueado(true);
