@@ -15,5 +15,6 @@
     "express": "^4.21.1",
     "react-three-fiber": "^6.0.13",
     "three": "^0.170.0"
+    
   }
 }
