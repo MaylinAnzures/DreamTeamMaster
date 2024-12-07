@@ -58,7 +58,7 @@
 .next { right: 10px; }
 
 #carousel1 .panel1 {
-    background-image: url("panel1.png");
+    background-image: url("fondoHerramientas.jpg");
     background-size: cover;
     color: #fff;
 }
@@ -326,7 +326,7 @@
     width: 100%;
 }
 .panel3 {
-    background-image: url("panel3.png");
+    background-image: url("fondito.jpeg");
     background-size: cover;
     color: #fff;
 }

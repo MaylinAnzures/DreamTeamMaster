@@ -3,6 +3,7 @@ import FooterApp from './footer';
 import HeaderApp from './header';
 import './Home.css';
 import car21 from './car21.png';
+import fondito from '../../public/fondito.jpeg';
 import car22 from './car22.png';
 import car23 from './car23.png';
 import car24 from './car24.png';
@@ -111,15 +112,15 @@ export default function Home() {
                 <div id="carousel1" className="carousel">
                     <div className="carousel-slide">
                         <div className="slide panel1">
-                            <p style={{ fontSize: '9vw', color: 'pink', fontFamily: "'Times New Roman', Times, serif" }}>
+                            <p style={{ fontSize: '9vw', color: 'black', fontFamily: "'Times New Roman', Times, serif" }}>
                                 Cuida tu Sonrisa
                             </p>
-                            <p style={{ fontSize: '2vw' }}>
+                            <h4 style={{ fontSize: '2vw', color: 'black' }}>
                                 Agiliza tu cita dental desde casa. Regístrate hoy y accede a servicios
                                 <br />de consulta, productos dentales y más.
-                            </p>
+                            </h4>
                             <div className="button-container">
-                          <a href='/Consulta'>   <button className="bazul">SOLICITAR CONSULTA</button> </a>
+                          <a href='/Consulta'>   <button className="button2">SOLICITAR CONSULTA</button> </a>
                                 <button className="button2">IR A LA TIENDA</button>
                             </div>
                         </div>
@@ -137,7 +138,7 @@ export default function Home() {
                                         <br />tratamiento personalizado y efectivo para cada
                                         <br />paciente.
                                     </p>
-                                    <button className="bslide2">CONOCER ESPECIALISTAS</button>
+                                    <a href='/Consulta'> <button className="button2">CONOCER ESPECIALISTAS</button></a>
                                 </div>
                                 <div className="columnamedio">
                                     <img src={panel2} alt="Panel 2" className="imgpanel2" />
