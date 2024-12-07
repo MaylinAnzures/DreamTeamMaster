@@ -22,6 +22,7 @@ import Sensibilidad from './componentes/Sensibilidad.jsx';
 import Quiste from './componentes/Quiste.jsx';
 import Traumatismo from './componentes/Traumatismo.jsx';
 import Home from './componentes/Home.jsx';
+import AddConsult from './Inicio/AddConsult.jsx';
 import Chat from './Inicio/Chat.jsx';
 import { useUserContext } from '../src/componentes/UserContext.jsx';
 import Decision from './componentes/Decision.jsx';
@@ -48,11 +49,14 @@ function App() {
         <Route path="/AyudaYSoporte" element={<AyudaYSoporte />} />
         <Route path="/Registro" element={<RegistrarSesion />} />
         <Route path="/Verificacion" element={<CodigoVerificacion />} />
+        
         <Route path="/Inicio" element={<Home />} />
         <Route path='/Home' element={<Inicio/>}/>
         <Route path="/EducacionDental" element={<EducacionDental />} />
         <Route path="/Gingivitis" element={<Gingivitis />} />
         <Route path="/Cancer" element={<Cancer />} />
+        <Route path="/AgregarConsulta" element={<AddConsult />} />
+
         <Route path="/Caries" element={<Caries />} />
         <Route path="/Halitosis" element={<Halitosis />} />
         <Route path="/Implantes" element={<Implantes />} />

@@ -31,7 +31,7 @@ function Consulta(){
          <t4 className="subtitle">
           Citas
           </t4>
-          <Link to="/consulta" style={{ textDecoration: 'none', alignSelf:'flex-start' }}>
+          <Link to="/AgregarConsulta" style={{ textDecoration: 'none', alignSelf:'flex-start' }}>
           <Button
       variant="outlined"
       className="button"
