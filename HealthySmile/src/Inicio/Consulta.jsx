@@ -22,7 +22,9 @@ function Consulta(){
     
     return (
         <>
-            <HeaderApp />
+        <HeaderApp />
+        
+            
             <Box className="appointment-card">
       <Box className="overlay">
         <h2 className="title">
