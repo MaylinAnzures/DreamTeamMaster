@@ -28,7 +28,7 @@ export default function Especialistas() {
                         <img src={espe1} alt="Especialista" className="especialistas-img" />
                         <h1>{especialista.nombre}</h1>
                         <h3>Cédula: {especialista.cedulaProfesional}</h3>
-                        <p>Especializado en el tratamiento quirúrgico de tumores malignos, con amplia experiencia en procedimientos mínimamente invasivos.</p>
+                        <p>{especialista.descripcion}</p>
                     </div>
                 ))}
             </div>

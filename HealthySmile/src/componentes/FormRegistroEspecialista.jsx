@@ -9,7 +9,7 @@ import './FormRegistroPaciente.css';
 
 function FormRegistroEspecialista() {
   const { setCodigoDeVerificacion, setUsuarioLogueado, setContrasena, 
-    setCorreo, setCedulaProfesional, setTipoUsuario,setNivelPermisos } = useUserContext();
+    setCorreo, setCedulaProfesional, setTipoUsuario,setNivelPermisos, setEspecialidad } = useUserContext();
   
   const [userData, setUserData] = useState({
     user_name: '',
@@ -38,19 +38,26 @@ function FormRegistroEspecialista() {
       }, 2000);
     };
 
+    const handleSelectOption = (especialidadSeleccionada) => {
+      setEspecialidad(especialidadSeleccionada); // Guarda la especialidad en el contexto
+      setOptionsVisible(false);
+      setAnchorEl(null);
+    };
+
     return (
       <div className="spinner-dropdown-container">
-        <Button variant="contained" onClick={handleClick}>
-          {loading ? <CircularProgress size={24} color="inherit" /> : 'Texto'}
+        <Button variant="contained" onClick={handleClick} >
+          {loading ? <CircularProgress size={24} color="inherit" /> : 'Especialidades'}
         </Button>
         <Menu
           anchorEl={anchorEl}
           open={optionsVisible}
           onClose={() => setAnchorEl(null)}
-        >
-          <MenuItem onClick={() => alert('opción 1')}>Opción 1</MenuItem>
-          <MenuItem onClick={() => alert('opción 2')}>Opción 2</MenuItem>
-          <MenuItem onClick={() => alert('opción 3')}>Opción 3</MenuItem>
+        > 
+        <MenuItem onClick={() => handleSelectOption('Odontología General')}>Odontología General</MenuItem>
+          <MenuItem onClick={() => handleSelectOption('Ortodoncia')}>Ortodoncia</MenuItem>
+          <MenuItem onClick={() => handleSelectOption('Periodoncia')}>Periodoncia</MenuItem>
+          <MenuItem onClick={() => handleSelectOption('Endodoncia')}>Endodoncia</MenuItem>
         </Menu>
       </div>
     );

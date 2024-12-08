@@ -22,6 +22,10 @@ export default function CodigoVerificacion() {
         setIdUsuario,
         setIdEspecialista,
         setEstaLogueado,
+        especialidad,
+        setEspecialidad,
+        descripcion,
+        setDescripcion,
     } = useUserContext();
 
     const [userInputCode, setUserInputCode] = useState('');
@@ -74,6 +78,9 @@ export default function CodigoVerificacion() {
                             tipoUser: 'Especialista',
                             nivelPermisos: 2,
                             cedulaProfesional: cedulaProfesional,
+                            descripcion: descripcion, // Añadido
+                            especialidad: especialidad, 
+                            
                         }),
                     });
                 } else {

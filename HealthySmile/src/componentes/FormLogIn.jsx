@@ -1,6 +1,7 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import { useUserContext } from './UserContext';
 import './FormLogIn.css';
 import Alert from '@mui/material/Alert';
@@ -9,10 +10,10 @@ import Stack from '@mui/material/Stack';
 export default function FormLogIn() {
   const [correoInput, setCorreoInput] = useState('');
   const [contrasenaInput, setContrasenaInput] = useState('');
-  const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  // Obtener funciones del contexto
+  const navigate = useNavigate(); // Hook para redirigir
+
   const {
     setUsuarioLogueado,
     setTipoUsuario,
@@ -20,12 +21,11 @@ export default function FormLogIn() {
     setIdUsuario,
     setIdEspecialista,
     setNivelPermisos,
-    setEstaLogueado, // Nueva función del contexto
-    //Agregado
+    setEstaLogueado,
     setPreliminar,
     setFotoPerfil,
     setDescripcion,
-    setEspecialidad, //
+    setEspecialidad,
   } = useUserContext();
 
   const handleSubmit = async (e) => {
@@ -58,28 +58,20 @@ export default function FormLogIn() {
       setIdUsuario(result.idUsuario);
       setIdEspecialista(result.tipoUser === 'Especialista' ? result.idEspecialista : null);
       setNivelPermisos(result.nivelPermisos);
-      //Agregado
       setPreliminar(result.preliminar);
       setFotoPerfil(result.fotoPerfil);
-      setDescripcion(result.descripcion === 'Especialista' ? result.descripcion : null);
-      setEspecialidad(result.especialidad === 'Especialista' ? result.especialidad : null);
-      //
+      setDescripcion(result.tipoUser === 'Especialista' ? result.descripcion : null);
+      setEspecialidad(result.tipoUser === 'Especialista' ? result.especialidad : null);
 
       // Establecer `estaLogueado` en `true`
       setEstaLogueado(true);
 
-      // Establecer el estado de éxito
-      setIsSuccess(true);
-      setIsError(false); // Asegúrate de que el error esté desactivado
-
-      // Limpiar los campos del formulario
-      setCorreoInput('');
-      setContrasenaInput('');
+      // Redirigir al Home
+      navigate('/Inicio');
 
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
-      setIsSuccess(false); // Asegúrate de que el éxito esté desactivado
-      setIsError(true);
+      setIsError(true); // Mostrar mensaje de error
     }
   };
 
@@ -114,13 +106,6 @@ export default function FormLogIn() {
           <br />
           <input type="submit" value="Iniciar Sesión" className="FormLogIn_submit" />
         </form>
-
-        {/* Mostrar mensaje de éxito */}
-        {isSuccess && (
-          <Stack sx={{ width: '100%', marginTop: 2 }} spacing={2}>
-            <Alert severity="success">Inicio de sesión exitoso</Alert>
-          </Stack>
-        )}
 
         {/* Mostrar mensaje de error */}
         {isError && (

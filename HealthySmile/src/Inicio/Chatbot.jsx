@@ -1,63 +1,102 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button, List, ListItem, ListItemText, Box, Grid, Paper, Typography, Divider } from '@mui/material';
+import { TextField, Button, List, ListItem, ListItemText, Box, Grid, Paper, Divider } from '@mui/material';
 import HeaderApp from "../componentes/header";
 import FooterApp from "../componentes/footer";
 
 const Chatbot = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const [messages, setMessages] = useState([]); 
-  const [input, setInput] = useState(''); 
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
 
-  const sendMessage = async () => {
-    if (!input) return;
+  // Referencia para el scroll automático
+  const chatEndRef = useRef(null);
 
+  // Diccionario de respuestas simuladas
+  const simulatedResponses = {
+    "que es una caries": "Una caries es un daño en el diente causado por la acumulación de bacterias y ácidos.",
+    "como prevenir caries": "Para prevenir caries, cepilla tus dientes al menos dos veces al día, usa hilo dental y reduce el consumo de azúcares.",
+    "que es la periodontitis": "La periodontitis es una enfermedad grave de las encías que puede provocar la pérdida de dientes si no se trata.",
+    "que es un implante dental": "Un implante dental es un dispositivo quirúrgico que se coloca en el hueso de la mandíbula para soportar un diente artificial.",
+    "cuanto cuesta una limpieza dental": "El costo de una limpieza dental puede variar, pero generalmente está entre $500 y $1,500 MXN."
+  };
+
+  const sendMessage = () => {
+    if (!input.trim()) return;
+
+    const lowerCaseInput = input.toLowerCase();
+
+    // Agrega el mensaje del usuario a la lista
     setMessages((prev) => [...prev, { sender: 'user', text: input }]);
 
-    try {
-      const response = await fetch('http://localhost:8080/bot/chat?prompt=' + encodeURIComponent(input), {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
+    // Encuentra una respuesta simulada o usa una predeterminada
+    const response = simulatedResponses[lowerCaseInput] || "Lo siento, no entiendo tu pregunta. ¿Puedes reformularla?";
 
-      if (response.ok) {
-        const data = await response.text();
-        setMessages((prev) => [...prev, { sender: 'bot', text: data }]);
-      } else {
-        setMessages((prev) => [
-          ...prev,
-          { sender: 'bot', text: 'Error al obtener la respuesta del chatbot.' },
-        ]);
-      }
-    } catch (error) {
-      setMessages((prev) => [
-        ...prev,
-        { sender: 'bot', text: 'Error de conexión con el chatbot.' },
-      ]);
-    }
+    // Agrega la respuesta del chatbot a la lista
+    setMessages((prev) => [...prev, { sender: 'bot', text: response }]);
 
-    setInput(''); 
+    setInput(''); // Limpia el campo de entrada
   };
+
+  // Desplazar automáticamente al final del chat
+  const scrollToBottom = () => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]); // Ejecutar el scroll cada vez que cambien los mensajes
 
   return (
     <>
       <HeaderApp />
       <Grid container sx={{ height: 'calc(100vh - 128px)' }}>
-        <Grid item xs={2} sx={{ backgroundColor: '#2A2F4F', color: 'white', p: 2 }}>
+        <Grid
+          item
+          xs={2}
+          sx={{
+            backgroundColor: '#2A2F4F',
+            color: 'white',
+            p: 2,
+          }}
+        >
           <h4>Chatbot</h4>
           <Divider sx={{ borderColor: 'white', mb: 2 }} />
-          <Button fullWidth sx={{ color: 'white', mb: 1 }}
-              onClick={() => navigate('/Consulta')}>
-              Volver a consultas
+          <Button
+            fullWidth
+            sx={{ color: 'white', mb: 1 }}
+            onClick={() => navigate('/Consulta')}
+          >
+            Volver a consultas
           </Button>
         </Grid>
 
-        <Grid item xs={8}>
-          <Paper elevation={3} sx={{ height: '100%', display: 'flex', flexDirection: 'column', p: 2 }}>
-            <Box sx={{ flex: 1, overflowY: 'auto', mb: 2 }}>
+        <Grid
+          item
+          xs={8}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+          }}
+        >
+          <Paper
+            elevation={3}
+            sx={{
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <Box
+              sx={{
+                flex: 1,
+                overflowY: 'auto',
+                mb: 2,
+                paddingBottom: '60px', // Espacio para evitar que los mensajes se solapen con el footer
+              }}
+            >
               <List>
                 {messages.map((msg, index) => (
                   <ListItem key={index} alignItems="flex-start">
@@ -67,10 +106,17 @@ const Chatbot = () => {
                     />
                   </ListItem>
                 ))}
+                <div ref={chatEndRef} /> {/* Referencia para el scroll */}
               </List>
             </Box>
 
-            <Box sx={{ display: 'flex', gap: 2 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                padding: '10px',
+                borderTop: '1px solid #ccc',
+              }}
+            >
               <TextField
                 fullWidth
                 label="Pregunta tus dudas"
@@ -82,6 +128,7 @@ const Chatbot = () => {
               <Button
                 variant="contained"
                 color="primary"
+                sx={{ ml: 1 }}
                 onClick={sendMessage}
               >
                 Enviar
@@ -90,9 +137,17 @@ const Chatbot = () => {
           </Paper>
         </Grid>
 
-       
-        <Grid item xs={2} sx={{ backgroundColor: '#E5E5E5', p: 2 }}>
-          <h7>Si tienes dudas o problemas con el chatbot no olvides preguntar en ayuda y gestión</h7>
+        <Grid
+          item
+          xs={2}
+          sx={{
+            backgroundColor: '#E5E5E5',
+            p: 2,
+          }}
+        >
+          <p>
+            Si tienes dudas o problemas con el chatbot no olvides preguntar en ayuda y gestión.
+          </p>
         </Grid>
       </Grid>
       <FooterApp />

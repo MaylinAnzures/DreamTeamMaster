@@ -29,6 +29,7 @@ import Decision from './componentes/Decision.jsx';
 import DiagnosisChatbot from './Inicio/Diagnostico.jsx';
 import Chatbot from './Inicio/Chatbot';
 import ChatbotIntro from './Inicio/Chatbotito.jsx';
+import Index from './index.jsx';
 window.global = window;
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
         <Route path="/" element={<Navigate to={estaLogueado ? "/Inicio" : "/Decision"} />} />
         
         <Route path="/ImplementacionChat" element={<ImplementacionChat />} />
+        <Route path="/borrar" element={<Index />} />
+
         <Route path="/Consulta" element={<Consulta />} />
         <Route path="/Chatbot" element={<Chatboti />} />
         <Route path="/Chat" element={<Chat />} />

@@ -6,7 +6,8 @@ window.global = window;
 
 export default function Index() {
   const handleClick = () => {
-    alert('Botón presionado!');
+    localStorage.clear();
+
   };
 
   return (
