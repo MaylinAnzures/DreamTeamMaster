@@ -202,6 +202,41 @@ app.get('/api/obtenerEspecialistas', (req, res) => {
     });
 });
 
+// Ruta para obtener nombre y cédula profesional de los especialistas
+app.get('/api/obtenerEspecialistasChat', (req, res) => {
+    const dbConnection = iniciarConexion();
+
+    dbConnection.connect((err) => {
+        if (err) {
+            console.error('Error al conectar a la base de datos:', err);
+            res.status(500).json({ error: 'Error al conectar con la base de datos' });
+            return;
+        }
+
+        const SQL_QUERY = `
+                SELECT 
+                    idUsuario,
+                    nomUser AS nombre,
+                    especialidad
+                FROM 
+                    ComEspecialistas
+            `;
+
+        dbConnection.query(SQL_QUERY, (err, results) => {
+            dbConnection.end(); // Cerrar la conexión después de la consulta
+
+            if (err) {
+                console.error('Error al obtener datos desde la vista:', err);
+                res.status(500).json({ error: 'Error al obtener datos de especialistas' });
+                return;
+            }
+            res.json(results); // Devolver los resultados en formato JSON
+        });
+    });
+});
+
+
+
 
 
 // Ruta para responder preguntas frecuentes

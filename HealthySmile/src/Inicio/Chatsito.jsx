@@ -1,94 +1,93 @@
 import React, { useState, useEffect } from "react";
-import Stomp from 'stompjs';
-import SockJS from "sockjs-client";
+import { db } from "../../firebaseConfig"; // Asegúrate de que firebase.js está configurado
+import { collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, where, getDocs } from "firebase/firestore";
 import { Avatar, Button, List, ListItem, ListItemText, TextField, Typography, Box } from "@mui/material";
-import { useUserContext } from './../componentes/UserContext'; 
+import { useUserContext } from './../componentes/UserContext';
 
-const Chatsito = () => {
-  const { usuarioLogueado } = useUserContext() || {};
+const Chatsito = ({ specialist }) => {
+  const { idUsuario, usuarioLogueado } = useUserContext() || {}; // Ahora obtenemos el idUsuario directamente
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [nickname, setNickname] = useState('');
-  const [stompClient, setStompClient] = useState(null);
-  const [active, setActive] = useState(false);
+  const [chatId, setChatId] = useState('');
 
-  // UseEffect para establecer el nickname cuando el usuario está logueado
+  // Establecer nickname cuando el usuario está logueado
   useEffect(() => {
-    console.debug('useEffect: usuarioLogueado:', usuarioLogueado);
     if (usuarioLogueado) {
       setNickname(usuarioLogueado);
     }
   }, [usuarioLogueado]);
 
-  // UseEffect para conectar al WebSocket solo una vez
+  // Buscar el chatId o crear uno nuevo si no existe
   useEffect(() => {
-    // Solo intentamos conectar si el socket aún no está activo
-    if (!active) {
-      conectar();  // Se conecta al WebSocket solo una vez
-    }
-  }, [active]); // El efecto se ejecuta solo cuando el estado 'active' cambia
+    if (!idUsuario || !specialist) return;
 
-  // Función para conectar al WebSocket
-  const conectar = () => {
-    console.debug('Intentando conectar al WebSocket...');
-    if (!active) {
-      console.debug('Conectando al WebSocket...');
-      const socket = new SockJS('http://localhost:8080/ws');
-      const client = Stomp.over(socket);
+    const fetchChatId = async () => {
+      console.log("Buscando chatId...");
+      console.log("idUsuario:", idUsuario); // Verifica que idUsuario esté siendo recibido correctamente
+      console.log("specialist:", specialist);
 
-      client.connect({}, () => {
-        console.debug('Conexión WebSocket exitosa');
-        client.subscribe('/topic/messages', (message) => {
-          console.debug('Mensaje recibido del servidor:', message);
-          const receivedMessage = JSON.parse(message.body);
-          setMessages(prevMessages => [...prevMessages, receivedMessage]); 
-        });
-      }, (error) => {
-        console.error('Error de conexión:', error);
-      });
+      const q = query(
+        collection(db, "chats"),
+        where("idUsuario", "==", idUsuario), // Usamos 'idUsuario' para la consulta
+        where("idEspecialista", "==", specialist.id)
+      );
 
-      setStompClient(client);
-      setActive(true);  // Marcar como activo una vez conectado
-      console.debug('stompClient configurado:', client);
-    } else {
-      console.debug('Ya se está conectado, no es necesario conectar nuevamente.');
-    }
-  };
+      try {
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          console.log("Chat encontrado:", querySnapshot.docs[0].id);
+          setChatId(querySnapshot.docs[0].id);
+        } else {
+          console.log("No se encontró el chat, creando uno nuevo...");
+          const newChatRef = await addDoc(collection(db, "chats"), {
+            idUsuario: idUsuario, // Usamos idUsuario aquí también
+            idEspecialista: specialist.id,
+          });
+          setChatId(newChatRef.id);
+        }
+      } catch (error) {
+        console.error("Error al buscar o crear el chat: ", error);
+      }
+    };
 
-  // Función para manejar cambios en el campo de mensaje
-  const handleMessageChange = (event) => {
-    console.debug('Mensaje cambiado:', event.target.value);
-    setMessage(event.target.value);
-  };
+    fetchChatId();
+  }, [idUsuario, specialist]); // Asegúrate de que idUsuario y specialist estén correctamente definidos
 
-  // Función para enviar mensaje
-  const sendMessage = () => {
-    console.debug('Enviando mensaje...');
-    
-    // Verificar si stompClient está disponible antes de enviar el mensaje
-    if (!stompClient) {
-      console.error('No se puede enviar el mensaje, WebSocket no está conectado');
-      return;  // Si el stompClient no está disponible, no intentamos enviar el mensaje
-    }
+  // Suscribirse a los mensajes del chat en tiempo real
+  useEffect(() => {
+    if (!chatId) return;
 
-    if (message.trim()) {
-      console.debug('Mensaje a enviar:', message);
-      const chatMessage = {
+    const q = query(
+      collection(db, "chats", chatId, "messages"),
+      orderBy("timestamp", "asc")
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetchedMessages = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setMessages(fetchedMessages);
+    });
+
+    return () => unsubscribe(); // Limpiar la suscripción al desmontar
+  }, [chatId]);
+
+  // Enviar mensaje a Firestore
+  const sendMessage = async () => {
+    if (!message.trim() || !chatId) return;
+
+    try {
+      await addDoc(collection(db, "chats", chatId, "messages"), {
         nickname,
         message,
-      };
-
-      stompClient.send('/app/chat', {}, JSON.stringify(chatMessage));
-      setMessage('');
-      console.debug('Mensaje enviado:', chatMessage);
-    } else {
-      console.debug('El mensaje está vacío, no se enviará.');
+        timestamp: serverTimestamp(),
+      });
+      setMessage(""); // Limpiar el campo de mensaje
+    } catch (error) {
+      console.error("Error enviando mensaje: ", error);
     }
   };
 
-  // Si no hay usuario logueado, mostrar mensaje de carga
-  if (!usuarioLogueado) {
-    console.debug('Usuario no logueado, mostrando cargando...');
+  if (!usuarioLogueado || !specialist) {
     return <div>Cargando...</div>;
   }
 
@@ -96,15 +95,15 @@ const Chatsito = () => {
     <Box display="flex" flexDirection="column" flex={1}>
       <Box display="flex" alignItems="center" bgcolor="#092B5A" color="#fff" p={2}>
         <Avatar sx={{ bgcolor: "#fff", color: "#3f51b5", mr: 2 }}>
-          {nickname.charAt(0)}
+          {specialist.name.charAt(0)}
         </Avatar>
-        <Typography variant="h6">{nickname}</Typography>
+        <Typography variant="h6">{specialist.name}</Typography>
       </Box>
 
       <Box flex={1} p={2} bgcolor="#f9f9f9" overflow="auto">
         <List>
-          {messages.map((msg, index) => (
-            <ListItem key={index} sx={{ justifyContent: msg.nickname === nickname ? 'flex-end' : 'flex-start' }}>
+          {messages.map((msg) => (
+            <ListItem key={msg.id} sx={{ justifyContent: msg.nickname === nickname ? 'flex-end' : 'flex-start' }}>
               <ListItemText
                 primary={msg.message}
                 sx={{
@@ -126,10 +125,9 @@ const Chatsito = () => {
           variant="outlined"
           placeholder="Escribe un mensaje"
           value={message}
-          onChange={handleMessageChange}
+          onChange={(e) => setMessage(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && sendMessage()}
         />
-        
         <Button onClick={sendMessage} color="primary" disabled={!message.trim()}>
           Enviar
         </Button>
