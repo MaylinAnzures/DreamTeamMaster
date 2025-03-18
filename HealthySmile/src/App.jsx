@@ -30,6 +30,7 @@ import DiagnosisChatbot from './Inicio/Diagnostico.jsx';
 import Chatbot from './Inicio/Chatbot';
 import ChatbotIntro from './Inicio/Chatbotito.jsx';
 import Index from './index.jsx';
+import Gestion from './Inicio/Gestion.jsx'
 window.global = window;
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route path="/Chat" element={<Chat />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/IniciarSesion" element={<IniciarSesion />} />
+        <Route path="/Gestion" element={<Gestion />} />
         <Route path="/AyudaYSoporte" element={<AyudaYSoporte />} />
         <Route path="/Registro" element={<RegistrarSesion />} />
         <Route path="/Verificacion" element={<CodigoVerificacion />} />

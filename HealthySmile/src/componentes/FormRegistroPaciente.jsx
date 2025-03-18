@@ -8,7 +8,7 @@ import './FormRegistroPaciente.css';
 
 function FormRegistroPaciente() {
   const { setCodigoDeVerificacion, setUsuarioLogueado, setContrasena, setCorreo, setTipoUsuario,
-    setCedulaProfesional, setNivelPermisos, setIdEspecialista } = useUserContext();
+    setCedulaProfesional, setNivelPermisos, setIdEspecialista, setEspecialidad } = useUserContext();
   
   const [userData, setUserData] = useState({
     user_name: '',

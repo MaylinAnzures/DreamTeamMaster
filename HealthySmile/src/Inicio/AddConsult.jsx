@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Grid, Button, TextField, Typography, Select, MenuItem, InputLabel, FormControl, IconButton} from '@mui/material';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { Box, Grid, Button, TextField, Typography, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import { DatePicker, LocalizationProvider, PickersDay } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import HeaderApp from '../componentes/header';
 import FooterApp from '../componentes/footer';
 import dayjs from 'dayjs';
-
 import fondito from '../../public/fondito.jpeg';
 
 function AgregarConsulta() {
@@ -13,6 +12,13 @@ function AgregarConsulta() {
   const [hora, setHora] = useState('');
   const [motivo, setMotivo] = useState('');
   const [especialista, setEspecialista] = useState('');
+
+  // Simulación de fechas ocupadas (debería venir de la BD)
+  const fechasOcupadas = [
+    '2025-03-20',
+    '2025-03-25',
+    '2025-03-28'
+  ];
 
   const handleGuardar = () => {
     if (fecha && hora && motivo && especialista) {
@@ -35,125 +41,130 @@ function AgregarConsulta() {
 
   return (
     <>
-    <HeaderApp/>
-    <div style={{backgroundColor: '#616163'}}>
-    <Grid container style={{ height: '100vh', overflow: 'hidden' }}>
-      {/* Sección de formulario */}
-      <Grid
-        item
-        xs={12}
-        md={6}
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: 2,
-        }}
-      >
-        <Box
-          sx={{
-            width: '100%',
-            maxWidth: 500,
-            padding: 3,
-            boxShadow: 3,
-            borderRadius: 2,
-            backgroundColor: '#fff',
-          }}
-        >
-          <Typography variant="h5" textAlign="center" sx={{ marginBottom: 2 }}>
-            Agregar Consulta
-          </Typography>
+      <HeaderApp />
+      <div style={{ backgroundColor: '#616163' }}>
+        <Grid container style={{ height: '100vh', overflow: 'hidden' }}>
+          {/* Sección de formulario */}
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: 2,
+            }}
+          >
+            <Box
+              sx={{
+                width: '100%',
+                maxWidth: 500,
+                padding: 3,
+                boxShadow: 3,
+                borderRadius: 2,
+                backgroundColor: '#fff',
+              }}
+            >
+              <Typography variant="h5" textAlign="center" sx={{ marginBottom: 2 }}>
+                Agregar Consulta
+              </Typography>
 
-          {/* Selector de fecha con calendario */}
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, marginBottom: 2 }}>
-              <DatePicker
-                label="Fecha"
-                value={fecha}
-                onChange={(newDate) => setFecha(newDate)}
-                renderInput={(params) => (
-                  <TextField {...params} fullWidth />
-                )}
+              {/* Selector de fecha con fechas ocupadas */}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Fecha"
+                  value={fecha}
+                  onChange={(newDate) => setFecha(newDate)}
+                  shouldDisableDate={(day) =>
+                    fechasOcupadas.includes(day.format('YYYY-MM-DD'))
+                  }
+                  renderDay={(day, _selectedDays, pickersDayProps) => {
+                    const formattedDate = day.format('YYYY-MM-DD');
+                    const isOcupado = fechasOcupadas.includes(formattedDate);
+
+                    return (
+                      <PickersDay
+                        {...pickersDayProps}
+                        sx={{
+                          backgroundColor: isOcupado ? 'red' : 'transparent',
+                          color: isOcupado ? 'white' : 'black',
+                          borderRadius: '50%',
+                        }}
+                      />
+                    );
+                  }}
+                  sx={{ width: '100%', marginBottom: 2 }}
+                />
+              </LocalizationProvider>
+
+              {/* Campo de hora */}
+              <TextField
+                fullWidth
+                type="time"
+                label="Hora"
+                InputLabelProps={{ shrink: true }}
+                value={hora}
+                onChange={(e) => setHora(e.target.value)}
+                sx={{ marginBottom: 2 }}
               />
+
+              {/* Campo de texto para el motivo */}
+              <TextField
+                fullWidth
+                label="Motivo de la consulta"
+                multiline
+                rows={4}
+                placeholder="Describe el motivo de la consulta"
+                value={motivo}
+                onChange={(e) => setMotivo(e.target.value)}
+                sx={{ marginBottom: 2 }}
+              />
+
+              {/* Selector de especialista */}
+              <FormControl fullWidth sx={{ marginBottom: 2 }}>
+                <InputLabel id="especialista-label">Especialista</InputLabel>
+                <Select
+                  labelId="especialista-label"
+                  value={especialista}
+                  onChange={(e) => setEspecialista(e.target.value)}
+                  label="Especialista"
+                >
+                  <MenuItem value="" disabled>
+                    Selecciona un especialista
+                  </MenuItem>
+                  <MenuItem value="especialista1">Especialista 1</MenuItem>
+                  <MenuItem value="especialista2">Especialista 2</MenuItem>
+                  <MenuItem value="especialista3">Especialista 3</MenuItem>
+                </Select>
+              </FormControl>
+
+              {/* Botones */}
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: 2 }}>
+                <Button variant="contained" color="success" onClick={handleGuardar}>
+                  Guardar
+                </Button>
+                <Button variant="contained" color="error" onClick={handleCancelar}>
+                  Cancelar
+                </Button>
+              </Box>
             </Box>
-          </LocalizationProvider>
+          </Grid>
 
-          {/* Campo de hora */}
-          <TextField
-            fullWidth
-            type="time"
-            label="Hora"
-            InputLabelProps={{ shrink: true }}
-            value={hora}
-            onChange={(e) => setHora(e.target.value)}
-            sx={{ marginBottom: 2 }}
-          />
-
-          {/* Campo de texto para el motivo */}
-          <TextField
-            fullWidth
-            label="Motivo de la consulta"
-            multiline
-            rows={4}
-            placeholder="Describe el motivo de la consulta"
-            value={motivo}
-            onChange={(e) => setMotivo(e.target.value)}
-            sx={{ marginBottom: 2 }}
-          />
-
-          {/* Selector de especialista */}
-          <FormControl fullWidth sx={{ marginBottom: 2 }}>
-            <InputLabel id="especialista-label">Especialista</InputLabel>
-            <Select
-              labelId="especialista-label"
-              value={especialista}
-              onChange={(e) => setEspecialista(e.target.value)}
-              label="Especialista"
-            >
-              <MenuItem value="" disabled>
-                Selecciona un especialista
-              </MenuItem>
-              <MenuItem value="especialista1">Especialista 1</MenuItem>
-              <MenuItem value="especialista2">Especialista 2</MenuItem>
-              <MenuItem value="especialista3">Especialista 3</MenuItem>
-            </Select>
-          </FormControl>
-
-          {/* Botones */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: 2 }}>
-            <Button
-              variant="contained"
-              color="success"
-              onClick={handleGuardar}
-            >
-              Guardar
-            </Button>
-            <Button
-              variant="contained"
-              color="error"
-              onClick={handleCancelar}
-            >
-              Cancelar
-            </Button>
-          </Box>
-        </Box>
-      </Grid>
-     
-
-      <Grid
-        item
-        xs={12}
-        md={6}
-        sx={{
-          backgroundImage: `url(${fondito})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></Grid>
-    </Grid>
-    </div>
-    <FooterApp/>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              backgroundImage: `url(${fondito})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          ></Grid>
+        </Grid>
+      </div>
+      <FooterApp />
     </>
   );
 }

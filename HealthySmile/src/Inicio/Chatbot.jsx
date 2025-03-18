@@ -10,12 +10,11 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
-  // Referencia para el scroll automático
+  // Referencia para Ñel scroll automático
   const chatEndRef = useRef(null);
 
-  // Diccionario de respuestas simuladas
   const simulatedResponses = {
-    "que es una caries": "Una caries es un daño en el diente causado por la acumulación de bacterias y ácidos.",
+    "que es una carie": "Una caries es un daño en el diente causado por la acumulación de bacterias y ácidos.",
     "como prevenir caries": "Para prevenir caries, cepilla tus dientes al menos dos veces al día, usa hilo dental y reduce el consumo de azúcares.",
     "que es la periodontitis": "La periodontitis es una enfermedad grave de las encías que puede provocar la pérdida de dientes si no se trata.",
     "que es un implante dental": "Un implante dental es un dispositivo quirúrgico que se coloca en el hueso de la mandíbula para soportar un diente artificial.",
