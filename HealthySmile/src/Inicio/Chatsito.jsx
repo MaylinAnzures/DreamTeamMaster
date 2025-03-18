@@ -1,36 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { db } from "../../firebaseConfig"; // Asegúrate de que firebase.js está configurado
+import React, { useState, useEffect, useContext } from "react";
+import { db } from "../../firebaseConfig";
 import { collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, where, getDocs } from "firebase/firestore";
 import { Avatar, Button, List, ListItem, ListItemText, TextField, Typography, Box } from "@mui/material";
-import { useUserContext } from './../componentes/UserContext';
+import { UserContext } from "../componentes/UserContext";
 
-const Chatsito = ({ specialist }) => {
-  const { idUsuario, usuarioLogueado } = useUserContext() || {}; // Ahora obtenemos el idUsuario directamente
+const Chatsito = ({ chatUser }) => {
+  const { idUsuario, tipoUsuario,idEspecialista } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [chatId, setChatId] = useState('');
+  const [chatId, setChatId] = useState(null);
+  
 
-  // Establecer nickname cuando el usuario está logueado
   useEffect(() => {
-    if (usuarioLogueado) {
-      setNickname(usuarioLogueado);
-    }
-  }, [usuarioLogueado]);
-
-  // Buscar el chatId o crear uno nuevo si no existe
-  useEffect(() => {
-    if (!idUsuario || !specialist) return;
-
+    if (!idUsuario || !chatUser) return;
+    
     const fetchChatId = async () => {
       console.log("Buscando chatId...");
-      console.log("idUsuario:", idUsuario); // Verifica que idUsuario esté siendo recibido correctamente
-      console.log("specialist:", specialist);
+      const idUsuarioChat = Number(tipoUsuario === "Paciente" ? idUsuario : idEspecialista);
+      const idEspecialistaChat = Number(chatUser.idUser);
 
       const q = query(
         collection(db, "chats"),
-        where("idUsuario", "==", idUsuario), // Usamos 'idUsuario' para la consulta
-        where("idEspecialista", "==", specialist.id)
+        where("idUsuario", "in", [idUsuarioChat, idEspecialistaChat]),
+        where("idEspecialista", "in", [idUsuarioChat, idEspecialistaChat])
       );
 
       try {
@@ -39,83 +31,95 @@ const Chatsito = ({ specialist }) => {
           console.log("Chat encontrado:", querySnapshot.docs[0].id);
           setChatId(querySnapshot.docs[0].id);
         } else {
-          console.log("No se encontró el chat, creando uno nuevo...");
-          const newChatRef = await addDoc(collection(db, "chats"), {
-            idUsuario: idUsuario, // Usamos idUsuario aquí también
-            idEspecialista: specialist.id,
-          });
-          setChatId(newChatRef.id);
+          console.log("No se encontró chat existente.");
+          setChatId(null);
         }
       } catch (error) {
-        console.error("Error al buscar o crear el chat: ", error);
+        console.error("Error al buscar el chat: ", error);
       }
     };
 
     fetchChatId();
-  }, [idUsuario, specialist]); // Asegúrate de que idUsuario y specialist estén correctamente definidos
+  }, [idUsuario, chatUser]);
 
-  // Suscribirse a los mensajes del chat en tiempo real
   useEffect(() => {
+    setMessages([]); // Limpiar mensajes al cambiar de chat
     if (!chatId) return;
-
+    
     const q = query(
-      collection(db, "chats", chatId, "messages"),
-      orderBy("timestamp", "asc")
+      collection(db, "chats", chatId, "mensajes"),
+      orderBy("fecha", "desc")
     );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const fetchedMessages = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setMessages(fetchedMessages);
+      setMessages(fetchedMessages.reverse()); // Invertimos para mostrar de más antiguo a más nuevo
     });
 
-    return () => unsubscribe(); // Limpiar la suscripción al desmontar
+    return () => unsubscribe();
   }, [chatId]);
 
-  // Enviar mensaje a Firestore
   const sendMessage = async () => {
-    if (!message.trim() || !chatId) return;
-
+    if (!message.trim()) return;
+    
     try {
-      await addDoc(collection(db, "chats", chatId, "messages"), {
-        nickname,
-        message,
-        timestamp: serverTimestamp(),
+      let currentChatId = chatId;
+      const idUsuarioChat = Number(tipoUsuario === "Paciente" ? idUsuario : idEspecialista);
+      const idEspecialistaChat = Number(chatUser.idUser);
+
+      if (!currentChatId) {
+        const newChatRef = await addDoc(collection(db, "chats"), {
+          idUsuario: idUsuarioChat,
+          idEspecialista: idEspecialistaChat
+        });
+        currentChatId = newChatRef.id;
+        setChatId(newChatRef.id);
+        console.log("Nuevo chat creado:", newChatRef.id);
+      }
+
+      await addDoc(collection(db, "chats", currentChatId, "mensajes"), {
+        destinatario: idEspecialistaChat,
+        emisor: idUsuarioChat,
+        mensaje: message,
+        fecha: serverTimestamp(),
       });
-      setMessage(""); // Limpiar el campo de mensaje
+
+      setMessage("");
     } catch (error) {
       console.error("Error enviando mensaje: ", error);
     }
   };
 
-  if (!usuarioLogueado || !specialist) {
-    return <div>Cargando...</div>;
-  }
-
   return (
     <Box display="flex" flexDirection="column" flex={1}>
       <Box display="flex" alignItems="center" bgcolor="#092B5A" color="#fff" p={2}>
         <Avatar sx={{ bgcolor: "#fff", color: "#3f51b5", mr: 2 }}>
-          {specialist.name.charAt(0)}
+          {chatUser.nomUser.charAt(0)}
         </Avatar>
-        <Typography variant="h6">{specialist.name}</Typography>
+        <Typography variant="h6">{chatUser.nomUser}</Typography>
       </Box>
 
       <Box flex={1} p={2} bgcolor="#f9f9f9" overflow="auto">
         <List>
-          {messages.map((msg) => (
-            <ListItem key={msg.id} sx={{ justifyContent: msg.nickname === nickname ? 'flex-end' : 'flex-start' }}>
-              <ListItemText
-                primary={msg.message}
-                sx={{
-                  p: 1.5,
-                  bgcolor: msg.nickname === nickname ? '#d1e7dd' : '#e2e3e5',
-                  borderRadius: 2,
-                  maxWidth: '60%',
-                  color: '#333'
-                }}
-              />
-            </ListItem>
-          ))}
+          {messages.map((msg) => {
+            const emisor = Number(msg.emisor);
+            const usuarioLogueado = tipoUsuario === "Paciente" ? Number(idUsuario) : Number(idEspecialista);
+
+            return (
+              <ListItem key={msg.id} sx={{ justifyContent: emisor === usuarioLogueado ? 'flex-end' : 'flex-start' }}>
+                <ListItemText
+                  primary={msg.mensaje}
+                  sx={{
+                    p: 1.5,
+                    bgcolor: emisor === usuarioLogueado ? '#d1e7dd' : '#e2e3e5',
+                    borderRadius: 2,
+                    maxWidth: '60%',
+                    color: '#333'
+                  }}
+                />
+              </ListItem>
+            );
+          })}
         </List>
       </Box>
 

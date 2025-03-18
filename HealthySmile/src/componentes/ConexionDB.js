@@ -98,16 +98,18 @@ app.post('/api/LogInUsuario', (req, res) => {
                 return;
             }
 
-            // Verifica si se encontró un usuario
-            if (results[0].length === 0) {
+            console.log("Resultados de la base de datos:", results);
+
+            if (!results[0] || results[0].length === 0) {
                 res.status(404).json({ message: 'Usuario no encontrado o credenciales incorrectas' });
             } else {
-                // Enviar todos los datos del usuario obtenidos
+                console.log("Datos enviados al frontend:", results[0][0]);
                 res.status(200).json(results[0][0]); // Devuelve el primer registro completo
             }
         });
     });
 });
+
 
 //Crear pregunta frecuente
 app.post('/api/crearPregunta', (req, res) => {
@@ -202,8 +204,9 @@ app.get('/api/obtenerEspecialistas', (req, res) => {
     });
 });
 
-// Ruta para obtener nombre y cédula profesional de los especialistas
-app.get('/api/obtenerEspecialistasChat', (req, res) => {
+
+// Ruta para obtener los especialistas para el chat en la versión Android
+app.get('/api/obtenerEspecialistasChatAndroid', (req, res) => {
     const dbConnection = iniciarConexion();
 
     dbConnection.connect((err) => {
@@ -213,29 +216,90 @@ app.get('/api/obtenerEspecialistasChat', (req, res) => {
             return;
         }
 
+        // Consulta SQL para obtener los especialistas con su especialidad y descripción
         const SQL_QUERY = `
-                SELECT 
-                    idUsuario,
-                    nomUser AS nombre,
-                    especialidad
-                FROM 
-                    ComEspecialistas
-            `;
+            SELECT 
+                e.idEspecialista,
+                u.nomUser AS nombre,
+                e.especialidad,
+                e.descripcion,
+                e.cedulaProfesional
+            FROM 
+                Usuario u
+            JOIN 
+                Especialista e ON u.idUsuario = e.idUsuario
+            WHERE 
+                u.tipoUser = 'Especialista'
+        `;
 
         dbConnection.query(SQL_QUERY, (err, results) => {
             dbConnection.end(); // Cerrar la conexión después de la consulta
 
             if (err) {
-                console.error('Error al obtener datos desde la vista:', err);
+                console.error('Error al obtener datos desde la base de datos:', err);
                 res.status(500).json({ error: 'Error al obtener datos de especialistas' });
                 return;
             }
-            res.json(results); // Devolver los resultados en formato JSON
+
+            // Si no se encuentran resultados, devolver una lista vacía
+            if (results.length === 0) {
+                return res.status(404).json({ message: 'No se encontraron especialistas' });
+            }
+
+            // Devolver los resultados en formato JSON
+            console.log("Especialistas encontrados:", results);
+            res.json(results);
         });
     });
 });
 
 
+// Ruta optimizada para obtener la información de múltiples pacientes
+app.get('/api/obtenerPacientesChatAndroid', (req, res) => {
+    const dbConnection = iniciarConexion();
+
+    dbConnection.connect((err) => {
+        if (err) {
+            console.error('Error al conectar a la base de datos:', err);
+            res.status(500).json({ error: 'Error al conectar con la base de datos' });
+            return;
+        }
+
+        // Obtener los IDs de los pacientes desde el query string (deben enviarse como una lista separada por comas)
+        let idsUsuarios = req.query.idsUsuarios;
+        if (!idsUsuarios) {
+            return res.status(400).json({ error: 'IDs de pacientes no proporcionados' });
+        }
+
+        // Convertir el string de IDs a un array
+        const idsArray = idsUsuarios.split(',').map(id => parseInt(id.trim()));
+
+        // Construir la consulta con un `IN` para buscar todos los pacientes a la vez
+        const SQL_QUERY = `
+            SELECT 
+                u.idUsuario,
+                u.nomUser AS nombre,
+                u.correoUser AS correo
+            FROM 
+                Usuario u
+            WHERE 
+                u.idUsuario IN (${idsArray.map(() => '?').join(',')})
+                AND u.tipoUser = 'Paciente'
+        `;
+
+        dbConnection.query(SQL_QUERY, idsArray, (err, results) => {
+            dbConnection.end(); // Cerrar la conexión después de la consulta
+
+            if (err) {
+                console.error('Error al obtener datos desde la base de datos:', err);
+                res.status(500).json({ error: 'Error al obtener datos de los pacientes' });
+                return;
+            }
+
+            res.json(results); // Enviamos un array con todos los pacientes encontrados
+        });
+    });
+});
 
 
 
@@ -335,6 +399,156 @@ app.get('/api/buscarPregunta', (req, res) => {
         });
     });
 });
+
+// Crear Cita
+app.post('/api/crearCita', (req, res) => {
+    const { fecha, hora, motivo, idUsuario, idEspecialista } = req.body;
+
+    const dbConnection = iniciarConexion();
+
+    dbConnection.connect((err) => {
+        if (err) {
+            console.error('Error al conectar a la base de datos:', err);
+            res.status(500).json({ error: 'Error al conectar con la base de datos' });
+            return;
+        }
+
+        const SQL_QUERY = 'CALL procedimiento_crearCita(?, ?, ?, ?, ?)';
+        dbConnection.query(SQL_QUERY, [fecha, hora, motivo, idUsuario, idEspecialista], (err, result) => {
+            dbConnection.end(); // Cerrar la conexión después de la consulta
+
+            if (err) {
+                console.error('Error al ejecutar el procedimiento:', err);
+                res.status(500).json({ error: 'Error al crear la cita' });
+                return;
+            }
+            res.status(201).json({ message: 'Cita creada exitosamente' });
+        });
+    });
+});
+
+app.post('/api/obtenerCitaPorFecha', (req, res) => {
+    console.log("Solicitud recibida con:", req.body);
+    const { idUsuario, fecha, hora } = req.body;
+
+    const dbConnection = iniciarConexion();
+
+    dbConnection.connect((err) => {
+        if (err) {
+            console.error('Error al conectar a la base de datos:', err);
+            res.status(500).json({ error: 'Error al conectar con la base de datos' });
+            return;
+        }
+
+        const SQL_QUERY = 'CALL procedimiento_obtenerCitaPorFecha(?, ?, ?)';
+        dbConnection.query(SQL_QUERY, [idUsuario, fecha, hora], (err, results) => {
+            dbConnection.end(); // Cerrar la conexión después de la consulta
+
+            if (err) {
+                console.error('Error al ejecutar el procedimiento:', err);
+                res.status(500).json({ error: 'Error al obtener la cita' });
+                return;
+            }
+
+            const resultado = results[0]; // MySQL devuelve un array con los resultados
+
+            if (resultado.length === 0 || (resultado[0].mensaje && resultado[0].mensaje === 'No existe esa cita')) {
+                // Si no se encuentra la cita, devuelve un mensaje en un objeto JSON
+                res.status(404).json({ message: 'No existe esa cita' });
+            } else {
+                // Si se encuentra la cita, devolver los datos como un objeto JSON
+                const cita = resultado[0]; // Obtener el primer resultado, ya que se espera solo una cita
+                const response = {
+                    idCita: cita.idCita,
+                    motivoCita: cita.motivoCita,
+                    idEspecialista: cita.idEspecialista
+                };
+                res.status(200).json(response); // Devolver como un JSON con un solo objeto
+            }
+        });
+    });
+});
+
+app.post('/api/modificarCita', (req, res) => {
+    console.log("Solicitud recibida con:", req.body);
+    const { idUsuario, fecha, hora, nuevaHora, nuevoMotivo, nuevoEspecialista } = req.body;
+
+    const dbConnection = iniciarConexion();
+
+    dbConnection.connect((err) => {
+        if (err) {
+            console.error('Error al conectar a la base de datos:', err);
+            res.status(500).json({ error: 'Error al conectar con la base de datos' });
+            return;
+        }
+
+        const SQL_QUERY = 'CALL procedimiento_modificarCita(?, ?, ?, ?, ?, ?)';
+        dbConnection.query(SQL_QUERY, [idUsuario, fecha, hora, nuevaHora, nuevoMotivo, nuevoEspecialista], (err, results) => {
+            dbConnection.end(); // Cerrar la conexión después de la consulta
+
+            if (err) {
+                console.error('Error al ejecutar el procedimiento:', err);
+                res.status(500).json({ error: 'Error al modificar la cita' });
+                return;
+            }
+
+            const resultado = results[0]; // MySQL devuelve un array con los resultados
+
+            if (resultado.length === 0 || (resultado[0].mensaje && resultado[0].mensaje === 'No existe esa cita')) {
+                // Si no se encuentra la cita, devolver un mensaje
+                res.status(404).json({ message: 'No existe esa cita' });
+            } else {
+                // Si la cita se modificó correctamente, devolver un mensaje de éxito
+                const mensaje = resultado[0].mensaje;
+                res.status(200).json({ message: mensaje });
+            }
+        });
+    });
+});
+
+app.post('/api/eliminarCita', (req, res) => {
+    console.log("Solicitud recibida con:", req.body);
+    const { idUsuario, fecha, hora } = req.body;
+
+    const dbConnection = iniciarConexion();
+
+    dbConnection.connect((err) => {
+        if (err) {
+            console.error('Error al conectar a la base de datos:', err);
+            res.status(500).json({ error: 'Error al conectar con la base de datos' });
+            return;
+        }
+
+        // Llamar al procedimiento para eliminar la cita
+        const SQL_QUERY = 'CALL procedimiento_eliminarCita(?, ?, ?)';
+        dbConnection.query(SQL_QUERY, [idUsuario, fecha, hora], (err, results) => {
+            dbConnection.end(); // Cerrar la conexión después de la consulta
+
+            if (err) {
+                console.error('Error al ejecutar el procedimiento:', err);
+                res.status(500).json({ error: 'Error al eliminar la cita' });
+                return;
+            }
+
+            const resultado = results[0]; // MySQL devuelve un array con los resultados
+
+            // Verificar si la cita fue eliminada correctamente o no
+            if (resultado.length === 0 || (resultado[0].mensaje && resultado[0].mensaje === 'No existe esa cita')) {
+                // Si no se encuentra la cita, devolver un mensaje
+                res.status(404).json({ message: 'No existe esa cita' });
+            } else {
+                // Si la cita se eliminó correctamente, devolver un mensaje de éxito
+                const mensaje = resultado[0].mensaje;
+                res.status(200).json({ message: mensaje });
+            }
+        });
+    });
+});
+
+
+
+
+
 
 
 

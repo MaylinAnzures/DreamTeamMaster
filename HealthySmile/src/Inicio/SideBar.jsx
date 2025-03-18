@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Button } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../componentes/UserContext";
 
-const SpecialistSidebar = ({ specialists, onSelectSpecialist }) => {
+const ChatSidebar = ({ chatUsers, onSelectChatUser }) => {
   const navigate = useNavigate();
+  const { tipoUsuario } = useContext(UserContext);
+
   return (
     <Box
       width="300px"
@@ -14,33 +17,28 @@ const SpecialistSidebar = ({ specialists, onSelectSpecialist }) => {
       overflow="auto"
     >
       <Typography variant="h6" sx={{ mb: 2 }}>
-        Especialistas
+        {tipoUsuario === "Paciente" ? "Especialistas" : "Pacientes"}
       </Typography>
       <List>
-        {specialists.map((specialist) => (
-          <ListItem
-            button
-            key={specialist.id}
-            onClick={() => onSelectSpecialist(specialist)}
-          >
+        {chatUsers.map((user) => (
+          <ListItem button key={user.idUser} onClick={() => onSelectChatUser(user)}>
             <ListItemAvatar>
               <Avatar>
                 <PersonIcon />
               </Avatar>
             </ListItemAvatar>
             <ListItemText
-              primary={specialist.name}
-              secondary={specialist.specialty}
+              primary={user.nomUser}
+              secondary={tipoUsuario === "Paciente" ? user.especialidad : user.correoUser}
             />
           </ListItem>
         ))}
-        <Button fullWidth sx={{ color: '#092B5A', mb: 1 }}
-              onClick={() => navigate('/Consulta')}>
-              Volver a consultas
-          </Button>
+        <Button fullWidth sx={{ color: '#092B5A', mt: 2 }} onClick={() => navigate('/Consulta')}>
+          Volver a consultas
+        </Button>
       </List>
     </Box>
   );
 };
 
-export default SpecialistSidebar;
+export default ChatSidebar;
