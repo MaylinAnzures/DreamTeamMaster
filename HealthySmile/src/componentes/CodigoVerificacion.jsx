@@ -48,7 +48,9 @@ export default function CodigoVerificacion() {
                     setNivelPermisos(null);
                     setIdUsuario(null);
                     setIdEspecialista(null);
-                    setEstaLogueado(false); 
+                    setEstaLogueado(false);
+                    setEspecialidad(null)
+                    setDescripcion(null)
                     return 0;
                 }
                 return prev - 1;
@@ -56,7 +58,7 @@ export default function CodigoVerificacion() {
         }, 1000);
 
         return () => clearInterval(timer); // Limpiar intervalo en desmontaje
-    }, [setCodigoDeVerificacion, setUsuarioLogueado, setCorreo, setContrasena, setCedulaProfesional, setNivelPermisos, setIdUsuario, setIdEspecialista, setEstaLogueado]);
+    }, [setCodigoDeVerificacion, setUsuarioLogueado, setCorreo, setContrasena, setCedulaProfesional, setNivelPermisos, setIdUsuario, setIdEspecialista, setEstaLogueado,setEspecialidad,setDescripcion]);
 
     const handleVerification = async () => {
         if (userInputCode === codigoDeVerificacion) {
@@ -98,6 +100,7 @@ export default function CodigoVerificacion() {
                     });
 
                     setCedulaProfesional(null);
+                    setDescripcion(null);
                 }
 
                 if (response.ok) {
@@ -147,7 +150,11 @@ export default function CodigoVerificacion() {
                         setEstaLogueado(true);
                         console.log("Estado de sesión:", true);
 
-                        // Limpiar el código de verificación y la contraseña después de usarlos
+                        if (userData.nivelPermisos === 2) {
+                            setIdEspecialista(userData.idEspecialista); 
+                            console.log("ID Especialista:", userData.idEspecialista);
+                        }
+
                         setCodigoDeVerificacion(null);
                         setContrasena(null);
 

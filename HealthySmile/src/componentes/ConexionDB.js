@@ -34,7 +34,7 @@ app.post('/api/crearPaciente', (req, res) => {
         }
 
         const SQL_QUERY = 'CALL procedimiento_Crear_Paciente(?, ?, ?, ?)';
-        dbConnection.query(SQL_QUERY, [nomUser, correoUser, contrasenaUser, nivelPermisos], (err, result) => {
+        dbConnection.query(SQL_QUERY, [nomUser, correoUser, contrasenaUser, nivelPermisos], (err, results) => {
             dbConnection.end(); // Cerrar la conexión después de la consulta
 
             if (err) {
@@ -42,7 +42,10 @@ app.post('/api/crearPaciente', (req, res) => {
                 res.status(500).json({ error: 'Error al crear usuario' });
                 return;
             }
-            res.status(201).json({ message: 'Usuario creado exitosamente' });
+
+            // Extraer el idUsuario de la respuesta
+            const idUsuario = results[0][0].idUsuario;
+            res.status(201).json({ message: 'Usuario creado exitosamente', idUsuario });
         });
     });
 });
@@ -51,7 +54,6 @@ app.post('/api/crearPaciente', (req, res) => {
 //Crear Especialista
 app.post('/api/crearEspecialista', (req, res) => {
     const { nomUser, correoUser, contrasenaUser, tipoUser, nivelPermisos, cedulaProfesional, descripcion, especialidad } = req.body;
-
     const dbConnection = iniciarConexion();
 
     dbConnection.connect((err) => {
@@ -60,20 +62,31 @@ app.post('/api/crearEspecialista', (req, res) => {
             res.status(500).json({ error: 'Error al conectar con la base de datos' });
             return;
         }
-
         const SQL_QUERY = 'CALL procedimiento_Crear_Especialista(?, ?, ?, ?, ?, ?, ?, ?)';
         dbConnection.query(SQL_QUERY, [nomUser, correoUser, contrasenaUser, tipoUser, nivelPermisos, cedulaProfesional, descripcion, especialidad], (err, result) => {
-            dbConnection.end(); // Cerrar la conexión después de la consulta
+            dbConnection.end();
 
             if (err) {
                 console.error('Error al ejecutar el procedimiento:', err);
                 res.status(500).json({ error: 'Error al crear especialista' });
                 return;
             }
-            res.status(201).json({ message: 'Especialista creado exitosamente' });
+
+            if (result && result[0] && result[0].length > 0) {
+                const { idUsuario, idEspecialista } = result[0][0]; 
+
+                res.status(201).json({ 
+                    message: 'Especialista creado exitosamente',
+                    idUsuario,
+                    idEspecialista
+                });
+            } else {
+                res.status(500).json({ error: 'No se pudo obtener el ID del especialista' });
+            }
         });
     });
 });
+
 
 //Log In usuarios
 app.post('/api/LogInUsuario', (req, res) => {
@@ -151,10 +164,11 @@ app.get('/api/obtenerPreguntas', (req, res) => {
 
         const SQL_QUERY = `
                 SELECT 
+                    idPreguntaFrecuente,
                     pregunta, 
                     COALESCE(respuesta, 'aún no hay respuesta para esta pregunta') AS respuesta, 
-                    nombreUsuario, 
-                    nombreEspecialista 
+                    idUsuario, 
+                    idEspecialista 
                 FROM 
                     vista_Preguntas_Frecuentes
             `;
@@ -306,7 +320,7 @@ app.get('/api/obtenerPacientesChatAndroid', (req, res) => {
 // Ruta para responder preguntas frecuentes
 app.post('/api/responderPregunta', (req, res) => {
     const { idPreguntaFrecuente, idEspecialista, respuesta } = req.body;
-
+    console.log("Datos recibidos:", idPreguntaFrecuente, idEspecialista, respuesta);
     const dbConnection = iniciarConexion();
 
     dbConnection.connect((err) => {
@@ -545,6 +559,35 @@ app.post('/api/eliminarCita', (req, res) => {
     });
 });
 
+app.post('/api/verificarCorreo', (req, res) => {
+    const { correoUser } = req.query; 
+    const dbConnection = iniciarConexion();
+
+    dbConnection.connect((err) => {
+        if (err) {
+            console.error('Error al conectar a la base de datos:', err);
+            res.status(500).json({ error: 'Error al conectar con la base de datos' });
+            return;
+        }
+
+        const SQL_QUERY = `SELECT * FROM vista_correos WHERE correoUser = ?`;
+
+        dbConnection.query(SQL_QUERY, [correoUser], (err, results) => {
+            dbConnection.end(); 
+
+            if (err) {
+                console.error('Error al consultar la vista:', err);
+                res.status(500).json({ error: 'Error al verificar el correo' });
+                return;
+            }
+            if (results.length > 0) {
+                res.json({ mensaje: 'Existe' });
+            } else {
+                res.json({ mensaje: 'No existe' });
+            }
+        });
+    });
+});
 
 
 
