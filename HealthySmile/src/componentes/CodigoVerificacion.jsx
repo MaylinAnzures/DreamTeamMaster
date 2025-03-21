@@ -77,8 +77,6 @@ export default function CodigoVerificacion() {
                             nomUser: usuarioLogueado,
                             correoUser: correo,
                             contrasenaUser: contrasena,
-                            tipoUser: 'Especialista',
-                            nivelPermisos: 2,
                             cedulaProfesional: cedulaProfesional,
                             descripcion: descripcion, // Añadido
                             especialidad: especialidad, 
@@ -95,7 +93,6 @@ export default function CodigoVerificacion() {
                             nomUser: usuarioLogueado,
                             correoUser: correo,
                             contrasenaUser: contrasena,
-                            nivelPermisos: 1,
                         }),
                     });
 
