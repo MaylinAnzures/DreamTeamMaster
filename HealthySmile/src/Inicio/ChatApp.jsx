@@ -17,7 +17,7 @@ const ChatApp = () => {
       try {
         if (tipoUsuario === "Paciente") {
           // Obtener todos los especialistas
-          const response = await axios.get("http://localhost:3000/api/obtenerEspecialistasChatsitoAndroid");
+          const response = await axios.get("http://localhost:3000/api/obtenerEspecialistasChatAndroid");
           console.log("🔍 Respuesta de la API (Especialistas):", response.data);
           const formattedData = response.data.map((item) => ({
             idUser: Number(item.idEspecialista),
