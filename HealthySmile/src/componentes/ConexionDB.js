@@ -16,9 +16,16 @@ app.use(express.json());
 app.use(cors());
 
 // Iniciar el servidor
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    const address = `http://0.0.0.0:${PORT}`;
+    console.log(`Servidor corriendo en ${address}`);
 });
+
+
+app.get('/api/ejemplo', (req, res) => {
+    res.json({ mensaje: 'Conexión exitosa' });
+});
+
 
 const pool = mysql.createPool({
     connectionLimit: 5, 
@@ -316,7 +323,6 @@ app.post('/api/responderPregunta', (req, res) => {
     const opciones = {
         mensajeExito: 'Respuesta registrada exitosamente'
     };
-
     ejecutarConsulta(SQL_QUERY, parametros, res, opciones);
 });
 
@@ -544,3 +550,49 @@ app.post('/api/verificarCorreo', (req, res) => {
     });
 });
 
+app.get('/api/obtenerCitasPorDia', (req, res) => { 
+    const { fecha, idEspecialista } = req.query;
+
+    // Verificar que se haya recibido la fecha y el idEspecialista
+    if (!fecha || !idEspecialista) {
+        return res.status(400).json({ error: 'Fecha o idEspecialista no proporcionados' });
+    }
+
+    const SQL_QUERY = 'CALL obtenerCitasPorDia(?, ?)'; // Llamamos al procedimiento almacenado
+    const parametros = [fecha, idEspecialista]; // Pasamos la fecha y el idEspecialista como parámetros
+
+    // Ejecutamos la consulta y manejamos la respuesta
+    ejecutarConsulta(SQL_QUERY, parametros, res, {
+        devuelveDatos: true,
+        mensajeError: 'No existen citas para la fecha y especialista proporcionados',
+        formatearResultados: (results) => {
+            // Acceder al primer elemento del array que contiene los resultados de las citas
+            const citas = results[0]; // El primer elemento es el que contiene los RowDataPacket
+        
+            return citas.map(cita => ({
+                idCita: cita.idCita,
+                motivoCita: cita.motivoCita,
+                idEspecialista: cita.idEspecialista,
+                fechaCita: cita.fechaCita
+            }));
+        }
+    });
+});
+
+app.post('/api/actualizarFotoPerfil', (req, res) => {
+    const { idUsuario, foto } = req.body;
+
+    // Validar que ambos parámetros estén presentes
+    if (!idUsuario || !foto) {
+        return res.status(400).json({ error: 'Faltan parámetros idUsuario o fotoURL' });
+    }
+
+    // Consulta SQL para llamar al procedimiento almacenado
+    const SQL_QUERY = 'CALL procedimiento_actualizarFotoPerfil(?, ?)';
+    const parametros = [idUsuario, foto];
+
+    ejecutarConsulta(SQL_QUERY, parametros, res, {
+        devuelveDatos: false,
+        mensajeExito: 'Foto de perfil actualizada correctamente'
+    });
+});
