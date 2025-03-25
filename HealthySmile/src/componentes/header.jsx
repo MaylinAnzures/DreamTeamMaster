@@ -32,12 +32,14 @@ export default function HeaderApp() {
                 <NavLink to={secureLink("/Inicio")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
                     Home
                 </NavLink>
-                <BasicMenu buttonLabel="Consulta Virtual" menuOptions={menuOptions.map(option => ({ ...option, to: secureLink(option.to) }))} />
+                <NavLink to={secureLink("/Consulta")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
+                Seguimiento
+                </NavLink>
                 <NavLink to={secureLink("/EducacionDental")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
                     Educación Dental
                 </NavLink>
                 <BasicMenu buttonLabel="Tienda Virtual" menuOptions={menuOptions2.map(option => ({ ...option, to: secureLink(option.to) }))} />
-                <NavLink to={secureLink("#")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
+                <NavLink to={secureLink("/Gestion")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
                     Gestion
                 </NavLink>
                 <NavLink to={secureLink("/AyudaYSoporte")} className={(navData) => (navData.isActive ? "activeStyle" : '')}>
