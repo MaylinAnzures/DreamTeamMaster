@@ -15,18 +15,25 @@ export default function BusquedaFrecuente({ query }) {
     useEffect(() => {
         const endpoint = query ? 'http://localhost:3000/api/buscarPregunta' : 'http://localhost:3000/api/obtenerPreguntas';
         const params = query ? { pregunta: query } : {};
-
-        console.log("Consultando endpoint:", endpoint, "con parámetros:", params);
-
-        axios.get(endpoint, { params })
-            .then((response) => {
-                console.log("Preguntas obtenidas:", response.data);
-                setPreguntas(response.data.slice(0, 5)); // Limitar a 5 resultados
-            })
-            .catch((error) => {
-                console.error("Error al obtener preguntas frecuentes:", error);
-            });
+    
+        const fetchData = () => {
+            console.log("Consultando endpoint:", endpoint, "con parámetros:", params);
+    
+            axios.get(endpoint, { params })
+                .then((response) => {
+                    console.log("Preguntas obtenidas:", response.data);
+                    setPreguntas(response.data.slice(0, 5)); // Limitar a 5 resultados
+                })
+                .catch((error) => {
+                    console.error("Error al obtener preguntas frecuentes:", error);
+                });
+        };
+    
+        const delay = setTimeout(fetchData, 500);
+    
+        return () => clearTimeout(delay);
     }, [query]);
+    
 
     const handleRespuestaChange = (event, index) => {
         const { value } = event.target;

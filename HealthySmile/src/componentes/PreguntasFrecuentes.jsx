@@ -11,13 +11,14 @@ export default function PreguntasFrecuentes() {
     const [respuestas, setRespuestas] = useState({});
     const [parametrosEnviados, setParametrosEnviados] = useState({});
     const [acordeonAbierto, setAcordeonAbierto] = useState(null); // Estado para el acordeón abierto
+    const [idsPreguntas, setIdsPreguntas] = useState([]);
 
-    const idsPreguntas = [1, 2, 3, 4, 5]; 
 
     useEffect(() => {
         axios.get('http://localhost:3000/api/obtenerPreguntas')
             .then((response) => {
                 setPreguntas(response.data.slice(0, 5));
+                setIdsPreguntas(response.data.map(pregunta => pregunta.idPreguntaFrecuente));
             })
             .catch((error) => {
                 console.error("Error al obtener preguntas frecuentes:", error);
@@ -67,7 +68,6 @@ export default function PreguntasFrecuentes() {
     };
 
     const handleChangeAcordeon = (index) => {
-        // Si el acordeón que se abre es el mismo que está abierto, lo cerramos
         setAcordeonAbierto(acordeonAbierto === index ? null : index);
     };
 

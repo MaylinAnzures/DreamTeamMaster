@@ -16,7 +16,9 @@ export default function Decision() {
         codigoDeVerificacion,
         contrasena,
         correo,
-        estaLogueado
+        estaLogueado,
+        especialidad,
+        descripcion,
     } = useUserContext();
 
     return (
@@ -59,6 +61,8 @@ export default function Decision() {
                     <p><strong>Código de Verificación:</strong> {codigoDeVerificacion}</p>
                     <p><strong>Contraseña:</strong> {contrasena}</p>
                     <p><strong>Correo:</strong> {correo}</p>
+                    <p><strong>Especialidad : </strong>{especialidad}</p>
+                    <p><strong>Descripcion : </strong> {descripcion}</p>
                     <p><strong>Está Logueado:</strong> {estaLogueado ? 'true' : 'false'}
 </p>
                 </div>
