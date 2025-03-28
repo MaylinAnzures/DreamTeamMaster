@@ -32,7 +32,8 @@ const pool = mysql.createPool({
     host: 'bjf9zqyloqdblun4rwfj-mysql.services.clever-cloud.com',
     user: 'u1ma7b61o7vlgxwr',
     password: 'TowNJ6Zzb2PJd8f5AYU9',
-    database: 'bjf9zqyloqdblun4rwfj'
+    database: 'bjf9zqyloqdblun4rwfj',
+    connectTimeout: 30000 
 });
 
 
@@ -68,7 +69,7 @@ function ejecutarConsulta(SQL_QUERY, parametros, res, opciones = {}) {
                 if (opciones.devuelveDatos) {
                     if (results.length === 0) {
                         console.warn("⚠️ No se encontraron resultados para la consulta.");
-                        res.status(404).json({ message: opciones.mensajeError || 'No se encontraron resultados' });
+                        res.status(404).json({ mensaje: opciones.mensajeError || 'No se encontraron resultados' });
                     } else {
                         // Solo formatear si se proporciona una función de formateo
                         const datosFinales = opciones.formatearResultados
@@ -81,7 +82,7 @@ function ejecutarConsulta(SQL_QUERY, parametros, res, opciones = {}) {
             } else {
                 // Si no es RowDataPacket, se maneja como una consulta normal
                 console.log("✅ Operación completada con éxito:", opciones.mensajeExito);
-                res.status(201).json({ message: opciones.mensajeExito, data: results });
+                res.status(201).json({ mensaje: opciones.mensajeExito, data: results });
             }
         });
     });
@@ -110,7 +111,7 @@ app.post('/api/enviarCorreoVerificacion', async (req, res) => {
                 privateKey: PRIVATE_KEY_EMAILJS,}     
         );
         console.log("Correo enviado exitosamente");
-        res.status(200).json({ message: "Correo enviado exitosamente" });
+        res.status(200).json({ mensaje: "Correo enviado exitosamente" });
     } catch (error) {
         console.error("Error al enviar el correo:", error);
         res.status(500).json({ error: "No se pudo enviar el correo" });
@@ -131,7 +132,7 @@ app.post('/api/crearPaciente', (req, res) => {
         mensajeExito: "Usuario creado exitosamente",
         formatearResultados: (results) => {
             const idUsuario = results[0][0].idUsuario;
-            return { message: "Usuario creado exitosamente", idUsuario };
+            return { mensaje: "Usuario creado exitosamente", idUsuario };
         }
     });
 });
@@ -155,7 +156,7 @@ app.post('/api/crearEspecialista', (req, res) => {
         formatearResultados: (results) => {
             if (results && results[0] && results[0].length > 0) {
                 const { idUsuario, idEspecialista } = results[0][0]; 
-                return { message: "Especialista creado exitosamente", idUsuario, idEspecialista };
+                return { mensaje: "Especialista creado exitosamente", idUsuario, idEspecialista };
             }
             return { error: "No se pudo obtener el ID del especialista" };
         }
@@ -179,7 +180,7 @@ app.post('/api/LogInUsuario', (req, res) => {
             if (results && results[0] && results[0].length > 0) {
                 return results[0][0]; // Devuelve el primer registro completo
             }
-            return { message: 'Usuario no encontrado o credenciales incorrectas' };
+            return { mensaje: 'Usuario no encontrado o credenciales incorrectas' };
         }
     });
 });
@@ -384,7 +385,7 @@ app.post('/api/crearCita', (req, res) => {
         procesarResultado: (results) => {
             if (results[0] && results[0].length > 0) {
                 const idCita = results[0][0].idCita;
-                res.status(201).json({ message: 'Cita creada exitosamente', idCita });
+                res.status(201).json({ mensaje: 'Cita creada exitosamente', idCita });
             } else {
                 res.status(500).json({ error: 'No se pudo obtener el ID de la cita' });
             }
@@ -405,14 +406,15 @@ app.get('/api/obtenerCitasPaciente', (req, res) => {
             const resultado = results[0]; // MySQL devuelve un array con los resultados
 
             if (resultado.length === 0 || (resultado[0].mensaje && resultado[0].mensaje === 'No existe esa cita')) {
-                return { message: 'No existen citas para este paciente' };
+                return { mensaje: 'No existen citas para este paciente' };
             } else {
                 // Si se encuentran citas, formatear los datos
                 return resultado.map(cita => ({
                     idCita: cita.idCita,
                     motivoCita: cita.motivoCita,
                     fechaCita: cita.fechaCita,
-                    idEspecialista: cita.idEspecialista
+                    idEspecialista : cita.idEspecialista,
+                    nombreEspecialista: cita.nombreEspecialista
                 }));
             }
         }
@@ -432,14 +434,14 @@ app.get('/api/obtenerCitasEspecialista', (req, res) => {
             const resultado = results[0]; // MySQL devuelve un array con los resultados
 
             if (resultado.length === 0 || (resultado[0].mensaje && resultado[0].mensaje === 'No existe esa cita')) {
-                return { message: 'No existen citas para este especialista' };
+                return { mensaje: 'No existen citas para este especialista' };
             } else {
                 // Si se encuentran citas, formatear los datos
                 return resultado.map(cita => ({
                     idCita: cita.idCita,
                     motivoCita: cita.motivoCita,
                     fechaCita: cita.fechaCita,
-                    idUsuario: cita.idUsuario
+                    nombrePaciente: cita.nombrePaciente
                 }));
             }
         }
@@ -462,7 +464,7 @@ app.post('/api/obtenerCitaPorFecha', (req, res) => {
             // Si no se encuentra la cita, devolver un mensaje de error
             const resultado = results[0];
             if (resultado.length === 0 || (resultado[0].mensaje && resultado[0].mensaje === 'No existe esa cita')) {
-                return { message: 'No existe esa cita' };
+                return { mensaje: 'No existe esa cita' };
             } else {
                 // Si se encuentra la cita, formatear los datos
                 const cita = resultado[0]; // Obtener el primer resultado
@@ -493,10 +495,10 @@ app.post('/api/modificarCita', (req, res) => {
 
             if (resultado.length === 0 || (resultado[0].mensaje && resultado[0].mensaje === 'No existe esa cita')) {
                 // Si no se encuentra la cita, devolver un mensaje de error
-                return { message: 'No existe esa cita' };
+                return { mensaje: 'No existe esa cita' };
             } else {
                 // Si la cita se modificó correctamente, devolver el mensaje de éxito
-                return { message: resultado[0].mensaje };
+                return { mensaje: resultado[0].mensaje };
             }
         }
     });
@@ -519,11 +521,11 @@ app.post('/api/eliminarCita', (req, res) => {
 
             if (resultado.length === 0 || (resultado[0].mensaje && resultado[0].mensaje === 'No existe esa cita')) {
                 // Si no se encuentra la cita, devolver un mensaje de error
-                return { message: 'No existe esa cita' };
+                return { mensaje: 'No existe esa cita' };
             } else {
                 // Si la cita se eliminó correctamente, devolver el mensaje de éxito
                 const mensaje = resultado[0].mensaje;
-                return { message: mensaje };
+                return { mensaje: mensaje };
             }
         }
     });
@@ -596,3 +598,6 @@ app.post('/api/actualizarFotoPerfil', (req, res) => {
         mensajeExito: 'Foto de perfil actualizada correctamente'
     });
 });
+
+
+//Procedimiento 
